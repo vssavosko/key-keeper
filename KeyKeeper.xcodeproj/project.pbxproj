@@ -13,6 +13,16 @@
 		88228A2626ACC74200C78456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88228A2426ACC74200C78456 /* Main.storyboard */; };
 		88228A2826ACC74500C78456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88228A2726ACC74500C78456 /* Assets.xcassets */; };
 		88228A2B26ACC74500C78456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88228A2926ACC74500C78456 /* LaunchScreen.storyboard */; };
+		88228A3926ACC7C000C78456 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3826ACC7C000C78456 /* Account.swift */; };
+		88228A3B26ACC7DA00C78456 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3A26ACC7DA00C78456 /* UIViewExtensions.swift */; };
+		88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3C26ACC80600C78456 /* MainTabBarController.swift */; };
+		88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3E26ACC84000C78456 /* MyVaultViewController.swift */; };
+		88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4026ACC87B00C78456 /* GeneratorViewController.swift */; };
+		88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4226ACC88A00C78456 /* SettingsViewController.swift */; };
+		88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4426ACC8C800C78456 /* MyVaultCell.swift */; };
+		8859F06326B04A9400ED0FAB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateAccountViewController.swift */; };
+		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
+		88922B9D26BC73440083A285 /* AccountFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9C26BC73440083A285 /* AccountFields.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +34,16 @@
 		88228A2726ACC74500C78456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88228A2A26ACC74500C78456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88228A2C26ACC74500C78456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88228A3826ACC7C000C78456 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		88228A3A26ACC7DA00C78456 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		88228A3C26ACC80600C78456 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		88228A3E26ACC84000C78456 /* MyVaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVaultViewController.swift; sourceTree = "<group>"; };
+		88228A4026ACC87B00C78456 /* GeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorViewController.swift; sourceTree = "<group>"; };
+		88228A4226ACC88A00C78456 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		88228A4426ACC8C800C78456 /* MyVaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVaultCell.swift; sourceTree = "<group>"; };
+		8859F06226B04A9400ED0FAB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		88922B9C26BC73440083A285 /* AccountFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFields.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +76,11 @@
 		88228A1D26ACC74200C78456 /* KeyKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				88228A3526ACC78800C78456 /* Models */,
+				88228A3626ACC79000C78456 /* Extension */,
+				8859F06126B0460C00ED0FAB /* MyVault */,
+				88228A3726ACC7A200C78456 /* Controllers */,
+				88F5A6D626BECA0D00B056C1 /* Helpers */,
 				88228A1E26ACC74200C78456 /* AppDelegate.swift */,
 				88228A2026ACC74200C78456 /* SceneDelegate.swift */,
 				88228A2226ACC74200C78456 /* ViewController.swift */,
@@ -65,6 +90,67 @@
 				88228A2C26ACC74500C78456 /* Info.plist */,
 			);
 			path = KeyKeeper;
+			sourceTree = "<group>";
+		};
+		88228A3526ACC78800C78456 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				88228A3826ACC7C000C78456 /* Account.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		88228A3626ACC79000C78456 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				88228A3A26ACC7DA00C78456 /* UIViewExtensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		88228A3726ACC7A200C78456 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				88228A3C26ACC80600C78456 /* MainTabBarController.swift */,
+				88228A4026ACC87B00C78456 /* GeneratorViewController.swift */,
+				88228A4226ACC88A00C78456 /* SettingsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		88228A4626ACC9C700C78456 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88228A4426ACC8C800C78456 /* MyVaultCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8859F06126B0460C00ED0FAB /* MyVault */ = {
+			isa = PBXGroup;
+			children = (
+				88922B9926BC71B70083A285 /* Controllers */,
+				88228A4626ACC9C700C78456 /* Cell */,
+			);
+			path = MyVault;
+			sourceTree = "<group>";
+		};
+		88922B9926BC71B70083A285 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				88228A3E26ACC84000C78456 /* MyVaultViewController.swift */,
+				8859F06226B04A9400ED0FAB /* CreateAccountViewController.swift */,
+				88922B9A26BC71F20083A285 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		88F5A6D626BECA0D00B056C1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				88922B9C26BC73440083A285 /* AccountFields.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +224,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				88228A2326ACC74200C78456 /* ViewController.swift in Sources */,
+				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
+				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
+				88922B9D26BC73440083A285 /* AccountFields.swift in Sources */,
+				88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */,
+				8859F06326B04A9400ED0FAB /* CreateAccountViewController.swift in Sources */,
+				88228A3B26ACC7DA00C78456 /* UIViewExtensions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
+				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
+				88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */,
+				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,
+				88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -289,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
 				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,6 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
 				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +413,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
