@@ -13,5 +13,7 @@ struct Account {
     var emailOrUsername: String
     var password: String
     var website: String
+    var createdAt: String
+    var updatedAt: String
     
 }

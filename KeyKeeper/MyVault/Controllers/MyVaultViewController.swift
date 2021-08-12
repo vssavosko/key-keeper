@@ -9,9 +9,24 @@ import UIKit
 
 class MyVaultViewController: UIViewController {
     
-    var accounts = [Account(title: "Netflix", emailOrUsername: "Netflix Desc", password: "123456", website: "https://netflix.com"),
-                    Account(title: "VK", emailOrUsername: "VK Desc", password: "123456", website: "https://vk.com"),
-                    Account(title: "Instagram", emailOrUsername: "Instagram Desc", password: "123456", website: "https://instagram.com")]
+    var accounts = [Account(title: "Netflix",
+                            emailOrUsername: "Netflix Desc",
+                            password: "123456",
+                            website: "https://netflix.com",
+                            createdAt: "",
+                            updatedAt: ""),
+                    Account(title: "VK",
+                            emailOrUsername: "VK Desc",
+                            password: "123456",
+                            website: "https://vk.com",
+                            createdAt: "",
+                            updatedAt: ""),
+                    Account(title: "Instagram",
+                            emailOrUsername: "Instagram Desc",
+                            password: "123456",
+                            website: "https://instagram.com",
+                            createdAt: "",
+                            updatedAt: "")]
     
     let searchController = UISearchController(searchResultsController: nil)
     let tableView = UITableView()
@@ -97,6 +112,8 @@ extension MyVaultViewController: UITableViewDelegate, UITableViewDataSource {
         destination.emailOrUsername = accountData.emailOrUsername
         destination.password = accountData.password
         destination.website = accountData.website
+        destination.createdAt = accountData.createdAt
+        destination.updatedAt = accountData.updatedAt
         
         self.navigationController?.pushViewController(destination, animated: true)
     }

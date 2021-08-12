@@ -15,6 +15,8 @@ protocol AddAccountDelegate {
 
 class CreateAccountViewController: UIViewController {
     
+    let dateFormatter = DateFormatter.configure()
+    
     var delegate: AddAccountDelegate?
     
     private let nameField = AccountFields.nameField
@@ -29,7 +31,8 @@ class CreateAccountViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         configureNavigationBar()
-        setupFields()
+        configureSubviews()
+        configureFields()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,13 +46,15 @@ class CreateAccountViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tapOnSave))
     }
     
-    func setupFields() {
+    func configureSubviews() {
         view.addSubview(nameField)
         view.addSubview(emailOrUsernameField)
         view.addSubview(passwordField)
         view.addSubview(passwordButton)
         view.addSubview(websiteField)
-        
+    }
+    
+    func configureFields() {
         AccountFields.addBottomLineFor(field: nameField)
         AccountFields.addBottomLineFor(field: emailOrUsernameField)
         AccountFields.addBottomLineFor(field: passwordField)
@@ -108,7 +113,9 @@ class CreateAccountViewController: UIViewController {
         let newAccount = Account(title: title,
                                  emailOrUsername: emailOrUsername,
                                  password: passwordField.text ?? "",
-                                 website: websiteField.text ?? "")
+                                 website: websiteField.text ?? "",
+                                 createdAt: dateFormatter.string(from: Date()),
+                                 updatedAt: "")
         
         delegate?.addAccount(account: newAccount)
         

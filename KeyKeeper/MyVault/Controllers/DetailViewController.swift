@@ -15,6 +15,8 @@ protocol UpdateAccountDelegate {
 
 class DetailViewController: UIViewController {
     
+    let dateFormatter = DateFormatter.configure()
+    
     var delegate: UpdateAccountDelegate?
     
     var indexRow: Int = 0
@@ -22,18 +24,46 @@ class DetailViewController: UIViewController {
     var emailOrUsername: String = ""
     var password: String = ""
     var website: String = ""
+    var createdAt: String = ""
+    var updatedAt: String = ""
     
     private let nameField = AccountFields.nameField
     private let emailOrUsernameField = AccountFields.emailOrUsernameField
     private let passwordField = AccountFields.passwordField
     private let passwordButton = AccountFields.passwordButton
     private let websiteField = AccountFields.websiteField
+    private let createdLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.textColor = .systemGray
+        
+        return label
+    }()
+    private let lastModifiedLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.textColor = .systemGray
+        
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
+        
         configureNavigationBar()
-        setupFields()
+        configureSubviews()
+        configureFields()
+        configureLabels()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.popViewController(animated: false)
     }
     
     func configureNavigationBar() {
@@ -41,13 +71,17 @@ class DetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tapOnEdit))
     }
     
-    func setupFields() {
+    func configureSubviews() {
         view.addSubview(nameField)
         view.addSubview(emailOrUsernameField)
         view.addSubview(passwordField)
         view.addSubview(passwordButton)
         view.addSubview(websiteField)
-        
+        view.addSubview(createdLabel)
+        view.addSubview(lastModifiedLabel)
+    }
+    
+    func configureFields() {
         nameField.text = accountTitle
         emailOrUsernameField.text = emailOrUsername
         passwordField.text = password
@@ -63,6 +97,16 @@ class DetailViewController: UIViewController {
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         
         setupFieldConstraints()
+    }
+    
+    func configureLabels() {
+        createdLabel.isHidden = createdAt == ""
+        lastModifiedLabel.isHidden = updatedAt == ""
+        
+        createdLabel.text = "Created: \(DateFormatter.changeDateFormatFor(date: createdAt))"
+        lastModifiedLabel.text = "Last modified: \(DateFormatter.changeDateFormatFor(date: updatedAt))"
+        
+        setupLabelConstraints()
     }
     
     func setupFieldConstraints() {
@@ -95,10 +139,23 @@ class DetailViewController: UIViewController {
         
         websiteField.anchor(top: nil,
                             leading: view.leadingAnchor,
-                            bottom: nil,
+                            bottom: createdLabel.topAnchor,
                             trailing: view.trailingAnchor,
-                            padding: UIEdgeInsets(top: 0, left: 16, bottom: 1, right: 16),
+                            padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16),
                             size: CGSize(width: 0, height: 55))
+    }
+    
+    func setupLabelConstraints() {
+        createdLabel.anchor(top: nil,
+                            leading: view.leadingAnchor,
+                            bottom: lastModifiedLabel.topAnchor,
+                            trailing: view.trailingAnchor,
+                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 0))
+        
+        lastModifiedLabel.anchor(top: nil,
+                                 leading: view.leadingAnchor,
+                                 bottom: nil,
+                                 trailing: view.trailingAnchor)
     }
     
     func userInteractionForFields(isEnabled: Bool) {
@@ -124,7 +181,15 @@ class DetailViewController: UIViewController {
         let updatedAccount = Account(title: title,
                                      emailOrUsername: emailOrUsername,
                                      password: password,
-                                     website: website)
+                                     website: website,
+                                     createdAt: createdAt,
+                                     updatedAt: dateFormatter.string(from: Date()))
+        
+        lastModifiedLabel.text = "Last modified: \(DateFormatter.changeDateFormatFor(date: updatedAccount.updatedAt))"
+        
+        if lastModifiedLabel.isHidden {
+            lastModifiedLabel.isHidden = false
+        }
         
         delegate?.updateAccount(account: updatedAccount, indexRow: indexRow)
     }

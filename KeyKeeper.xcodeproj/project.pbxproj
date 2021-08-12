@@ -23,6 +23,7 @@
 		8859F06326B04A9400ED0FAB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateAccountViewController.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
 		88922B9D26BC73440083A285 /* AccountFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9C26BC73440083A285 /* AccountFields.swift */; };
+		88A3858226C33167006913C2 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		8859F06226B04A9400ED0FAB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		88922B9C26BC73440083A285 /* AccountFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFields.swift; sourceTree = "<group>"; };
+		88A3858126C33167006913C2 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				88228A3526ACC78800C78456 /* Models */,
-				88228A3626ACC79000C78456 /* Extension */,
-				8859F06126B0460C00ED0FAB /* MyVault */,
 				88228A3726ACC7A200C78456 /* Controllers */,
+				8859F06126B0460C00ED0FAB /* MyVault */,
+				88228A3626ACC79000C78456 /* Extensions */,
 				88F5A6D626BECA0D00B056C1 /* Helpers */,
 				88228A1E26ACC74200C78456 /* AppDelegate.swift */,
 				88228A2026ACC74200C78456 /* SceneDelegate.swift */,
@@ -100,12 +102,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		88228A3626ACC79000C78456 /* Extension */ = {
+		88228A3626ACC79000C78456 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				88228A3A26ACC7DA00C78456 /* UIViewExtensions.swift */,
+				88A3858126C33167006913C2 /* DateFormatter.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		88228A3726ACC7A200C78456 /* Controllers */ = {
@@ -234,6 +237,7 @@
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
 				88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */,
+				88A3858226C33167006913C2 /* DateFormatter.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,
 				88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */,
 			);
