@@ -76,11 +76,11 @@ class MyVaultViewController: UIViewController {
     }
     
     @objc func createAccount() {
-        let createAccountVC = CreateAccountViewController()
+        let createVC = CreateViewController()
         
-        createAccountVC.delegate = self
+        createVC.delegate = self
         
-        navigationController?.pushViewController(createAccountVC, animated: true)
+        navigationController?.pushViewController(createVC, animated: true)
     }
     
 }

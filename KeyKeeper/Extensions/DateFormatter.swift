@@ -20,10 +20,13 @@ extension DateFormatter {
     
     static func changeDateFormatFor(date: String, dateFormat: String = "dd MMMM yyyy, hh:mm") -> String {
         let formatter = DateFormatter()
+        let ISODateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
-        formatter.dateFormat = dateFormat
+        formatter.dateFormat = ISODateFormat
         
         guard let dateWithDateType = formatter.date(from: date) else { return date }
+        
+        formatter.dateFormat = dateFormat
         
         return formatter.string(from: dateWithDateType)
     }

@@ -13,7 +13,7 @@ protocol AddAccountDelegate {
     
 }
 
-class CreateAccountViewController: UIViewController {
+class CreateViewController: UIViewController {
     
     let dateFormatter = DateFormatter.configure()
     
@@ -41,7 +41,7 @@ class CreateAccountViewController: UIViewController {
     
     func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = "Create new account"
+        navigationItem.title = "Create"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(tapOnCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tapOnSave))
     }
@@ -57,7 +57,6 @@ class CreateAccountViewController: UIViewController {
     func configureFields() {
         AccountFields.addBottomLineFor(field: nameField)
         AccountFields.addBottomLineFor(field: emailOrUsernameField)
-        AccountFields.addBottomLineFor(field: passwordField)
         AccountFields.addBottomLineFor(field: websiteField)
         
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
