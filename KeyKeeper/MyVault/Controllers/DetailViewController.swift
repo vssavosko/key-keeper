@@ -27,11 +27,13 @@ class DetailViewController: UIViewController {
     var createdAt: String?
     var updatedAt: String?
     
-    private let nameField = AccountFields.nameField
-    private let emailOrUsernameField = AccountFields.emailOrUsernameField
-    private let passwordField = AccountFields.passwordField
-    private let passwordButton = AccountFields.passwordButton
-    private let websiteField = AccountFields.websiteField
+    private let emailOrUsernameLabel = FieldsGenerator.createLabel(text: "Email or username")
+    private let emailOrUsernameField = FieldsGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
+    private let passwordLabel = FieldsGenerator.createLabel(text: "Password")
+    private let passwordField = FieldsGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
+    private let passwordButton = FieldsGenerator.passwordButton
+    private let websiteLabel = FieldsGenerator.createLabel(text: "Website")
+    private let websiteField = FieldsGenerator.createField(placeholder: "http://www.piedpiper.com")
     private let createdLabel: UILabel = {
         let label = UILabel()
         
@@ -68,9 +70,12 @@ class DetailViewController: UIViewController {
     }
     
     func configureSubviews() {
+        view.addSubview(emailOrUsernameLabel)
         view.addSubview(emailOrUsernameField)
+        view.addSubview(passwordLabel)
         view.addSubview(passwordField)
         view.addSubview(passwordButton)
+        view.addSubview(websiteLabel)
         view.addSubview(websiteField)
         view.addSubview(createdLabel)
         view.addSubview(lastModifiedLabel)
@@ -85,8 +90,8 @@ class DetailViewController: UIViewController {
         passwordField.isUserInteractionEnabled = false
         websiteField.isUserInteractionEnabled = false
         
-        AccountFields.addBottomLineFor(field: emailOrUsernameField)
-        AccountFields.addBottomLineFor(field: websiteField)
+        FieldsGenerator.addBottomLineFor(field: emailOrUsernameField)
+        FieldsGenerator.addBottomLineFor(field: websiteField)
         
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         
@@ -108,19 +113,27 @@ class DetailViewController: UIViewController {
     }
     
     func setupFieldConstraints() {
-        emailOrUsernameField.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        emailOrUsernameLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                     leading: view.leadingAnchor,
-                                    bottom: passwordField.topAnchor,
+                                    bottom: emailOrUsernameField.topAnchor,
                                     trailing: view.trailingAnchor,
-                                    padding: UIEdgeInsets(top: 0, left: 16, bottom: 1, right: 16),
-                                    size: CGSize(width: 0, height: 55))
+                                    padding: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16))
+        emailOrUsernameField.anchor(top: nil,
+                                    leading: view.leadingAnchor,
+                                    bottom: passwordLabel.topAnchor,
+                                    trailing: view.trailingAnchor,
+                                    padding: UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16))
         
+        passwordLabel.anchor(top: nil,
+                             leading: view.leadingAnchor,
+                             bottom: passwordField.topAnchor,
+                             trailing: view.trailingAnchor,
+                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
         passwordField.anchor(top: nil,
                              leading: view.leadingAnchor,
-                             bottom: websiteField.topAnchor,
+                             bottom: websiteLabel.topAnchor,
                              trailing: view.trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 11, right: 16),
-                             size: CGSize(width: 0, height: 55))
+                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 41, right: 16))
         
         passwordButton.anchor(top: passwordField.topAnchor,
                               leading: nil,
@@ -128,12 +141,16 @@ class DetailViewController: UIViewController {
                               trailing: passwordField.trailingAnchor,
                               padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         
+        websiteLabel.anchor(top: nil,
+                            leading: view.leadingAnchor,
+                            bottom: websiteField.topAnchor,
+                            trailing: view.trailingAnchor,
+                            padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16))
         websiteField.anchor(top: nil,
                             leading: view.leadingAnchor,
                             bottom: createdLabel.topAnchor,
                             trailing: view.trailingAnchor,
-                            padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16),
-                            size: CGSize(width: 0, height: 55))
+                            padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16))
     }
     
     func setupLabelConstraints() {
