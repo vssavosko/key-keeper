@@ -1,5 +1,5 @@
 //
-//  FieldsGenerator.swift
+//  FieldGenerator.swift
 //  KeyKeeper
 //
 //  Created by Владислав Савосько on 05.08.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FieldsGenerator {
+class FieldGenerator {
     
     static var passwordButton: UIButton {
         let button = UIButton()
@@ -18,14 +18,16 @@ class FieldsGenerator {
         return button
     }
     
-    static func createLabel(text: String) -> UILabel {
+    static func createLabel(text: String,
+                            textAlignment: NSTextAlignment = .left,
+                            font: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium)) -> UILabel {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.font.withSize(16)
-        label.textColor = .systemGray
-        
         label.text = text
+        label.textAlignment = textAlignment
+        label.textColor = .secondaryLabel
+        label.font = font
         
         return label
     }
@@ -38,6 +40,7 @@ class FieldsGenerator {
             field.isSecureTextEntry = true
         }
         
+        field.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         field.placeholder = placeholder
         field.borderStyle = .none
         

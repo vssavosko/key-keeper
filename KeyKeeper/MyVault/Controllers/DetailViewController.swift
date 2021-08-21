@@ -18,40 +18,19 @@ class DetailViewController: UIViewController {
     let dateFormatter = DateFormatter.configure()
     
     var delegate: UpdateAccountDelegate?
-    
     var indexRow: Int?
-    var accountTitle: String?
-    var emailOrUsername: String?
-    var password: String?
-    var website: String?
-    var createdAt: String?
-    var updatedAt: String?
     
-    private let emailOrUsernameLabel = FieldsGenerator.createLabel(text: "Email or username")
-    private let emailOrUsernameField = FieldsGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = FieldsGenerator.createLabel(text: "Password")
-    private let passwordField = FieldsGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
-    private let passwordButton = FieldsGenerator.passwordButton
-    private let websiteLabel = FieldsGenerator.createLabel(text: "Website")
-    private let websiteField = FieldsGenerator.createField(placeholder: "http://www.piedpiper.com")
-    private let createdLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = .systemGray
-        
-        return label
-    }()
-    private let lastModifiedLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = .systemGray
-        
-        return label
-    }()
+    var accountData: Account!
+    
+    private let emailOrUsernameLabel = FieldGenerator.createLabel(text: "Email or username")
+    private let emailOrUsernameField = FieldGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
+    private let passwordLabel = FieldGenerator.createLabel(text: "Password")
+    private let passwordField = FieldGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
+    private let passwordButton = FieldGenerator.passwordButton
+    private let websiteLabel = FieldGenerator.createLabel(text: "Website")
+    private let websiteField = FieldGenerator.createField(placeholder: "https://www.piedpiper.com")
+    private let createdLabel = FieldGenerator.createLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
+    private let lastModifiedLabel = FieldGenerator.createLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +43,12 @@ class DetailViewController: UIViewController {
         configureLabels()
     }
     
+    func set(account: Account) {
+        accountData = account
+    }
+    
     func configureNavigationBar() {
-        navigationItem.title = accountTitle
+        navigationItem.title = accountData.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tapOnEdit))
     }
     
@@ -82,16 +65,16 @@ class DetailViewController: UIViewController {
     }
     
     func configureFields() {
-        emailOrUsernameField.text = emailOrUsername
-        passwordField.text = password
-        websiteField.text = website
+        emailOrUsernameField.text = accountData.emailOrUsername
+        passwordField.text = accountData.password
+        websiteField.text = accountData.website
         
-        emailOrUsernameField.isUserInteractionEnabled = false
-        passwordField.isUserInteractionEnabled = false
-        websiteField.isUserInteractionEnabled = false
+        emailOrUsernameField.isEnabled = false
+        passwordField.isEnabled = false
+        websiteField.isEnabled = false
         
-        FieldsGenerator.addBottomLineFor(field: emailOrUsernameField)
-        FieldsGenerator.addBottomLineFor(field: websiteField)
+        FieldGenerator.addBottomLineFor(field: emailOrUsernameField)
+        FieldGenerator.addBottomLineFor(field: websiteField)
         
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         
@@ -99,15 +82,11 @@ class DetailViewController: UIViewController {
     }
     
     func configureLabels() {
-        createdLabel.isHidden = createdAt == ""
-        lastModifiedLabel.isHidden = updatedAt == ""
+        createdLabel.isHidden = accountData.createdAt == ""
+        lastModifiedLabel.isHidden = accountData.updatedAt == ""
         
-        guard let createdAt = createdAt,
-              let updatedAt = updatedAt
-        else { return }
-        
-        createdLabel.text = "Created: \(DateFormatter.changeDateFormatFor(date: createdAt))"
-        lastModifiedLabel.text = "Last modified: \(DateFormatter.changeDateFormatFor(date: updatedAt))"
+        createdLabel.text = "Created: \(DateFormatter.changeDateFormatFor(date: accountData.createdAt))"
+        lastModifiedLabel.text = "Last modified: \(DateFormatter.changeDateFormatFor(date: accountData.updatedAt))"
         
         setupLabelConstraints()
     }
@@ -117,7 +96,7 @@ class DetailViewController: UIViewController {
                                     leading: view.leadingAnchor,
                                     bottom: emailOrUsernameField.topAnchor,
                                     trailing: view.trailingAnchor,
-                                    padding: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16))
+                                    padding: UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16))
         emailOrUsernameField.anchor(top: nil,
                                     leading: view.leadingAnchor,
                                     bottom: passwordLabel.topAnchor,
@@ -167,10 +146,10 @@ class DetailViewController: UIViewController {
     }
     
     func updateViewControllerData(title: String, emailOrUsername: String, password: String, website: String) {
-        self.accountTitle = title
-        self.emailOrUsername = emailOrUsername
-        self.password = password
-        self.website = website
+        self.accountData.title = title
+        self.accountData.emailOrUsername = emailOrUsername
+        self.accountData.password = password
+        self.accountData.website = website
         
         navigationItem.title = title
         emailOrUsernameField.text = emailOrUsername
@@ -192,16 +171,14 @@ class DetailViewController: UIViewController {
         let editVC = EditViewController()
         
         editVC.delegate = self
-        editVC.accountTitle = accountTitle
-        editVC.emailOrUsername = emailOrUsername
-        editVC.password = password
-        editVC.website = website
+        
+        editVC.set(account: accountData)
         
         editVC.completion = { [weak self] (title: String, emailOrUsername: String, password: String, website: String) in
             guard
                 let dateFormatter = self?.dateFormatter,
                 let indexRow = self?.indexRow,
-                let createdAt = self?.createdAt,
+                let createdAt = self?.accountData.createdAt,
                 let lastModifiedLabel = self?.lastModifiedLabel,
                 let updateViewControllerData = self?.updateViewControllerData
             else { return }
