@@ -15,7 +15,7 @@ class MyVaultCell: UITableViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         
         return label
     }()
@@ -23,7 +23,7 @@ class MyVaultCell: UITableViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = .systemGray
         
         return label

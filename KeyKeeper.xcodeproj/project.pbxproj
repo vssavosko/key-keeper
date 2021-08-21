@@ -24,7 +24,7 @@
 		8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateViewController.swift */; };
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
-		88922B9D26BC73440083A285 /* FieldsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9C26BC73440083A285 /* FieldsGenerator.swift */; };
+		88922B9D26BC73440083A285 /* FieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9C26BC73440083A285 /* FieldGenerator.swift */; };
 		88A3858226C33167006913C2 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +48,7 @@
 		8859F06226B04A9400ED0FAB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		88922B9C26BC73440083A285 /* FieldsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldsGenerator.swift; sourceTree = "<group>"; };
+		88922B9C26BC73440083A285 /* FieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldGenerator.swift; sourceTree = "<group>"; };
 		88A3858126C33167006913C2 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
-				88922B9C26BC73440083A285 /* FieldsGenerator.swift */,
+				88922B9C26BC73440083A285 /* FieldGenerator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 				88228A2326ACC74200C78456 /* ViewController.swift in Sources */,
 				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
 				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
-				88922B9D26BC73440083A285 /* FieldsGenerator.swift in Sources */,
+				88922B9D26BC73440083A285 /* FieldGenerator.swift in Sources */,
 				88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */,
 				88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */,
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,

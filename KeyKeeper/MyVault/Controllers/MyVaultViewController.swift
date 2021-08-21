@@ -78,6 +78,8 @@ class MyVaultViewController: UIViewController {
     @objc func createAccount() {
         let createVC = CreateViewController()
         
+        createVC.hidesBottomBarWhenPushed = true
+        
         createVC.delegate = self
         
         navigationController?.pushViewController(createVC, animated: true)
@@ -106,14 +108,12 @@ extension MyVaultViewController: UITableViewDelegate, UITableViewDataSource {
         let accountData = accounts[indexPath.row]
         let destination = DetailViewController()
         
+        destination.hidesBottomBarWhenPushed = true
+        
         destination.delegate = self
         destination.indexRow = indexPath.row
-        destination.accountTitle = accountData.title
-        destination.emailOrUsername = accountData.emailOrUsername
-        destination.password = accountData.password
-        destination.website = accountData.website
-        destination.createdAt = accountData.createdAt
-        destination.updatedAt = accountData.updatedAt
+        
+        destination.set(account: accountData)
         
         self.navigationController?.pushViewController(destination, animated: true)
     }

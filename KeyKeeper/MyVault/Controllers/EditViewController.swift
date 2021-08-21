@@ -11,21 +11,18 @@ class EditViewController: UIViewController {
     
     var delegate: DetailViewController?
     
-    var accountTitle: String?
-    var emailOrUsername: String?
-    var password: String?
-    var website: String?
+    var accountData: Account!
     var completion: ((String, String, String, String) -> Void)?
     
-    private let nameLabel = FieldsGenerator.createLabel(text: "Name")
-    private let nameField = FieldsGenerator.createField(placeholder: "Pied Piper")
-    private let emailOrUsernameLabel = FieldsGenerator.createLabel(text: "Email or username")
-    private let emailOrUsernameField = FieldsGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = FieldsGenerator.createLabel(text: "Password")
-    private let passwordField = FieldsGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
-    private let passwordButton = FieldsGenerator.passwordButton
-    private let websiteLabel = FieldsGenerator.createLabel(text: "Website")
-    private let websiteField = FieldsGenerator.createField(placeholder: "http://www.piedpiper.com")
+    private let nameLabel = FieldGenerator.createLabel(text: "Name")
+    private let nameField = FieldGenerator.createField(placeholder: "Pied Piper")
+    private let emailOrUsernameLabel = FieldGenerator.createLabel(text: "Email or username")
+    private let emailOrUsernameField = FieldGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
+    private let passwordLabel = FieldGenerator.createLabel(text: "Password")
+    private let passwordField = FieldGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
+    private let passwordButton = FieldGenerator.passwordButton
+    private let websiteLabel = FieldGenerator.createLabel(text: "Website")
+    private let websiteField = FieldGenerator.createField(placeholder: "https://www.piedpiper.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +34,13 @@ class EditViewController: UIViewController {
         configureFields()
     }
     
+    func set(account: Account) {
+        accountData = account
+    }
+    
     func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "Edit"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(tapOnCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tapOnSave))
     }
@@ -56,14 +58,14 @@ class EditViewController: UIViewController {
     }
     
     func configureFields() {
-        nameField.text = accountTitle
-        emailOrUsernameField.text = emailOrUsername
-        passwordField.text = password
-        websiteField.text = website
+        nameField.text = accountData.title
+        emailOrUsernameField.text = accountData.emailOrUsername
+        passwordField.text = accountData.password
+        websiteField.text = accountData.website
         
-        FieldsGenerator.addBottomLineFor(field: nameField)
-        FieldsGenerator.addBottomLineFor(field: emailOrUsernameField)
-        FieldsGenerator.addBottomLineFor(field: websiteField)
+        FieldGenerator.addBottomLineFor(field: nameField)
+        FieldGenerator.addBottomLineFor(field: emailOrUsernameField)
+        FieldGenerator.addBottomLineFor(field: websiteField)
         
         nameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         emailOrUsernameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
