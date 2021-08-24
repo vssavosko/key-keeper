@@ -21,8 +21,8 @@ class CreateViewController: UIViewController {
     
     private let nameLabel = FieldGenerator.createLabel(text: "Name")
     private let nameField = FieldGenerator.createField(placeholder: "Pied Piper")
-    private let emailOrUsernameLabel = FieldGenerator.createLabel(text: "Email or username")
-    private let emailOrUsernameField = FieldGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
+    private let loginLabel = FieldGenerator.createLabel(text: "Email or username")
+    private let loginField = FieldGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
     private let passwordLabel = FieldGenerator.createLabel(text: "Password")
     private let passwordField = FieldGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
     private let passwordButton = FieldGenerator.passwordButton
@@ -54,8 +54,8 @@ class CreateViewController: UIViewController {
     func configureSubviews() {
         view.addSubview(nameLabel)
         view.addSubview(nameField)
-        view.addSubview(emailOrUsernameLabel)
-        view.addSubview(emailOrUsernameField)
+        view.addSubview(loginLabel)
+        view.addSubview(loginField)
         view.addSubview(passwordLabel)
         view.addSubview(passwordField)
         view.addSubview(passwordButton)
@@ -65,11 +65,11 @@ class CreateViewController: UIViewController {
     
     func configureFields() {
         FieldGenerator.addBottomLineFor(field: nameField)
-        FieldGenerator.addBottomLineFor(field: emailOrUsernameField)
+        FieldGenerator.addBottomLineFor(field: loginField)
         FieldGenerator.addBottomLineFor(field: websiteField)
         
         nameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        emailOrUsernameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         
@@ -86,16 +86,16 @@ class CreateViewController: UIViewController {
                          padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16))
         nameField.anchor(top: nil,
                          leading: view.leadingAnchor,
-                         bottom: emailOrUsernameLabel.topAnchor,
+                         bottom: loginLabel.topAnchor,
                          trailing: view.trailingAnchor,
                          padding: UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16))
         
-        emailOrUsernameLabel.anchor(top: nil,
+        loginLabel.anchor(top: nil,
                                     leading: view.leadingAnchor,
-                                    bottom: emailOrUsernameField.topAnchor,
+                                    bottom: loginField.topAnchor,
                                     trailing: view.trailingAnchor,
                                     padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
-        emailOrUsernameField.anchor(top: nil,
+        loginField.anchor(top: nil,
                                     leading: view.leadingAnchor,
                                     bottom: passwordLabel.topAnchor,
                                     trailing: view.trailingAnchor,
@@ -136,11 +136,11 @@ class CreateViewController: UIViewController {
     
     @objc func tapOnSave() {
         guard let title = nameField.text,
-              let emailOrUsername = emailOrUsernameField.text
+              let login = loginField.text
         else { return }
         
         let newAccount = Account(title: title,
-                                 emailOrUsername: emailOrUsername,
+                                 login: login,
                                  password: passwordField.text ?? "",
                                  website: websiteField.text ?? "",
                                  createdAt: dateFormatter.string(from: Date()),
@@ -151,7 +151,7 @@ class CreateViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @objc func textFieldDidChange() {
-        if !nameField.hasText || !emailOrUsernameField.hasText || !passwordField.hasText {
+        if !nameField.hasText || !loginField.hasText || !passwordField.hasText {
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = true

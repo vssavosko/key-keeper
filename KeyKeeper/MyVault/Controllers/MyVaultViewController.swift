@@ -6,27 +6,11 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class MyVaultViewController: UIViewController {
     
-    var accounts = [Account(title: "Netflix",
-                            emailOrUsername: "Netflix Desc",
-                            password: "123456",
-                            website: "https://netflix.com",
-                            createdAt: "",
-                            updatedAt: ""),
-                    Account(title: "VK",
-                            emailOrUsername: "VK Desc",
-                            password: "123456",
-                            website: "https://vk.com",
-                            createdAt: "",
-                            updatedAt: ""),
-                    Account(title: "Instagram",
-                            emailOrUsername: "Instagram Desc",
-                            password: "123456",
-                            website: "https://instagram.com",
-                            createdAt: "",
-                            updatedAt: "")]
+    var accounts = KeychainWrapper.standard.getAccounts(forKey: Keys.accounts) ?? []
     
     let searchController = UISearchController(searchResultsController: nil)
     let tableView = UITableView()
@@ -128,6 +112,9 @@ extension MyVaultViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.beginUpdates()
             
             accounts.remove(at: indexPath.row)
+            
+            KeychainWrapper.standard.saveAccounts(accounts, forKey: Keys.accounts)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             tableView.endUpdates()
@@ -143,11 +130,15 @@ extension MyVaultViewController: AddAccountDelegate, UpdateAccountDelegate {
     func addAccount(account: Account) {
         accounts.append(account)
         
+        KeychainWrapper.standard.saveAccounts(accounts, forKey: Keys.accounts)
+        
         tableView.reloadData()
     }
     
     func updateAccount(account: Account, indexRow: Int) {
         accounts[indexRow] = account
+        
+        KeychainWrapper.standard.saveAccounts(accounts, forKey: Keys.accounts)
         
         tableView.reloadData()
     }

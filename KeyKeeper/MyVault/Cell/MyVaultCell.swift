@@ -19,7 +19,7 @@ class MyVaultCell: UITableViewCell {
         
         return label
     }()
-    private let accountEmailOrUsername: UILabel = {
+    private let accountLogin: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,18 +37,18 @@ class MyVaultCell: UITableViewCell {
     
     func set(account: Account) {
         accountTitle.text = account.title
-        accountEmailOrUsername.text = account.emailOrUsername
+        accountLogin.text = account.login
     }
     
     func setupLabels() {
         addSubview(accountTitle)
-        addSubview(accountEmailOrUsername)
+        addSubview(accountLogin)
         
         accountTitle.anchor(top: topAnchor,
                             leading: leadingAnchor,
-                            bottom: accountEmailOrUsername.topAnchor,
+                            bottom: accountLogin.topAnchor,
                             trailing: trailingAnchor)
-        accountEmailOrUsername.anchor(top: accountTitle.bottomAnchor,
+        accountLogin.anchor(top: accountTitle.bottomAnchor,
                                       leading: leadingAnchor,
                                       bottom: bottomAnchor,
                                       trailing: trailingAnchor)
@@ -57,7 +57,7 @@ class MyVaultCell: UITableViewCell {
     func setupStackView() {
         setupLabels()
         
-        let stackView = UIStackView(arrangedSubviews: [accountTitle, accountEmailOrUsername])
+        let stackView = UIStackView(arrangedSubviews: [accountTitle, accountLogin])
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
