@@ -22,8 +22,8 @@ class DetailViewController: UIViewController {
     
     var accountData: Account!
     
-    private let emailOrUsernameLabel = FieldGenerator.createLabel(text: "Email or username")
-    private let emailOrUsernameField = FieldGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
+    private let loginLabel = FieldGenerator.createLabel(text: "Email or username")
+    private let loginField = FieldGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
     private let passwordLabel = FieldGenerator.createLabel(text: "Password")
     private let passwordField = FieldGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
     private let passwordButton = FieldGenerator.passwordButton
@@ -53,8 +53,8 @@ class DetailViewController: UIViewController {
     }
     
     func configureSubviews() {
-        view.addSubview(emailOrUsernameLabel)
-        view.addSubview(emailOrUsernameField)
+        view.addSubview(loginLabel)
+        view.addSubview(loginField)
         view.addSubview(passwordLabel)
         view.addSubview(passwordField)
         view.addSubview(passwordButton)
@@ -65,15 +65,15 @@ class DetailViewController: UIViewController {
     }
     
     func configureFields() {
-        emailOrUsernameField.text = accountData.emailOrUsername
+        loginField.text = accountData.login
         passwordField.text = accountData.password
         websiteField.text = accountData.website
         
-        emailOrUsernameField.isEnabled = false
+        loginField.isEnabled = false
         passwordField.isEnabled = false
         websiteField.isEnabled = false
         
-        FieldGenerator.addBottomLineFor(field: emailOrUsernameField)
+        FieldGenerator.addBottomLineFor(field: loginField)
         FieldGenerator.addBottomLineFor(field: websiteField)
         
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
@@ -92,12 +92,12 @@ class DetailViewController: UIViewController {
     }
     
     func setupFieldConstraints() {
-        emailOrUsernameLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        loginLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                     leading: view.leadingAnchor,
-                                    bottom: emailOrUsernameField.topAnchor,
+                                    bottom: loginField.topAnchor,
                                     trailing: view.trailingAnchor,
                                     padding: UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16))
-        emailOrUsernameField.anchor(top: nil,
+        loginField.anchor(top: nil,
                                     leading: view.leadingAnchor,
                                     bottom: passwordLabel.topAnchor,
                                     trailing: view.trailingAnchor,
@@ -145,14 +145,14 @@ class DetailViewController: UIViewController {
                                  trailing: view.trailingAnchor)
     }
     
-    func updateViewControllerData(title: String, emailOrUsername: String, password: String, website: String) {
+    func updateViewControllerData(title: String, login: String, password: String, website: String) {
         self.accountData.title = title
-        self.accountData.emailOrUsername = emailOrUsername
+        self.accountData.login = login
         self.accountData.password = password
         self.accountData.website = website
         
         navigationItem.title = title
-        emailOrUsernameField.text = emailOrUsername
+        loginField.text = login
         passwordField.text = password
         websiteField.text = website
     }
@@ -174,7 +174,7 @@ class DetailViewController: UIViewController {
         
         editVC.set(account: accountData)
         
-        editVC.completion = { [weak self] (title: String, emailOrUsername: String, password: String, website: String) in
+        editVC.completion = { [weak self] (title: String, login: String, password: String, website: String) in
             guard
                 let dateFormatter = self?.dateFormatter,
                 let indexRow = self?.indexRow,
@@ -183,10 +183,10 @@ class DetailViewController: UIViewController {
                 let updateViewControllerData = self?.updateViewControllerData
             else { return }
             
-            updateViewControllerData(title, emailOrUsername, password, website)
+            updateViewControllerData(title, login, password, website)
             
             let updatedAccount = Account(title: title,
-                                         emailOrUsername: emailOrUsername,
+                                         login: login,
                                          password: password,
                                          website: website,
                                          createdAt: createdAt,
