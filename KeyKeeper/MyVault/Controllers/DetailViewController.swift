@@ -23,12 +23,12 @@ class DetailViewController: UIViewController {
     var accountData: Account!
     
     private let loginLabel = FieldGenerator.createLabel(text: "Email or username")
-    private let loginField = FieldGenerator.createField(placeholder: "richardhendricks@piedpiper.com")
+    private let loginField = FieldGenerator.createField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
     private let passwordLabel = FieldGenerator.createLabel(text: "Password")
-    private let passwordField = FieldGenerator.createField(isPassword: true, placeholder: "QwEr123Ty456")
+    private let passwordField = FieldGenerator.createField(contentType: .password, placeholder: "QwEr123Ty456")
     private let passwordButton = FieldGenerator.passwordButton
     private let websiteLabel = FieldGenerator.createLabel(text: "Website")
-    private let websiteField = FieldGenerator.createField(placeholder: "https://www.piedpiper.com")
+    private let websiteField = FieldGenerator.createField(contentType: .website, placeholder: "https://www.piedpiper.com")
     private let createdLabel = FieldGenerator.createLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
     private let lastModifiedLabel = FieldGenerator.createLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
     

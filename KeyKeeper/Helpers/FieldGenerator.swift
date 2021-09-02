@@ -7,6 +7,14 @@
 
 import UIKit
 
+enum FieldContentType {
+    
+    case login
+    case password
+    case website
+    
+}
+
 class FieldGenerator {
     
     static var passwordButton: UIButton {
@@ -31,13 +39,24 @@ class FieldGenerator {
         
         return label
     }
-    static func createField(isPassword: Bool = false, placeholder: String) -> TextFieldWithPadding {
+    static func createField(contentType: FieldContentType?, placeholder: String) -> TextFieldWithPadding {
         let field = TextFieldWithPadding()
         
         field.translatesAutoresizingMaskIntoConstraints = false
         
-        if isPassword {
+        switch contentType {
+        case .login:
+            field.textContentType = .username
+            field.keyboardType = .emailAddress
+            field.autocapitalizationType = .none
+        case .password:
+            field.textContentType = .password
             field.isSecureTextEntry = true
+        case .website:
+            field.textContentType = .URL
+            field.keyboardType = .URL
+            field.autocapitalizationType = .none
+        default: break
         }
         
         field.font = UIFont.systemFont(ofSize: 17, weight: .regular)
