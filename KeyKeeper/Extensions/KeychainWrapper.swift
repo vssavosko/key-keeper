@@ -13,14 +13,20 @@ let keychain: KeychainWrapper = KeychainWrapper.standard
 extension KeychainWrapper {
     
     func saveAccounts(_ value: [Account], forKey key: String) {
-        self.set(NSKeyedArchiver.archivedData(withRootObject: value),
-                 forKey: key)
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: false)
+        else { fatalError("The data cannot be encoded") }
+        
+        self.set(data, forKey: key, isSynchronizable: true)
     }
     
     func getAccounts(forKey key: String) -> [Account]? {
         if let storedData = self.data(forKey: key) {
-            return NSKeyedUnarchiver.unarchiveObject(with: storedData) as? [Account]
+            guard let data = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(storedData) as? [Account]
+            else { fatalError("The data cannot be decoded") }
+            
+            return data
         }
+        
         return nil
     }
     
