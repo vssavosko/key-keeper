@@ -16,7 +16,7 @@ extension KeychainWrapper {
         guard let data = try? NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: false)
         else { fatalError("The data cannot be encoded") }
         
-        self.set(data, forKey: key, isSynchronizable: true)
+        self.set(data, forKey: key, isSynchronizable: EnvVars.shared.appMode != "development")
     }
     
     func getAccounts(forKey key: String) -> [Account]? {

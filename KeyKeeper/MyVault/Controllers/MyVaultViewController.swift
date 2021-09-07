@@ -10,10 +10,19 @@ import SwiftKeychainWrapper
 
 class MyVaultViewController: UIViewController {
     
-    var accounts = KeychainWrapper.standard.getAccounts(forKey: Keys.accounts) ?? []
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let tableView = UITableView()
     
-    let searchController = UISearchController(searchResultsController: nil)
-    let tableView = UITableView()
+    private var accounts = KeychainWrapper.standard.getAccounts(forKey: Keys.accounts) ?? []
+    private var filteredAccounts = [Account]()
+    private var isEmptySearchBar: Bool {
+        guard let text = searchController.searchBar.text else { return true }
+        
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !isEmptySearchBar
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +45,13 @@ class MyVaultViewController: UIViewController {
     }
     
     func configureSearchBar() {
-        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        definesPresentationContext = true
     }
     
     func configureTableView() {
@@ -71,15 +85,33 @@ class MyVaultViewController: UIViewController {
     
 }
 
+extension MyVaultViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text!
+        
+        filteredAccounts = accounts.filter({ (account: Account) -> Bool in
+            return account.title.lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
+    }
+    
+}
+
 extension MyVaultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredAccounts.count
+        }
+        
         return accounts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyVaultCell.identifier, for: indexPath) as! MyVaultCell
-        let currentAccount = accounts[indexPath.row]
+        let currentAccount = isFiltering ? filteredAccounts[indexPath.row] : accounts[indexPath.row]
         
         cell.set(account: currentAccount)
         
@@ -89,7 +121,7 @@ extension MyVaultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let accountData = accounts[indexPath.row]
+        let accountData = isFiltering ? filteredAccounts[indexPath.row] : accounts[indexPath.row]
         let destination = DetailViewController()
         
         destination.hidesBottomBarWhenPushed = true
