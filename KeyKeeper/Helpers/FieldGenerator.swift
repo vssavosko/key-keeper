@@ -39,7 +39,7 @@ class FieldGenerator {
         
         return label
     }
-    static func createField(contentType: FieldContentType?, placeholder: String) -> TextFieldWithPadding {
+    static func createField(contentType: FieldContentType? = .none, placeholder: String? = nil) -> TextFieldWithPadding {
         let field = TextFieldWithPadding()
         
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +60,7 @@ class FieldGenerator {
         }
         
         field.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        field.placeholder = placeholder
+        field.placeholder = placeholder != nil ? placeholder : .none
         field.borderStyle = .none
         
         return field
