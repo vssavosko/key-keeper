@@ -1,8 +1,8 @@
 //
-//  FieldGenerator.swift
+//  Generator.swift
 //  KeyKeeper
 //
-//  Created by Владислав Савосько on 05.08.2021.
+//  Created by Владислав Савосько on 15.09.2021.
 //
 
 import UIKit
@@ -15,7 +15,7 @@ enum FieldContentType {
     
 }
 
-class FieldGenerator {
+class Generator {
     
     static var passwordButton: UIButton {
         let button = UIButton()
@@ -28,17 +28,19 @@ class FieldGenerator {
     
     static func createLabel(text: String,
                             textAlignment: NSTextAlignment = .left,
-                            font: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium)) -> UILabel {
+                            font: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium),
+                            color: UIColor = .secondaryLabel) -> UILabel {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
         label.textAlignment = textAlignment
-        label.textColor = .secondaryLabel
+        label.textColor = color
         label.font = font
         
         return label
     }
+
     static func createField(contentType: FieldContentType? = .none, placeholder: String? = nil) -> TextFieldWithPadding {
         let field = TextFieldWithPadding()
         
@@ -65,6 +67,25 @@ class FieldGenerator {
         
         return field
     }
+    
+    static func createStackView() -> UIStackView {
+        let stackView = UIStackView()
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        
+        return stackView
+    }
+    
+    static func createSwitch() -> UISwitch {
+        let uiSwitch = UISwitch()
+        
+        uiSwitch.translatesAutoresizingMaskIntoConstraints = false
+        
+        return uiSwitch
+    }
+
     static func addBottomLineFor(field: UITextField) {
         field.layer.backgroundColor = UIColor.systemBackground.cgColor
         field.layer.masksToBounds = false
