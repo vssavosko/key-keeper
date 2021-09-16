@@ -17,19 +17,10 @@ enum FieldContentType {
 
 class Generator {
     
-    static var passwordButton: UIButton {
-        let button = UIButton()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-        
-        return button
-    }
-    
-    static func createLabel(text: String,
-                            textAlignment: NSTextAlignment = .left,
-                            font: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium),
-                            color: UIColor = .secondaryLabel) -> UILabel {
+    static func generateLabel(text: String,
+                              textAlignment: NSTextAlignment = .left,
+                              font: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium),
+                              color: UIColor = .secondaryLabel) -> UILabel {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,8 +31,9 @@ class Generator {
         
         return label
     }
-
-    static func createField(contentType: FieldContentType? = .none, placeholder: String? = nil) -> TextFieldWithPadding {
+    
+    static func generateField(contentType: FieldContentType? = .none,
+                              placeholder: String? = nil) -> TextFieldWithPadding {
         let field = TextFieldWithPadding()
         
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -68,31 +60,61 @@ class Generator {
         return field
     }
     
-    static func createStackView() -> UIStackView {
+    static func generateStackView() -> UIStackView {
         let stackView = UIStackView()
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
+        stackView.alignment = .center
         
         return stackView
     }
     
-    static func createSwitch() -> UISwitch {
+    static func generateSwitch() -> UISwitch {
         let uiSwitch = UISwitch()
         
         uiSwitch.translatesAutoresizingMaskIntoConstraints = false
         
         return uiSwitch
     }
-
-    static func addBottomLineFor(field: UITextField) {
+    
+    static func generateThumb(size: CGSize, backgroundColor: UIColor = UIColor.white) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setFillColor(backgroundColor.cgColor)
+        context?.setStrokeColor(UIColor.clear.cgColor)
+        
+        let bounds = CGRect(origin: .zero, size: size)
+        
+        context?.addEllipse(in: bounds)
+        context?.drawPath(using: .fill)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    static func generateBottomLineFor(field: UITextField) {
         field.layer.backgroundColor = UIColor.systemBackground.cgColor
         field.layer.masksToBounds = false
         field.layer.shadowColor = UIColor.systemGray5.cgColor
         field.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
         field.layer.shadowOpacity = 1.0
         field.layer.shadowRadius = 0.0
+    }
+    
+    static var passwordButton: UIButton {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        
+        return button
     }
     
 }

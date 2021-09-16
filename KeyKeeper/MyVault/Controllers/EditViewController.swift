@@ -14,15 +14,15 @@ class EditViewController: UIViewController {
     var accountData: Account!
     var completion: ((String, String, String, String) -> Void)?
     
-    private let nameLabel = Generator.createLabel(text: "Name")
-    private let nameField = Generator.createField(placeholder: "Pied Piper")
-    private let loginLabel = Generator.createLabel(text: "Email or username")
-    private let loginField = Generator.createField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = Generator.createLabel(text: "Password")
-    private let passwordField = Generator.createField(contentType: .password, placeholder: "QwEr123Ty456")
+    private let nameLabel = Generator.generateLabel(text: "Name")
+    private let nameField = Generator.generateField(placeholder: "Pied Piper")
+    private let loginLabel = Generator.generateLabel(text: "Email or username")
+    private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
+    private let passwordLabel = Generator.generateLabel(text: "Password")
+    private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
     private let passwordButton = Generator.passwordButton
-    private let websiteLabel = Generator.createLabel(text: "Website")
-    private let websiteField = Generator.createField(contentType: .website, placeholder: "www.piedpiper.com")
+    private let websiteLabel = Generator.generateLabel(text: "Website")
+    private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +63,9 @@ class EditViewController: UIViewController {
         passwordField.text = accountData.password
         websiteField.text = accountData.website
         
-        Generator.addBottomLineFor(field: nameField)
-        Generator.addBottomLineFor(field: loginField)
-        Generator.addBottomLineFor(field: websiteField)
+        Generator.generateBottomLineFor(field: nameField)
+        Generator.generateBottomLineFor(field: loginField)
+        Generator.generateBottomLineFor(field: websiteField)
         
         nameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)

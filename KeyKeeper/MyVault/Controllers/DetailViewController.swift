@@ -22,15 +22,15 @@ class DetailViewController: UIViewController {
     
     var accountData: Account!
     
-    private let loginLabel = Generator.createLabel(text: "Email or username")
-    private let loginField = Generator.createField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = Generator.createLabel(text: "Password")
-    private let passwordField = Generator.createField(contentType: .password, placeholder: "QwEr123Ty456")
+    private let loginLabel = Generator.generateLabel(text: "Email or username")
+    private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
+    private let passwordLabel = Generator.generateLabel(text: "Password")
+    private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
     private let passwordButton = Generator.passwordButton
-    private let websiteLabel = Generator.createLabel(text: "Website")
-    private let websiteField = Generator.createField(contentType: .website, placeholder: "www.piedpiper.com")
-    private let createdLabel = Generator.createLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
-    private let lastModifiedLabel = Generator.createLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
+    private let websiteLabel = Generator.generateLabel(text: "Website")
+    private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
+    private let createdLabel = Generator.generateLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
+    private let lastModifiedLabel = Generator.generateLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +73,8 @@ class DetailViewController: UIViewController {
         passwordField.isEnabled = false
         websiteField.isEnabled = false
         
-        Generator.addBottomLineFor(field: loginField)
-        Generator.addBottomLineFor(field: websiteField)
+        Generator.generateBottomLineFor(field: loginField)
+        Generator.generateBottomLineFor(field: websiteField)
         
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         

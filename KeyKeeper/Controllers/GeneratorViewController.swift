@@ -9,7 +9,7 @@ import UIKit
 
 class GeneratorViewController: UIViewController {
     
-    let testPassword = "88Z8Q(B1(D}+4"
+    private let testPassword = "88Z8Q(B1(D}+4"
     
     private let passwordField: UITextField = {
         let field = UITextField()
@@ -32,32 +32,35 @@ class GeneratorViewController: UIViewController {
         
         return button
     }()
-    private let passwordLengthStackView = Generator.createStackView()
-    private let numbersStackView = Generator.createStackView()
-    private let lettersStackView = Generator.createStackView()
-    private let charactersStackView = Generator.createStackView()
-    private let lengthLabel = Generator.createLabel(text: "",
-                                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold),
-                                                    color: .label)
-    private let numbersLabel = Generator.createLabel(text: "0-9",
-                                                     font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                     color: .label)
-    private let lettersLabel = Generator.createLabel(text: "A-Z a-z",
-                                                     font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                     color: .label)
-    private let charactersLabel = Generator.createLabel(text: "!@#$%^&*",
-                                                        font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                        color: .label)
+    private let passwordLengthStackView = Generator.generateStackView()
+    private let numbersStackView = Generator.generateStackView()
+    private let lettersStackView = Generator.generateStackView()
+    private let charactersStackView = Generator.generateStackView()
+    private let lengthLabel = Generator.generateLabel(text: "",
+                                                      font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                      color: .label)
+    private let numbersLabel = Generator.generateLabel(text: "0-9",
+                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                       color: .label)
+    private let lettersLabel = Generator.generateLabel(text: "A-Z a-z",
+                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                       color: .label)
+    private let charactersLabel = Generator.generateLabel(text: "!@#$%^&*",
+                                                          font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                          color: .label)
     private let lengthSlider: UISlider = {
         let slider = UISlider()
         
+        let thumbImage = Generator.generateThumb(size: CGSize(width: 20, height: 20))
+        
         slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.setThumbImage(thumbImage, for: .normal)
         
         return slider
     }()
-    private let numbersSwitch = Generator.createSwitch()
-    private let lettersSwitch = Generator.createSwitch()
-    private let charactersSwitch = Generator.createSwitch()
+    private let numbersSwitch = Generator.generateSwitch()
+    private let lettersSwitch = Generator.generateSwitch()
+    private let charactersSwitch = Generator.generateSwitch()
     private let replaceButton: UIButton = {
         let button = UIButton()
         
@@ -65,7 +68,7 @@ class GeneratorViewController: UIViewController {
         button.setTitle("Replace", for: .normal)
         button.setTitleColor(UIColor.systemBlue, for: .normal)
         button.backgroundColor = .clear
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 25
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor
         
@@ -80,14 +83,13 @@ class GeneratorViewController: UIViewController {
         configureElements()
     }
     
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Generator"
     }
     
-    func configureSubviews() {
+    private func configureSubviews() {
         view.addSubview(passwordField)
-        view.addSubview(refreshButton)
         view.addSubview(passwordLengthStackView)
         view.addSubview(numbersStackView)
         view.addSubview(lettersStackView)
@@ -100,48 +102,46 @@ class GeneratorViewController: UIViewController {
         lettersStackView.addArrangedSubview(lettersSwitch)
         charactersStackView.addArrangedSubview(charactersLabel)
         charactersStackView.addArrangedSubview(charactersSwitch)
+        view.addSubview(refreshButton)
         view.addSubview(replaceButton)
     }
     
-    func configureElements() {
+    private func configureElements() {
         passwordField.text = testPassword
         lengthLabel.text = "\(testPassword.count) Length"
         
-        setupElementConstraints()
+        setupFieldConstraints()
+        setupStackViewConstraints(topAnchor: passwordField.bottomAnchor)
+        setupButtonConstraints()
     }
     
-    func setupElementConstraints() {
+    private func setupFieldConstraints() {
         passwordField.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                              leading: view.leadingAnchor,
                              bottom: nil,
                              trailing: refreshButton.leadingAnchor,
                              padding: UIEdgeInsets(top: 35, left: 16, bottom: 0, right: 0),
                              size: CGSize(width: (view.frame.width - refreshButton.imageView!.frame.width) - 32, height: 40))
-        
-        refreshButton.anchor(top: passwordField.topAnchor,
-                             leading: passwordField.trailingAnchor,
-                             bottom: nil,
-                             trailing: view.trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16),
-                             size: CGSize(width: 0, height: 40))
-        
-        passwordLengthStackView.anchor(top: passwordField.bottomAnchor,
+    }
+    
+    private func setupStackViewConstraints(topAnchor: NSLayoutYAxisAnchor) {
+        passwordLengthStackView.anchor(top: topAnchor,
                                        leading: view.leadingAnchor,
                                        bottom: nil,
                                        trailing: view.trailingAnchor,
                                        padding: UIEdgeInsets(top: 35, left: 16, bottom: 0, right: 16),
                                        size: CGSize(width: view.frame.width - 32, height: 40))
         
-        lengthLabel.anchor(top: passwordLengthStackView.topAnchor,
-                           leading: passwordLengthStackView.leadingAnchor,
-                           bottom: passwordLengthStackView.bottomAnchor,
+        lengthLabel.anchor(top: nil,
+                           leading: nil,
+                           bottom: nil,
                            trailing: lengthSlider.leadingAnchor,
                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16))
         
-        lengthSlider.anchor(top: passwordLengthStackView.topAnchor,
+        lengthSlider.anchor(top: nil,
                             leading: lengthLabel.trailingAnchor,
-                            bottom: passwordLengthStackView.bottomAnchor,
-                            trailing: passwordLengthStackView.trailingAnchor,
+                            bottom: nil,
+                            trailing: nil,
                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
         
         numbersStackView.anchor(top: passwordLengthStackView.bottomAnchor,
@@ -151,18 +151,6 @@ class GeneratorViewController: UIViewController {
                                 padding: UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16),
                                 size: CGSize(width: view.frame.width - 32, height: 40))
         
-        numbersLabel.anchor(top: numbersStackView.topAnchor,
-                            leading: numbersStackView.leadingAnchor,
-                            bottom: numbersStackView.bottomAnchor,
-                            trailing: numbersSwitch.leadingAnchor,
-                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16))
-        
-        numbersSwitch.anchor(top: numbersStackView.topAnchor,
-                             leading: numbersLabel.trailingAnchor,
-                             bottom: numbersStackView.bottomAnchor,
-                             trailing: numbersStackView.trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
-        
         lettersStackView.anchor(top: numbersStackView.bottomAnchor,
                                 leading: view.leadingAnchor,
                                 bottom: nil,
@@ -170,36 +158,21 @@ class GeneratorViewController: UIViewController {
                                 padding: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16),
                                 size: CGSize(width: view.frame.width - 32, height: 40))
         
-        lettersLabel.anchor(top: lettersStackView.topAnchor,
-                            leading: lettersStackView.leadingAnchor,
-                            bottom: lettersStackView.bottomAnchor,
-                            trailing: lettersSwitch.leadingAnchor,
-                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16))
-        
-        lettersSwitch.anchor(top: lettersStackView.topAnchor,
-                             leading: lettersLabel.trailingAnchor,
-                             bottom: lettersStackView.bottomAnchor,
-                             trailing: lettersStackView.trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
-        
         charactersStackView.anchor(top: lettersStackView.bottomAnchor,
                                    leading: view.leadingAnchor,
                                    bottom: nil,
                                    trailing: view.trailingAnchor,
                                    padding: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16),
                                    size: CGSize(width: view.frame.width - 32, height: 40))
-        
-        charactersLabel.anchor(top: charactersStackView.topAnchor,
-                               leading: charactersStackView.leadingAnchor,
-                               bottom: charactersStackView.bottomAnchor,
-                               trailing: charactersSwitch.leadingAnchor,
-                               padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16))
-        
-        charactersSwitch.anchor(top: charactersStackView.topAnchor,
-                                leading: charactersLabel.trailingAnchor,
-                                bottom: charactersStackView.bottomAnchor,
-                                trailing: charactersStackView.trailingAnchor,
-                                padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
+    }
+    
+    private func setupButtonConstraints() {
+        refreshButton.anchor(top: passwordField.topAnchor,
+                             leading: passwordField.trailingAnchor,
+                             bottom: nil,
+                             trailing: view.trailingAnchor,
+                             padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16),
+                             size: CGSize(width: 0, height: 40))
         
         replaceButton.anchor(top: charactersStackView.bottomAnchor,
                              leading: view.leadingAnchor,
