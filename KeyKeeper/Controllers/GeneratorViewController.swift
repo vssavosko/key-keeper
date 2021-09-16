@@ -9,8 +9,6 @@ import UIKit
 
 class GeneratorViewController: UIViewController {
     
-    private let testPassword = "88Z8Q(B1(D}+4"
-    
     private let passwordField: UITextField = {
         let field = UITextField()
         
@@ -33,15 +31,11 @@ class GeneratorViewController: UIViewController {
         return button
     }()
     private let passwordLengthStackView = Generator.generateStackView()
-    private let numbersStackView = Generator.generateStackView()
     private let lettersStackView = Generator.generateStackView()
     private let charactersStackView = Generator.generateStackView()
     private let lengthLabel = Generator.generateLabel(text: "",
                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                       color: .label)
-    private let numbersLabel = Generator.generateLabel(text: "0-9",
-                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                       color: .label)
     private let lettersLabel = Generator.generateLabel(text: "A-Z a-z",
                                                        font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                        color: .label)
@@ -55,10 +49,12 @@ class GeneratorViewController: UIViewController {
         
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.setThumbImage(thumbImage, for: .normal)
+        slider.minimumValue = 4
+        slider.maximumValue = 40
+        slider.isContinuous = true
         
         return slider
     }()
-    private let numbersSwitch = Generator.generateSwitch()
     private let lettersSwitch = Generator.generateSwitch()
     private let charactersSwitch = Generator.generateSwitch()
     private let replaceButton: UIButton = {
@@ -91,13 +87,10 @@ class GeneratorViewController: UIViewController {
     private func configureSubviews() {
         view.addSubview(passwordField)
         view.addSubview(passwordLengthStackView)
-        view.addSubview(numbersStackView)
         view.addSubview(lettersStackView)
         view.addSubview(charactersStackView)
         passwordLengthStackView.addArrangedSubview(lengthLabel)
         passwordLengthStackView.addArrangedSubview(lengthSlider)
-        numbersStackView.addArrangedSubview(numbersLabel)
-        numbersStackView.addArrangedSubview(numbersSwitch)
         lettersStackView.addArrangedSubview(lettersLabel)
         lettersStackView.addArrangedSubview(lettersSwitch)
         charactersStackView.addArrangedSubview(charactersLabel)
@@ -107,8 +100,13 @@ class GeneratorViewController: UIViewController {
     }
     
     private func configureElements() {
-        passwordField.text = testPassword
-        lengthLabel.text = "\(testPassword.count) Length"
+        let randomValue = generateRandomValue(valueLength: 4)
+        
+        passwordField.text = randomValue
+        lengthLabel.text = "\(randomValue.count) Length"
+        
+        lengthSlider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
+        refreshButton.addTarget(self, action: #selector(tapOnRefreshButton), for: .touchUpInside)
         
         setupFieldConstraints()
         setupStackViewConstraints(topAnchor: passwordField.bottomAnchor)
@@ -136,7 +134,8 @@ class GeneratorViewController: UIViewController {
                            leading: nil,
                            bottom: nil,
                            trailing: lengthSlider.leadingAnchor,
-                           padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16))
+                           padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16),
+                           size: CGSize(width: 75, height: 0))
         
         lengthSlider.anchor(top: nil,
                             leading: lengthLabel.trailingAnchor,
@@ -144,14 +143,7 @@ class GeneratorViewController: UIViewController {
                             trailing: nil,
                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
         
-        numbersStackView.anchor(top: passwordLengthStackView.bottomAnchor,
-                                leading: view.leadingAnchor,
-                                bottom: nil,
-                                trailing: view.trailingAnchor,
-                                padding: UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16),
-                                size: CGSize(width: view.frame.width - 32, height: 40))
-        
-        lettersStackView.anchor(top: numbersStackView.bottomAnchor,
+        lettersStackView.anchor(top: passwordLengthStackView.bottomAnchor,
                                 leading: view.leadingAnchor,
                                 bottom: nil,
                                 trailing: view.trailingAnchor,
@@ -180,6 +172,35 @@ class GeneratorViewController: UIViewController {
                              trailing: view.trailingAnchor,
                              padding: UIEdgeInsets(top: 35, left: 35, bottom: 0, right: 35),
                              size: CGSize(width: 0, height: 50))
+    }
+    
+    private func generateRandomValue(valueLength: Int) -> String {
+        var value = String()
+        
+        for _ in 1...valueLength {
+            value += "\(Int.random(in: 1...9))"
+        }
+        
+        return value
+    }
+    
+    private func passwordAction(for element: String) {
+        let value = Int(lengthSlider.value)
+        let randomValue = generateRandomValue(valueLength: value)
+        
+        if element == "slider" {
+            lengthLabel.text = "\(value) Length"
+        }
+        
+        passwordField.text = randomValue
+    }
+    
+    @objc func sliderDidChange() {
+        passwordAction(for: "slider")
+    }
+    
+    @objc func tapOnRefreshButton() {
+        passwordAction(for: "button")
     }
     
 }
