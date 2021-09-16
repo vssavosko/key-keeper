@@ -26,8 +26,8 @@
 		8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateViewController.swift */; };
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
-		88922B9D26BC73440083A285 /* FieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9C26BC73440083A285 /* FieldGenerator.swift */; };
 		88A3858226C33167006913C2 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter.swift */; };
+		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
 		88EFD93326D5998500855F39 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93226D5998500855F39 /* KeychainWrapper.swift */; };
@@ -57,8 +57,8 @@
 		8859F06226B04A9400ED0FAB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		88922B9C26BC73440083A285 /* FieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldGenerator.swift; sourceTree = "<group>"; };
 		88A3858126C33167006913C2 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyKeeper.entitlements; sourceTree = "<group>"; };
 		88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		88EFD93026D58D1400855F39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
-				88922B9C26BC73440083A285 /* FieldGenerator.swift */,
+				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,11 +327,11 @@
 				88EFD93126D58D1400855F39 /* Keys.swift in Sources */,
 				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
 				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
-				88922B9D26BC73440083A285 /* FieldGenerator.swift in Sources */,
 				88EFD93326D5998500855F39 /* KeychainWrapper.swift in Sources */,
 				88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */,
 				88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */,
 				8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */,
+				88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */,
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,
 				8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIViewExtensions.swift in Sources */,

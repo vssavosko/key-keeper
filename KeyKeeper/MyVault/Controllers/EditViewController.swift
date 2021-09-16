@@ -14,15 +14,15 @@ class EditViewController: UIViewController {
     var accountData: Account!
     var completion: ((String, String, String, String) -> Void)?
     
-    private let nameLabel = FieldGenerator.createLabel(text: "Name")
-    private let nameField = FieldGenerator.createField(placeholder: "Pied Piper")
-    private let loginLabel = FieldGenerator.createLabel(text: "Email or username")
-    private let loginField = FieldGenerator.createField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = FieldGenerator.createLabel(text: "Password")
-    private let passwordField = FieldGenerator.createField(contentType: .password, placeholder: "QwEr123Ty456")
-    private let passwordButton = FieldGenerator.passwordButton
-    private let websiteLabel = FieldGenerator.createLabel(text: "Website")
-    private let websiteField = FieldGenerator.createField(contentType: .website, placeholder: "piedpiper.com")
+    private let nameLabel = Generator.generateLabel(text: "Name")
+    private let nameField = Generator.generateField(placeholder: "Pied Piper")
+    private let loginLabel = Generator.generateLabel(text: "Email or username")
+    private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
+    private let passwordLabel = Generator.generateLabel(text: "Password")
+    private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
+    private let passwordButton = Generator.passwordButton
+    private let websiteLabel = Generator.generateLabel(text: "Website")
+    private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +63,9 @@ class EditViewController: UIViewController {
         passwordField.text = accountData.password
         websiteField.text = accountData.website
         
-        FieldGenerator.addBottomLineFor(field: nameField)
-        FieldGenerator.addBottomLineFor(field: loginField)
-        FieldGenerator.addBottomLineFor(field: websiteField)
+        Generator.generateBottomLineFor(field: nameField)
+        Generator.generateBottomLineFor(field: loginField)
+        Generator.generateBottomLineFor(field: websiteField)
         
         nameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
