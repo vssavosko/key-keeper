@@ -9,6 +9,18 @@ import UIKit
 
 class GeneratorViewController: UIViewController {
     
+    private enum ElementType {
+        case slider
+        case button
+    }
+    
+    private enum RandomValueType {
+        case numbers
+        case lettersAndNumbers
+        case symbolsAndNumbers
+        case all
+    }
+    
     private let passwordField: UITextField = {
         let field = UITextField()
         
@@ -32,16 +44,16 @@ class GeneratorViewController: UIViewController {
     }()
     private let passwordLengthStackView = Generator.generateStackView()
     private let lettersStackView = Generator.generateStackView()
-    private let charactersStackView = Generator.generateStackView()
+    private let symbolsStackView = Generator.generateStackView()
     private let lengthLabel = Generator.generateLabel(text: "",
                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                       color: .label)
     private let lettersLabel = Generator.generateLabel(text: "A-Z a-z",
                                                        font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                        color: .label)
-    private let charactersLabel = Generator.generateLabel(text: "!@#$%^&*",
-                                                          font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                          color: .label)
+    private let symbolsLabel = Generator.generateLabel(text: "!@#$%^&*",
+                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                       color: .label)
     private let lengthSlider: UISlider = {
         let slider = UISlider()
         
@@ -56,7 +68,7 @@ class GeneratorViewController: UIViewController {
         return slider
     }()
     private let lettersSwitch = Generator.generateSwitch()
-    private let charactersSwitch = Generator.generateSwitch()
+    private let symbolsSwitch = Generator.generateSwitch()
     private let replaceButton: UIButton = {
         let button = UIButton()
         
@@ -88,19 +100,19 @@ class GeneratorViewController: UIViewController {
         view.addSubview(passwordField)
         view.addSubview(passwordLengthStackView)
         view.addSubview(lettersStackView)
-        view.addSubview(charactersStackView)
+        view.addSubview(symbolsStackView)
         passwordLengthStackView.addArrangedSubview(lengthLabel)
         passwordLengthStackView.addArrangedSubview(lengthSlider)
         lettersStackView.addArrangedSubview(lettersLabel)
         lettersStackView.addArrangedSubview(lettersSwitch)
-        charactersStackView.addArrangedSubview(charactersLabel)
-        charactersStackView.addArrangedSubview(charactersSwitch)
+        symbolsStackView.addArrangedSubview(symbolsLabel)
+        symbolsStackView.addArrangedSubview(symbolsSwitch)
         view.addSubview(refreshButton)
         view.addSubview(replaceButton)
     }
     
     private func configureElements() {
-        let randomValue = generateRandomValue(valueLength: 4)
+        let randomValue = generateRandomValue(valueLength: 4, randomValueType: .numbers)
         
         passwordField.text = randomValue
         lengthLabel.text = "\(randomValue.count) Length"
@@ -150,12 +162,12 @@ class GeneratorViewController: UIViewController {
                                 padding: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16),
                                 size: CGSize(width: view.frame.width - 32, height: 40))
         
-        charactersStackView.anchor(top: lettersStackView.bottomAnchor,
-                                   leading: view.leadingAnchor,
-                                   bottom: nil,
-                                   trailing: view.trailingAnchor,
-                                   padding: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16),
-                                   size: CGSize(width: view.frame.width - 32, height: 40))
+        symbolsStackView.anchor(top: lettersStackView.bottomAnchor,
+                                leading: view.leadingAnchor,
+                                bottom: nil,
+                                trailing: view.trailingAnchor,
+                                padding: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16),
+                                size: CGSize(width: view.frame.width - 32, height: 40))
     }
     
     private func setupButtonConstraints() {
@@ -166,7 +178,7 @@ class GeneratorViewController: UIViewController {
                              padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16),
                              size: CGSize(width: 0, height: 40))
         
-        replaceButton.anchor(top: charactersStackView.bottomAnchor,
+        replaceButton.anchor(top: symbolsStackView.bottomAnchor,
                              leading: view.leadingAnchor,
                              bottom: nil,
                              trailing: view.trailingAnchor,
@@ -174,21 +186,48 @@ class GeneratorViewController: UIViewController {
                              size: CGSize(width: 0, height: 50))
     }
     
-    private func generateRandomValue(valueLength: Int) -> String {
+    private func generateRandomValue(valueLength: Int, randomValueType: RandomValueType) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let numbers = "0123456789"
+        let symbols = "!@#$%^&*"
+        let lettersAndNumbers = "\(letters)\(numbers)"
+        let symbolsAndNumbers = "\(symbols)\(numbers)"
+        let all = "\(letters)\(numbers)\(symbols)"
+        
         var value = String()
         
         for _ in 1...valueLength {
-            value += "\(Int.random(in: 1...9))"
+            switch randomValueType {
+            case .numbers:
+                value += String(numbers.randomElement()!)
+            case .lettersAndNumbers:
+                value += String(lettersAndNumbers.randomElement()!)
+            case .symbolsAndNumbers:
+                value += String(symbolsAndNumbers.randomElement()!)
+            case .all:
+                value += String(all.randomElement()!)
+            }
         }
         
         return value
     }
     
-    private func passwordAction(for element: String) {
+    private func passwordAction(for element: ElementType) {
         let value = Int(lengthSlider.value)
-        let randomValue = generateRandomValue(valueLength: value)
         
-        if element == "slider" {
+        var randomValue = String()
+        
+        if lettersSwitch.isOn && symbolsSwitch.isOn {
+            randomValue = generateRandomValue(valueLength: value, randomValueType: .all)
+        } else if lettersSwitch.isOn {
+            randomValue = generateRandomValue(valueLength: value, randomValueType: .lettersAndNumbers)
+        } else if symbolsSwitch.isOn {
+            randomValue = generateRandomValue(valueLength: value, randomValueType: .symbolsAndNumbers)
+        } else {
+            randomValue = generateRandomValue(valueLength: value, randomValueType: .numbers)
+        }
+        
+        if element == .slider {
             lengthLabel.text = "\(value) Length"
         }
         
@@ -196,11 +235,11 @@ class GeneratorViewController: UIViewController {
     }
     
     @objc func sliderDidChange() {
-        passwordAction(for: "slider")
+        passwordAction(for: .slider)
     }
     
     @objc func tapOnRefreshButton() {
-        passwordAction(for: "button")
+        passwordAction(for: .button)
     }
     
 }
