@@ -9,6 +9,8 @@ import UIKit
 
 class GeneratorViewController: UIViewController {
     
+    var completion: ((String) -> Void)?
+    
     private enum ElementType {
         case slider
         case button
@@ -25,7 +27,7 @@ class GeneratorViewController: UIViewController {
         let field = UITextField()
         
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        field.font = .systemFont(ofSize: 25, weight: .semibold)
         field.textAlignment = .center
         field.contentVerticalAlignment = .center
         field.borderStyle = .none
@@ -46,13 +48,13 @@ class GeneratorViewController: UIViewController {
     private let lettersStackView = Generator.generateStackView()
     private let symbolsStackView = Generator.generateStackView()
     private let lengthLabel = Generator.generateLabel(text: "",
-                                                      font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                      font: .systemFont(ofSize: 16, weight: .regular),
                                                       color: .label)
     private let lettersLabel = Generator.generateLabel(text: "A-Z a-z",
-                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                       font: .systemFont(ofSize: 16, weight: .regular),
                                                        color: .label)
     private let symbolsLabel = Generator.generateLabel(text: "!@#$%^&*",
-                                                       font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                       font: .systemFont(ofSize: 16, weight: .regular),
                                                        color: .label)
     private let lengthSlider: UISlider = {
         let slider = UISlider()
@@ -69,22 +71,13 @@ class GeneratorViewController: UIViewController {
     }()
     private let lettersSwitch = Generator.generateSwitch()
     private let symbolsSwitch = Generator.generateSwitch()
-    private let replaceButton: UIButton = {
-        let button = UIButton()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Replace", for: .normal)
-        button.setTitleColor(UIColor.systemBlue, for: .normal)
-        button.backgroundColor = .clear
-        button.layer.cornerRadius = 25
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.systemBlue.cgColor
-        
-        return button
-    }()
+    private let copyButton = Generator.roundButton(text: "Copy")
+    private let replaceButton = Generator.roundButton(text: "Replace")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .systemBackground
         
         configureNavigationBar()
         configureSubviews()
@@ -108,6 +101,7 @@ class GeneratorViewController: UIViewController {
         symbolsStackView.addArrangedSubview(symbolsLabel)
         symbolsStackView.addArrangedSubview(symbolsSwitch)
         view.addSubview(refreshButton)
+        view.addSubview(copyButton)
         view.addSubview(replaceButton)
     }
     
@@ -117,8 +111,13 @@ class GeneratorViewController: UIViewController {
         passwordField.text = randomValue
         lengthLabel.text = "\(randomValue.count) Length"
         
+        copyButton.isHidden = completion != nil
+        replaceButton.isHidden = completion == nil
+        
         lengthSlider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
         refreshButton.addTarget(self, action: #selector(tapOnRefreshButton), for: .touchUpInside)
+        copyButton.addTarget(self, action: #selector(tapOnCopyButton), for: .touchUpInside)
+        replaceButton.addTarget(self, action: #selector(tapOnReplaceButton), for: .touchUpInside)
         
         setupFieldConstraints()
         setupStackViewConstraints(topAnchor: passwordField.bottomAnchor)
@@ -177,6 +176,13 @@ class GeneratorViewController: UIViewController {
                              trailing: view.trailingAnchor,
                              padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16),
                              size: CGSize(width: 0, height: 40))
+        
+        copyButton.anchor(top: symbolsStackView.bottomAnchor,
+                          leading: view.leadingAnchor,
+                          bottom: nil,
+                          trailing: view.trailingAnchor,
+                          padding: UIEdgeInsets(top: 35, left: 35, bottom: 0, right: 35),
+                          size: CGSize(width: 0, height: 50))
         
         replaceButton.anchor(top: symbolsStackView.bottomAnchor,
                              leading: view.leadingAnchor,
@@ -240,6 +246,20 @@ class GeneratorViewController: UIViewController {
     
     @objc func tapOnRefreshButton() {
         passwordAction(for: .button)
+    }
+    
+    @objc func tapOnCopyButton() {
+        UIPasteboard.general.string = passwordField.text
+    }
+    
+    @objc func tapOnReplaceButton() {
+        guard let password = passwordField.text,
+              let completion = completion
+        else { return }
+        
+        completion(password)
+        
+        navigationController?.popViewController(animated: true)
     }
     
 }

@@ -15,7 +15,7 @@ class MyVaultCell: UITableViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.font = .systemFont(ofSize: 17, weight: .medium)
         
         return label
     }()
@@ -23,7 +23,7 @@ class MyVaultCell: UITableViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = .systemGray
         
         return label
@@ -49,9 +49,9 @@ class MyVaultCell: UITableViewCell {
                             bottom: accountLogin.topAnchor,
                             trailing: trailingAnchor)
         accountLogin.anchor(top: accountTitle.bottomAnchor,
-                                      leading: leadingAnchor,
-                                      bottom: bottomAnchor,
-                                      trailing: trailingAnchor)
+                            leading: leadingAnchor,
+                            bottom: bottomAnchor,
+                            trailing: trailingAnchor)
     }
     
     func setupStackView() {
