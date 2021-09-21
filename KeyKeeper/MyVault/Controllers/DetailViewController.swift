@@ -29,8 +29,8 @@ class DetailViewController: UIViewController {
     private let passwordButton = Generator.passwordButton
     private let websiteLabel = Generator.generateLabel(text: "Website")
     private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
-    private let createdLabel = Generator.generateLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
-    private let lastModifiedLabel = Generator.generateLabel(text: "", textAlignment: .center, font: UIFont.systemFont(ofSize: 13, weight: .regular))
+    private let createdLabel = Generator.generateLabel(text: "", textAlignment: .center, font: .systemFont(ofSize: 13, weight: .regular))
+    private let lastModifiedLabel = Generator.generateLabel(text: "", textAlignment: .center, font: .systemFont(ofSize: 13, weight: .regular))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,15 +93,15 @@ class DetailViewController: UIViewController {
     
     func setupFieldConstraints() {
         loginLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                                    leading: view.leadingAnchor,
-                                    bottom: loginField.topAnchor,
-                                    trailing: view.trailingAnchor,
-                                    padding: UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16))
+                          leading: view.leadingAnchor,
+                          bottom: loginField.topAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16))
         loginField.anchor(top: nil,
-                                    leading: view.leadingAnchor,
-                                    bottom: passwordLabel.topAnchor,
-                                    trailing: view.trailingAnchor,
-                                    padding: UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16))
+                          leading: view.leadingAnchor,
+                          bottom: passwordLabel.topAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16))
         
         passwordLabel.anchor(top: nil,
                              leading: view.leadingAnchor,

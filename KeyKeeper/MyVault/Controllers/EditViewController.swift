@@ -21,6 +21,7 @@ class EditViewController: UIViewController {
     private let passwordLabel = Generator.generateLabel(text: "Password")
     private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
     private let passwordButton = Generator.passwordButton
+    private let generatePasswordButton = Generator.generatePasswordButton
     private let websiteLabel = Generator.generateLabel(text: "Website")
     private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
     
@@ -53,6 +54,7 @@ class EditViewController: UIViewController {
         view.addSubview(passwordLabel)
         view.addSubview(passwordField)
         view.addSubview(passwordButton)
+        view.addSubview(generatePasswordButton)
         view.addSubview(websiteLabel)
         view.addSubview(websiteField)
     }
@@ -71,6 +73,7 @@ class EditViewController: UIViewController {
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
+        generatePasswordButton.addTarget(self, action: #selector(tapOnGeneratorButton), for: .touchUpInside)
         
         setupFieldConstraints()
     }
@@ -88,15 +91,15 @@ class EditViewController: UIViewController {
                          padding: UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16))
         
         loginLabel.anchor(top: nil,
-                                    leading: view.leadingAnchor,
-                                    bottom: loginField.topAnchor,
-                                    trailing: view.trailingAnchor,
-                                    padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
+                          leading: view.leadingAnchor,
+                          bottom: loginField.topAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
         loginField.anchor(top: nil,
-                                    leading: view.leadingAnchor,
-                                    bottom: passwordLabel.topAnchor,
-                                    trailing: view.trailingAnchor,
-                                    padding: UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16))
+                          leading: view.leadingAnchor,
+                          bottom: passwordLabel.topAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16))
         
         passwordLabel.anchor(top: nil,
                              leading: view.leadingAnchor,
@@ -105,15 +108,20 @@ class EditViewController: UIViewController {
                              padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
         passwordField.anchor(top: nil,
                              leading: view.leadingAnchor,
-                             bottom: websiteLabel.topAnchor,
+                             bottom: generatePasswordButton.topAnchor,
                              trailing: view.trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 41, right: 16))
-        
+                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 11, right: 16))
         passwordButton.anchor(top: passwordField.topAnchor,
                               leading: nil,
                               bottom: passwordField.bottomAnchor,
                               trailing: passwordField.trailingAnchor,
                               padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        
+        generatePasswordButton.anchor(top: nil,
+                                      leading: nil,
+                                      bottom: websiteLabel.topAnchor,
+                                      trailing: view.trailingAnchor,
+                                      padding: UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 16))
         
         websiteLabel.anchor(top: nil,
                             leading: view.leadingAnchor,
@@ -144,6 +152,7 @@ class EditViewController: UIViewController {
         
         navigationController?.popViewController(animated: true)
     }
+    
     @objc func textFieldDidChange() {
         if !nameField.hasText || !loginField.hasText || !passwordField.hasText {
             navigationItem.rightBarButtonItem?.isEnabled = false
@@ -157,6 +166,7 @@ class EditViewController: UIViewController {
             passwordButton.isEnabled = true
         }
     }
+    
     @objc func tapOnPasswordButton(sender: UIButton!) {
         passwordField.isSecureTextEntry = !passwordField.isSecureTextEntry
         
@@ -165,6 +175,17 @@ class EditViewController: UIViewController {
         } else {
             passwordButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
         }
+    }
+    
+    @objc func tapOnGeneratorButton() {
+        let generatorVC = GeneratorViewController()
+        
+        generatorVC.completion = { [weak self] (password: String) in
+            self?.passwordField.text = password
+            self?.passwordButton.isEnabled = true
+        }
+        
+        navigationController?.pushViewController(generatorVC, animated: true)
     }
     
 }

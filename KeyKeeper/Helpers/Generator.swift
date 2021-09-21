@@ -19,7 +19,7 @@ class Generator {
     
     static func generateLabel(text: String,
                               textAlignment: NSTextAlignment = .left,
-                              font: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium),
+                              font: UIFont = .systemFont(ofSize: 15, weight: .medium),
                               color: UIColor = .secondaryLabel) -> UILabel {
         let label = UILabel()
         
@@ -53,7 +53,7 @@ class Generator {
         default: break
         }
         
-        field.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        field.font = .systemFont(ofSize: 17, weight: .regular)
         field.placeholder = placeholder != nil ? placeholder : .none
         field.borderStyle = .none
         
@@ -113,6 +113,30 @@ class Generator {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        
+        return button
+    }
+    
+    static var generatePasswordButton: UIButton {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Generate password", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
+        
+        return button
+    }
+    
+    static func roundButton(text: String) -> UIButton {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(text, for: .normal)
+        button.setTitleColor(UIColor.systemBlue, for: .normal)
+        button.layer.cornerRadius = 25
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemBlue.cgColor
         
         return button
     }
