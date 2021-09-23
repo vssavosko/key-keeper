@@ -60,8 +60,8 @@ class Generator {
         return field
     }
     
-    static func generateStackView() -> UIStackView {
-        let stackView = UIStackView()
+    static func generateStackView(subviews: [UIView]) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: subviews)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal

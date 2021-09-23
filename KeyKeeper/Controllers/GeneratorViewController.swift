@@ -44,9 +44,9 @@ class GeneratorViewController: UIViewController {
         
         return button
     }()
-    private let passwordLengthStackView = Generator.generateStackView()
-    private let lettersStackView = Generator.generateStackView()
-    private let symbolsStackView = Generator.generateStackView()
+    private lazy var passwordLengthStackView = Generator.generateStackView(subviews: [lengthLabel, lengthSlider])
+    private lazy var lettersStackView = Generator.generateStackView(subviews: [lettersLabel, lettersSwitch])
+    private lazy var symbolsStackView = Generator.generateStackView(subviews: [symbolsLabel, symbolsSwitch])
     private let lengthLabel = Generator.generateLabel(text: "",
                                                       font: .systemFont(ofSize: 16, weight: .regular),
                                                       color: .label)
@@ -94,12 +94,6 @@ class GeneratorViewController: UIViewController {
         view.addSubview(passwordLengthStackView)
         view.addSubview(lettersStackView)
         view.addSubview(symbolsStackView)
-        passwordLengthStackView.addArrangedSubview(lengthLabel)
-        passwordLengthStackView.addArrangedSubview(lengthSlider)
-        lettersStackView.addArrangedSubview(lettersLabel)
-        lettersStackView.addArrangedSubview(lettersSwitch)
-        symbolsStackView.addArrangedSubview(symbolsLabel)
-        symbolsStackView.addArrangedSubview(symbolsSwitch)
         view.addSubview(refreshButton)
         view.addSubview(copyButton)
         view.addSubview(replaceButton)
@@ -249,7 +243,17 @@ class GeneratorViewController: UIViewController {
     }
     
     @objc func tapOnCopyButton() {
-        UIPasteboard.general.string = passwordField.text
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
+            let clipboardNotification = ClipboardNotification()
+            
+            self!.view.window?.rootViewController?.view.addSubview(clipboardNotification)
+            
+            UIPasteboard.general.string = self!.passwordField.text
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                clipboardNotification.dismiss()
+            }
+        }
     }
     
     @objc func tapOnReplaceButton() {
