@@ -26,6 +26,7 @@
 		8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateViewController.swift */; };
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
+		88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2096526FD1D7700C11770 /* ClipboardNotification.swift */; };
 		88A3858226C33167006913C2 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter.swift */; };
 		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
@@ -57,6 +58,7 @@
 		8859F06226B04A9400ED0FAB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		88A2096526FD1D7700C11770 /* ClipboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardNotification.swift; sourceTree = "<group>"; };
 		88A3858126C33167006913C2 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyKeeper.entitlements; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */,
 				88228A3526ACC78800C78456 /* Models */,
+				88A2096526FD1D7700C11770 /* ClipboardNotification.swift */,
 				88228A3726ACC7A200C78456 /* Controllers */,
 				8859F06126B0460C00ED0FAB /* MyVault */,
 				88228A3626ACC79000C78456 /* Extensions */,
@@ -333,6 +336,7 @@
 				8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */,
 				88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */,
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,
+				88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */,
 				8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIViewExtensions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
