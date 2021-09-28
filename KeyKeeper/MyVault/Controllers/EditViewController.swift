@@ -182,7 +182,8 @@ class EditViewController: UIViewController {
         
         generatorVC.completion = { [weak self] (password: String) in
             self?.passwordField.text = password
-            self?.passwordButton.isEnabled = true
+            
+            self?.textFieldDidChange()
         }
         
         navigationController?.pushViewController(generatorVC, animated: true)
