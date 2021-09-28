@@ -9,6 +9,8 @@ import UIKit
 
 class ClipboardNotification: UIView {
     
+    private let dispatchAfter = DispatchTimeInterval.seconds(2)
+    
     private lazy var notificationView: UIView = {
         let view = UIView()
         
@@ -16,18 +18,14 @@ class ClipboardNotification: UIView {
         
         view.addSubview(label)
         
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor =  .systemGray6
         view.layer.cornerRadius = 25
-        view.layer.shadowColor = UIColor.systemFill.cgColor
-        view.layer.shadowOpacity = 1
-        view.layer.shadowOffset = .zero
-        view.layer.shadowRadius = 25
         
         return view
     }()
     private let label = Generator.generateLabel(text: "Password copied!",
                                                 textAlignment: .center,
-                                                font: .systemFont(ofSize: 17, weight: .semibold),
+                                                font: .systemFont(ofSize: 13, weight: .semibold),
                                                 color: .label)
     
     override init(frame: CGRect) {
@@ -46,12 +44,12 @@ class ClipboardNotification: UIView {
     }
     
     private func setupConstraints() {
-        notificationView.anchor(top: nil,
+        notificationView.anchor(top: self.topAnchor,
                                 leading: self.leadingAnchor,
-                                bottom: self.bottomAnchor,
+                                bottom: nil,
                                 trailing: self.trailingAnchor,
-                                padding: UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 35),
-                                size: CGSize(width: 0, height: 55))
+                                padding: UIEdgeInsets(top: 40, left: 45, bottom: 0, right: 45),
+                                size: CGSize(width: 0, height: 50))
         
         label.anchor(top: notificationView.topAnchor,
                      leading: notificationView.leadingAnchor,
@@ -71,9 +69,13 @@ class ClipboardNotification: UIView {
             self.transform = .identity
             self.alpha = 1
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + dispatchAfter) {
+            self.dismiss()
+        }
     }
     
-    public func dismiss() {
+    private func dismiss() {
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.7,

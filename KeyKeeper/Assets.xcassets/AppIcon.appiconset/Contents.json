@@ -1,43 +1,49 @@
 {
   "images" : [
     {
+      "filename" : "password_manager_logo_40x40.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "password_manager_logo_60x60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "password_manager_logo_58x58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "password_manager_logo_87x87.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "password_manager_logo_80x80.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "password_manager_logo_120x120.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "key-keeper-logo-120x120.png",
+      "filename" : "password_manager_logo_120x120_2.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "key-keeper-logo-180x180.png",
+      "filename" : "password_manager_logo_180x180.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -88,7 +94,7 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "key-keeper-logo-1024x1024.png",
+      "filename" : "password_manager_logo_1024x1024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
