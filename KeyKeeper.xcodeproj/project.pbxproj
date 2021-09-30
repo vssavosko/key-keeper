@@ -16,7 +16,7 @@
 		88228A2826ACC74500C78456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88228A2726ACC74500C78456 /* Assets.xcassets */; };
 		88228A2B26ACC74500C78456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88228A2926ACC74500C78456 /* LaunchScreen.storyboard */; };
 		88228A3926ACC7C000C78456 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3826ACC7C000C78456 /* Account.swift */; };
-		88228A3B26ACC7DA00C78456 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3A26ACC7DA00C78456 /* UIViewExtensions.swift */; };
+		88228A3B26ACC7DA00C78456 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3A26ACC7DA00C78456 /* UIView+Extensions.swift */; };
 		88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3C26ACC80600C78456 /* MainTabBarController.swift */; };
 		88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A3E26ACC84000C78456 /* MyVaultViewController.swift */; };
 		88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4026ACC87B00C78456 /* GeneratorViewController.swift */; };
@@ -27,11 +27,11 @@
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
 		88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2096526FD1D7700C11770 /* ClipboardNotification.swift */; };
-		88A3858226C33167006913C2 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter.swift */; };
+		88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */; };
 		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
-		88EFD93326D5998500855F39 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93226D5998500855F39 /* KeychainWrapper.swift */; };
+		88EFD93326D5998500855F39 /* KeychainWrapper+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93226D5998500855F39 /* KeychainWrapper+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +48,7 @@
 		88228A2A26ACC74500C78456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88228A2C26ACC74500C78456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88228A3826ACC7C000C78456 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		88228A3A26ACC7DA00C78456 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		88228A3A26ACC7DA00C78456 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		88228A3C26ACC80600C78456 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		88228A3E26ACC84000C78456 /* MyVaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVaultViewController.swift; sourceTree = "<group>"; };
 		88228A4026ACC87B00C78456 /* GeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorViewController.swift; sourceTree = "<group>"; };
@@ -59,12 +59,12 @@
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		88A2096526FD1D7700C11770 /* ClipboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardNotification.swift; sourceTree = "<group>"; };
-		88A3858126C33167006913C2 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyKeeper.entitlements; sourceTree = "<group>"; };
 		88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		88EFD93026D58D1400855F39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
-		88EFD93226D5998500855F39 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		88EFD93226D5998500855F39 /* KeychainWrapper+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+Extensions.swift"; sourceTree = "<group>"; };
 		97059BD31E78D6A32B4D736D /* Pods_KeyKeeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyKeeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED0DAAB16AAEC6A3BDF5B0B /* Pods-KeyKeeper.debugdev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.debugdev.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.debugdev.xcconfig"; sourceTree = "<group>"; };
 		E4EB1C5BB8B9FDB7DE374D88 /* Pods-KeyKeeper.releaseprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.releaseprod.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.releaseprod.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +93,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8806EA392706547000E4F51C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				88228A4426ACC8C800C78456 /* MyVaultCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8806EA3A2706581F00E4F51C /* IBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				88228A2426ACC74200C78456 /* Main.storyboard */,
+				88228A2926ACC74500C78456 /* LaunchScreen.storyboard */,
+			);
+			path = IBuilder;
+			sourceTree = "<group>";
+		};
+		8806EA3B2706585100E4F51C /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				88228A1E26ACC74200C78456 /* AppDelegate.swift */,
+				88228A2026ACC74200C78456 /* SceneDelegate.swift */,
+				8836037A26E81E3C00788E43 /* EnvVars.swift */,
+				88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */,
+				88228A2C26ACC74500C78456 /* Info.plist */,
+				88228A2726ACC74500C78456 /* Assets.xcassets */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		8806EA3C2706596B00E4F51C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				88A2096526FD1D7700C11770 /* ClipboardNotification.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		88228A1226ACC74200C78456 = {
 			isa = PBXGroup;
 			children = (
@@ -114,21 +152,15 @@
 		88228A1D26ACC74200C78456 /* KeyKeeper */ = {
 			isa = PBXGroup;
 			children = (
-				88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */,
 				88228A3526ACC78800C78456 /* Models */,
-				88A2096526FD1D7700C11770 /* ClipboardNotification.swift */,
 				88228A3726ACC7A200C78456 /* Controllers */,
-				8859F06126B0460C00ED0FAB /* MyVault */,
+				8806EA392706547000E4F51C /* Cells */,
+				8806EA3C2706596B00E4F51C /* Components */,
 				88228A3626ACC79000C78456 /* Extensions */,
 				88F5A6D626BECA0D00B056C1 /* Helpers */,
-				88228A1E26ACC74200C78456 /* AppDelegate.swift */,
-				88228A2026ACC74200C78456 /* SceneDelegate.swift */,
+				8806EA3B2706585100E4F51C /* SupportFiles */,
+				8806EA3A2706581F00E4F51C /* IBuilder */,
 				88228A2226ACC74200C78456 /* ViewController.swift */,
-				88228A2426ACC74200C78456 /* Main.storyboard */,
-				88228A2726ACC74500C78456 /* Assets.xcassets */,
-				88228A2926ACC74500C78456 /* LaunchScreen.storyboard */,
-				88228A2C26ACC74500C78456 /* Info.plist */,
-				8836037A26E81E3C00788E43 /* EnvVars.swift */,
 			);
 			path = KeyKeeper;
 			sourceTree = "<group>";
@@ -145,9 +177,9 @@
 		88228A3626ACC79000C78456 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				88228A3A26ACC7DA00C78456 /* UIViewExtensions.swift */,
-				88A3858126C33167006913C2 /* DateFormatter.swift */,
-				88EFD93226D5998500855F39 /* KeychainWrapper.swift */,
+				88228A3A26ACC7DA00C78456 /* UIView+Extensions.swift */,
+				88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */,
+				88EFD93226D5998500855F39 /* KeychainWrapper+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -155,6 +187,7 @@
 		88228A3726ACC7A200C78456 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8859F06126B0460C00ED0FAB /* MyVault */,
 				88228A3C26ACC80600C78456 /* MainTabBarController.swift */,
 				88228A4026ACC87B00C78456 /* GeneratorViewController.swift */,
 				88228A4226ACC88A00C78456 /* SettingsViewController.swift */,
@@ -162,24 +195,7 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		88228A4626ACC9C700C78456 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				88228A4426ACC8C800C78456 /* MyVaultCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		8859F06126B0460C00ED0FAB /* MyVault */ = {
-			isa = PBXGroup;
-			children = (
-				88922B9926BC71B70083A285 /* Controllers */,
-				88228A4626ACC9C700C78456 /* Cell */,
-			);
-			path = MyVault;
-			sourceTree = "<group>";
-		};
-		88922B9926BC71B70083A285 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				88228A3E26ACC84000C78456 /* MyVaultViewController.swift */,
@@ -187,14 +203,14 @@
 				88922B9A26BC71F20083A285 /* DetailViewController.swift */,
 				8813D1CE26CC52EA0091840E /* EditViewController.swift */,
 			);
-			path = Controllers;
+			path = MyVault;
 			sourceTree = "<group>";
 		};
 		88F5A6D626BECA0D00B056C1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
 				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
+				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -330,7 +346,7 @@
 				88EFD93126D58D1400855F39 /* Keys.swift in Sources */,
 				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
 				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
-				88EFD93326D5998500855F39 /* KeychainWrapper.swift in Sources */,
+				88EFD93326D5998500855F39 /* KeychainWrapper+Extensions.swift in Sources */,
 				88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */,
 				88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */,
 				8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */,
@@ -338,12 +354,12 @@
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,
 				88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */,
 				8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */,
-				88228A3B26ACC7DA00C78456 /* UIViewExtensions.swift in Sources */,
+				88228A3B26ACC7DA00C78456 /* UIView+Extensions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
 				88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */,
-				88A3858226C33167006913C2 /* DateFormatter.swift in Sources */,
+				88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,
 				88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */,
 			);
@@ -422,6 +438,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -477,6 +494,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -497,7 +515,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
-				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				INFOPLIST_FILE = KeyKeeper/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -522,7 +540,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
-				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				INFOPLIST_FILE = KeyKeeper/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -588,6 +606,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -608,7 +627,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
-				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				INFOPLIST_FILE = KeyKeeper/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -674,6 +693,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -694,7 +714,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
-				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				INFOPLIST_FILE = KeyKeeper/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -754,6 +774,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -774,7 +795,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
-				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				INFOPLIST_FILE = KeyKeeper/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -834,6 +855,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -854,7 +876,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
-				INFOPLIST_FILE = KeyKeeper/Info.plist;
+				INFOPLIST_FILE = KeyKeeper/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
