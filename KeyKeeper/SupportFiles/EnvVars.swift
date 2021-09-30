@@ -5,8 +5,6 @@
 //  Created by Владислав Савосько on 08.09.2021.
 //
 
-import Foundation
-
 enum AppMode: String {
     case DEV = "development"
     case PROD = "production"

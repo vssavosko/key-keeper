@@ -7,7 +7,6 @@
 
 struct Keys {
     
-    static let keyPrefix = "keyKeeper_"
     static let accounts = "accounts"
     static let title = "title"
     static let login = "login"
