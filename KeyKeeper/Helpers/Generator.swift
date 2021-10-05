@@ -133,7 +133,7 @@ class Generator {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(text, for: .normal)
-        button.setTitleColor(UIColor.systemBlue, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor

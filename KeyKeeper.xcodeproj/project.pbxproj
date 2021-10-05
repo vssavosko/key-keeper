@@ -23,6 +23,10 @@
 		88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4226ACC88A00C78456 /* SettingsViewController.swift */; };
 		88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4426ACC8C800C78456 /* MyVaultCell.swift */; };
 		8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8836037A26E81E3C00788E43 /* EnvVars.swift */; };
+		8848BFE2270CE565001EBBCE /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE1270CE565001EBBCE /* Core.swift */; };
+		8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */; };
+		8848BFE6270CF756001EBBCE /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE5270CF756001EBBCE /* OnboardingCell.swift */; };
+		8848BFE8270CFF15001EBBCE /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */; };
 		8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateViewController.swift */; };
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
@@ -55,6 +59,10 @@
 		88228A4226ACC88A00C78456 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		88228A4426ACC8C800C78456 /* MyVaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVaultCell.swift; sourceTree = "<group>"; };
 		8836037A26E81E3C00788E43 /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
+		8848BFE1270CE565001EBBCE /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		8848BFE5270CF756001EBBCE /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		8859F06226B04A9400ED0FAB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				88228A4426ACC8C800C78456 /* MyVaultCell.swift */,
+				8848BFE5270CF756001EBBCE /* OnboardingCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -170,6 +179,7 @@
 			children = (
 				88228A3826ACC7C000C78456 /* Account.swift */,
 				88EFD93026D58D1400855F39 /* Keys.swift */,
+				8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,6 +201,7 @@
 				88228A3C26ACC80600C78456 /* MainTabBarController.swift */,
 				88228A4026ACC87B00C78456 /* GeneratorViewController.swift */,
 				88228A4226ACC88A00C78456 /* SettingsViewController.swift */,
+				8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 			children = (
 				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
+				8848BFE1270CE565001EBBCE /* Core.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -345,15 +357,19 @@
 				88228A2326ACC74200C78456 /* ViewController.swift in Sources */,
 				88EFD93126D58D1400855F39 /* Keys.swift in Sources */,
 				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
+				8848BFE2270CE565001EBBCE /* Core.swift in Sources */,
+				8848BFE8270CFF15001EBBCE /* OnboardingSlide.swift in Sources */,
 				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
 				88EFD93326D5998500855F39 /* KeychainWrapper+Extensions.swift in Sources */,
 				88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */,
 				88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */,
 				8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */,
+				8848BFE6270CF756001EBBCE /* OnboardingCell.swift in Sources */,
 				88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */,
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,
 				88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */,
 				8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */,
+				8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIView+Extensions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,

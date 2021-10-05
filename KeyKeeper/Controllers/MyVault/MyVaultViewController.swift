@@ -32,6 +32,18 @@ class MyVaultViewController: UIViewController {
         configureTableView()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if Core.shared.isNewUser() {
+            let onboardingVC = OnboardingViewController()
+            
+            onboardingVC.modalPresentationStyle = .fullScreen
+            
+            present(onboardingVC, animated: false)
+        }
+    }
+    
     func configureView() {
         view.backgroundColor = .systemBackground
     }
