@@ -19,15 +19,17 @@ class Generator {
     
     static func generateLabel(text: String,
                               textAlignment: NSTextAlignment = .left,
+                              textColor: UIColor = .secondaryLabel,
                               font: UIFont = .systemFont(ofSize: 15, weight: .medium),
-                              color: UIColor = .secondaryLabel) -> UILabel {
+                              numberOfLines: Int = 1) -> UILabel {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
         label.textAlignment = textAlignment
-        label.textColor = color
+        label.textColor = textColor
         label.font = font
+        label.numberOfLines = numberOfLines
         
         return label
     }
@@ -133,7 +135,7 @@ class Generator {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(text, for: .normal)
-        button.setTitleColor(UIColor.systemBlue, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor
