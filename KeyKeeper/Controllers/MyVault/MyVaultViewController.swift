@@ -35,7 +35,7 @@ class MyVaultViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if Core.shared.isNewUser() {
+        if Core.shared.isFirstLaunch() {
             let onboardingVC = OnboardingViewController()
             
             onboardingVC.modalPresentationStyle = .fullScreen

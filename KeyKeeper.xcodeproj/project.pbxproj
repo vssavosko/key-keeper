@@ -32,6 +32,7 @@
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
 		88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2096526FD1D7700C11770 /* ClipboardNotification.swift */; };
 		88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */; };
+		88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */; };
 		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
@@ -68,6 +69,7 @@
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		88A2096526FD1D7700C11770 /* ClipboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardNotification.swift; sourceTree = "<group>"; };
 		88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPasswordViewController.swift; sourceTree = "<group>"; };
 		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyKeeper.entitlements; sourceTree = "<group>"; };
 		88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -125,6 +127,7 @@
 				88228A1E26ACC74200C78456 /* AppDelegate.swift */,
 				88228A2026ACC74200C78456 /* SceneDelegate.swift */,
 				8836037A26E81E3C00788E43 /* EnvVars.swift */,
+				8848BFE1270CE565001EBBCE /* Core.swift */,
 				88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */,
 				88228A2C26ACC74500C78456 /* Info.plist */,
 				88228A2726ACC74500C78456 /* Assets.xcassets */,
@@ -197,11 +200,12 @@
 		88228A3726ACC7A200C78456 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8859F06126B0460C00ED0FAB /* MyVault */,
+				8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */,
+				88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */,
 				88228A3C26ACC80600C78456 /* MainTabBarController.swift */,
+				8859F06126B0460C00ED0FAB /* MyVault */,
 				88228A4026ACC87B00C78456 /* GeneratorViewController.swift */,
 				88228A4226ACC88A00C78456 /* SettingsViewController.swift */,
-				8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,7 +226,6 @@
 			children = (
 				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
-				8848BFE1270CE565001EBBCE /* Core.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
 				88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */,
 				88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */,
+				88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,
 				88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */,
 			);

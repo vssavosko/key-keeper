@@ -10,9 +10,15 @@ import UIKit
 class OnboardingViewController: UIViewController {
     
     private var slides = [
-        OnboardingSlide(title: "Strictly confidential", description: "The vault is protected by world encryption level. How safe is it that even we does not have access to your data.", image: #imageLiteral(resourceName: "shield_eye")),
-        OnboardingSlide(title: "Reliable and safe", description: "All the information you add to the app is encrypted and stored only on your device.", image: #imageLiteral(resourceName: "cloud_lock")),
-        OnboardingSlide(title: "There is nothing more to forget", description: "You only remember one Master Password and the app remembers all the others!", image: #imageLiteral(resourceName: "fingerprint"))
+        OnboardingSlide(image: #imageLiteral(resourceName: "shield_eye"),
+                        title: "Strictly confidential",
+                        description: "The vault is protected by world encryption level. How safe is it that even we does not have access to your data."),
+        OnboardingSlide(image: #imageLiteral(resourceName: "cloud_lock"),
+                        title: "Reliable and safe",
+                        description: "All the information you add to the app is encrypted and stored only on your device."),
+        OnboardingSlide(image: #imageLiteral(resourceName: "fingerprint"),
+                        title: "There is nothing more to forget",
+                        description: "You only remember one Master Password and the app remembers all the others!")
     ]
     
     private var currentPage = 0 {
@@ -20,9 +26,9 @@ class OnboardingViewController: UIViewController {
             pageControl.currentPage = currentPage
             
             if currentPage == slides.count - 1 {
-                button.setTitle("Get Started", for: .normal)
+                onboardingButton.setTitle("Set master password", for: .normal)
             } else {
-                button.setTitle("Next", for: .normal)
+                onboardingButton.setTitle("Next", for: .normal)
             }
         }
     }
@@ -37,24 +43,25 @@ class OnboardingViewController: UIViewController {
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     
-    private let pageControl: UIPageControl = {
+    private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.currentPageIndicatorTintColor = .systemBlue
+        pageControl.numberOfPages = slides.count
         pageControl.pageIndicatorTintColor = .black
+        pageControl.currentPageIndicatorTintColor = .systemBlue
         
         return pageControl
     }()
     
-    private let button: UIButton = {
+    private let onboardingButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Next", for: .normal)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = 25
         
         return button
     }()
@@ -64,20 +71,26 @@ class OnboardingViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        pageControl.numberOfPages = slides.count
-        
         configureSubviews()
-        configureCollectionView()
-        setupConstraints()
+        configureElements()
     }
     
-    func configureSubviews() {
+    private func configureSubviews() {
         view.addSubview(collectionView)
         view.addSubview(pageControl)
-        view.addSubview(button)
+        view.addSubview(onboardingButton)
     }
     
-    func configureCollectionView() {
+    private func configureElements() {
+        pageControl.addTarget(self, action: #selector(tapOnPageControl), for: .valueChanged)
+        onboardingButton.addTarget(self, action: #selector(tapOnOnboardingButton), for: .touchUpInside)
+        
+        configureCollectionView()
+        
+        setupElementConstraints()
+    }
+    
+    private func configureCollectionView() {
         collectionView.register(OnboardingCell.self, forCellWithReuseIdentifier: OnboardingCell.identifier)
         
         collectionView.delegate = self
@@ -87,36 +100,57 @@ class OnboardingViewController: UIViewController {
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
-        
-        setupCollectionViewConstraints()
     }
     
-    func setupCollectionViewConstraints() {
+    private func setupElementConstraints() {
         collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                               leading: view.leadingAnchor,
                               bottom: pageControl.topAnchor,
                               trailing: view.trailingAnchor,
                               padding: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
-    }
-    
-    func setupConstraints() {
+        
         pageControl.anchor(top: nil,
                            leading: view.leadingAnchor,
-                           bottom: button.topAnchor,
+                           bottom: onboardingButton.topAnchor,
                            trailing: view.trailingAnchor,
                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
         
-        button.anchor(top: nil,
-                      leading: view.leadingAnchor,
-                      bottom: view.bottomAnchor,
-                      trailing: view.trailingAnchor,
-                      padding: UIEdgeInsets(top: 0, left: 50, bottom: 50, right: 50),
-                      size: CGSize(width: 0, height: 50))
+        onboardingButton.anchor(top: nil,
+                                leading: view.leadingAnchor,
+                                bottom: view.bottomAnchor,
+                                trailing: view.trailingAnchor,
+                                padding: UIEdgeInsets(top: 0, left: view.frame.width / 5, bottom: 50, right: view.frame.width / 5),
+                                size: CGSize(width: 0, height: 50))
+    }
+    
+    private func scrollTo(page: Int) {
+        let indexPath = IndexPath(item: page, section: 0)
+        
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc private func tapOnPageControl(_ sender: UIPageControl) {
+        currentPage = sender.currentPage
+        
+        scrollTo(page: sender.currentPage)
+    }
+    
+    @objc private func tapOnOnboardingButton() {
+        if currentPage == slides.count - 1 {
+            let masterPasswordVC = MasterPasswordViewController()
+            
+            present(masterPasswordVC, animated: true)
+        } else {
+            currentPage += 1
+            
+            scrollTo(page: currentPage)
+        }
     }
     
 }
 
 extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return slides.count
     }
@@ -139,4 +173,5 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         
         currentPage = Int(scrollView.contentOffset.x / width)
     }
+    
 }

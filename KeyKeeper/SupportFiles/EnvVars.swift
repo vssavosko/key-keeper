@@ -6,11 +6,14 @@
 //
 
 enum AppMode: String {
+    
     case DEV = "development"
     case PROD = "production"
+    
 }
 
 class EnvVars {
+    
     static let shared: EnvVars = EnvVars()
     
     var appMode = "none"
@@ -22,4 +25,5 @@ class EnvVars {
         self.appMode = AppMode.PROD.rawValue
         #endif
     }
+    
 }

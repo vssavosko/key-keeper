@@ -25,8 +25,8 @@ class ClipboardNotification: UIView {
     }()
     private let label = Generator.generateLabel(text: "Password copied!",
                                                 textAlignment: .center,
-                                                font: .systemFont(ofSize: 13, weight: .semibold),
-                                                color: .label)
+                                                textColor: .label,
+                                                font: .systemFont(ofSize: 13, weight: .semibold))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

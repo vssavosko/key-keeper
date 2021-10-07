@@ -21,35 +21,24 @@ class OnboardingCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let slideTitleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 22, weight: .medium)
-        label.textColor = .black
-        label.numberOfLines = 0
-        
-        return label
-    }()
+    private let slideTitleLabel = Generator.generateLabel(text: "",
+                                                          textColor: .black,
+                                                          font: .systemFont(ofSize: 22, weight: .semibold),
+                                                          numberOfLines: 0)
     
-    private let slideDescriptionLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .black
-        label.numberOfLines = 0
-        
-        return label
-    }()
+    private let slideDescriptionLabel = Generator.generateLabel(text: "",
+                                                                textColor: .black,
+                                                                font: .systemFont(ofSize: 14, weight: .regular),
+                                                                numberOfLines: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .white
+        self.backgroundColor = .white
         
         configureSubviews()
-        configureElements()
+        
+        setupElementConstraints()
     }
     
     func set(slide: OnboardingSlide) {
@@ -58,33 +47,29 @@ class OnboardingCell: UICollectionViewCell {
         slideDescriptionLabel.text = slide.description
     }
     
-    func configureSubviews() {
-        contentView.addSubview(slideImageView)
-        contentView.addSubview(slideTitleLabel)
-        contentView.addSubview(slideDescriptionLabel)
+    private func configureSubviews() {
+        self.addSubview(slideImageView)
+        self.addSubview(slideTitleLabel)
+        self.addSubview(slideDescriptionLabel)
     }
     
-    func configureElements() {
-        setupConstraints()
-    }
-    
-    func setupConstraints() {
-        slideImageView.anchor(top: contentView.safeAreaLayoutGuide.topAnchor,
-                              leading: contentView.leadingAnchor,
+    private func setupElementConstraints() {
+        slideImageView.anchor(top: self.safeAreaLayoutGuide.topAnchor,
+                              leading: self.leadingAnchor,
                               bottom: slideTitleLabel.topAnchor,
-                              trailing: contentView.trailingAnchor,
+                              trailing: self.trailingAnchor,
                               padding: UIEdgeInsets(top: 70, left: 0, bottom: 30, right: 0))
         
         slideTitleLabel.anchor(top: nil,
-                               leading: contentView.leadingAnchor,
+                               leading: self.leadingAnchor,
                                bottom: slideDescriptionLabel.topAnchor,
-                               trailing: contentView.trailingAnchor,
+                               trailing: self.trailingAnchor,
                                padding: UIEdgeInsets(top: 0, left: 40, bottom: 15, right: 40))
         
         slideDescriptionLabel.anchor(top: nil,
-                                     leading: contentView.leadingAnchor,
+                                     leading: self.leadingAnchor,
                                      bottom: nil,
-                                     trailing: contentView.trailingAnchor,
+                                     trailing: self.trailingAnchor,
                                      padding: UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40))
     }
     

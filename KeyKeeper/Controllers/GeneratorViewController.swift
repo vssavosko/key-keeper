@@ -48,14 +48,14 @@ class GeneratorViewController: UIViewController {
     private lazy var lettersStackView = Generator.generateStackView(subviews: [lettersLabel, lettersSwitch])
     private lazy var symbolsStackView = Generator.generateStackView(subviews: [symbolsLabel, symbolsSwitch])
     private let lengthLabel = Generator.generateLabel(text: "",
-                                                      font: .systemFont(ofSize: 16, weight: .regular),
-                                                      color: .label)
+                                                      textColor: .label,
+                                                      font: .systemFont(ofSize: 16, weight: .regular))
     private let lettersLabel = Generator.generateLabel(text: "A-Z a-z",
-                                                       font: .systemFont(ofSize: 16, weight: .regular),
-                                                       color: .label)
+                                                       textColor: .label,
+                                                       font: .systemFont(ofSize: 16, weight: .regular))
     private let symbolsLabel = Generator.generateLabel(text: "!@#$%^&*",
-                                                       font: .systemFont(ofSize: 16, weight: .regular),
-                                                       color: .label)
+                                                       textColor: .label,
+                                                       font: .systemFont(ofSize: 16, weight: .regular))
     private let lengthSlider: UISlider = {
         let slider = UISlider()
         
