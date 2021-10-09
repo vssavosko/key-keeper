@@ -139,6 +139,12 @@ class OnboardingViewController: UIViewController {
         if currentPage == slides.count - 1 {
             let masterPasswordVC = MasterPasswordViewController()
             
+            masterPasswordVC.completion = { [weak self] in
+                Core.shared.setIsNotFirstLaunch()
+                
+                self!.dismiss(animated: true)
+            }
+            
             present(masterPasswordVC, animated: true)
         } else {
             currentPage += 1
