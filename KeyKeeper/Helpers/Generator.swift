@@ -35,7 +35,9 @@ class Generator {
     }
     
     static func generateField(contentType: FieldContentType? = .none,
-                              placeholder: String? = nil) -> TextFieldWithPadding {
+                              textColor: UIColor = .label,
+                              placeholder: String? = nil,
+                              placeholderColor: UIColor? = nil) -> TextFieldWithPadding {
         let field = TextFieldWithPadding()
         
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -56,17 +58,23 @@ class Generator {
         }
         
         field.font = .systemFont(ofSize: 17, weight: .regular)
-        field.placeholder = placeholder != nil ? placeholder : .none
+        field.textColor = textColor
+        
+        if let placeholder = placeholder {
+            field.attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                             attributes: placeholderColor != nil ? [NSAttributedString.Key.foregroundColor : placeholderColor!] : nil)
+        }
+        
         field.borderStyle = .none
         
         return field
     }
     
-    static func generateStackView(subviews: [UIView]) -> UIStackView {
+    static func generateStackView(subviews: [UIView], axis: NSLayoutConstraint.Axis = .horizontal) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: subviews)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
+        stackView.axis = axis
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
         
@@ -101,10 +109,12 @@ class Generator {
         return image
     }
     
-    static func generateBottomLineFor(field: UITextField) {
-        field.layer.backgroundColor = UIColor.systemBackground.cgColor
+    static func generateBottomLineFor(field: UITextField,
+                                      backgroundColor: UIColor = UIColor.systemBackground,
+                                      lineColor: UIColor = .systemGray5) {
+        field.layer.backgroundColor = backgroundColor.cgColor
         field.layer.masksToBounds = false
-        field.layer.shadowColor = UIColor.systemGray5.cgColor
+        field.layer.shadowColor = lineColor.cgColor
         field.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
         field.layer.shadowOpacity = 1.0
         field.layer.shadowRadius = 0.0

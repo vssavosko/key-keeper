@@ -16,17 +16,17 @@ class ClipboardNotification: UIView {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(label)
+        view.addSubview(messageLabel)
         
         view.backgroundColor =  .systemGray6
         view.layer.cornerRadius = 25
         
         return view
     }()
-    private let label = Generator.generateLabel(text: "Password copied!",
-                                                textAlignment: .center,
-                                                textColor: .label,
-                                                font: .systemFont(ofSize: 13, weight: .semibold))
+    var messageLabel = Generator.generateLabel(text: "Password copied!",
+                                        textAlignment: .center,
+                                        textColor: .label,
+                                        font: .systemFont(ofSize: 13, weight: .semibold))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +51,7 @@ class ClipboardNotification: UIView {
                                 padding: UIEdgeInsets(top: 40, left: 45, bottom: 0, right: 45),
                                 size: CGSize(width: 0, height: 50))
         
-        label.anchor(top: notificationView.topAnchor,
+        messageLabel.anchor(top: notificationView.topAnchor,
                      leading: notificationView.leadingAnchor,
                      bottom: notificationView.bottomAnchor,
                      trailing: notificationView.trailingAnchor)
