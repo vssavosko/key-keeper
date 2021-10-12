@@ -9,7 +9,7 @@ import UIKit
 
 class MasterPasswordViewController: UIViewController {
     
-    var completion: (() -> Void)!
+    var completion: ((String) -> Void)!
     
     private let titleLabel = Generator.generateLabel(text: "First, create a Master Password",
                                                      textColor: .black,
@@ -99,17 +99,21 @@ class MasterPasswordViewController: UIViewController {
     }
     
     @objc private func tapOnSaveButton() {
-        guard !passwordField.text!.isEmpty && !repeatPasswordField.text!.isEmpty else {
+        guard let password = passwordField.text,
+              let repeatPassword = repeatPasswordField.text
+        else { return }
+        
+        guard !password.isEmpty && !repeatPassword.isEmpty else {
             return triggerErrorNotification(errorText: "Fill in the fields!")
         }
         
-        guard passwordField.text == repeatPasswordField.text else {
+        guard password == repeatPassword else {
             return triggerErrorNotification(errorText: "Passwords do not match!")
         }
         
         dismiss(animated: true)
         
-        completion()
+        completion(password)
     }
     
 }
