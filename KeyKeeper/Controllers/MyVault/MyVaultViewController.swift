@@ -36,13 +36,16 @@ class MyVaultViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         if Core.shared.isFirstLaunch() {
-            //            let onboardingVC = OnboardingViewController()
+            let onboardingVC = OnboardingViewController()
+            
+            onboardingVC.modalPresentationStyle = .fullScreen
+            
+            present(onboardingVC, animated: false)
+        } else {
             let authorizationVC = AuthorizationViewController()
             
-            //            onboardingVC.modalPresentationStyle = .fullScreen
             authorizationVC.modalPresentationStyle = .fullScreen
             
-            //            present(onboardingVC, animated: false)
             present(authorizationVC, animated: false)
         }
     }
