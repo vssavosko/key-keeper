@@ -23,7 +23,6 @@ extension UIView {
     }
     
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
-        
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
         }

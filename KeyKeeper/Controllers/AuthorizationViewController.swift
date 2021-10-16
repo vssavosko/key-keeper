@@ -6,36 +6,16 @@
 //
 
 import UIKit
+import LocalAuthentication
 import SwiftKeychainWrapper
 
 class AuthorizationViewController: UIViewController {
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        
-        imageView.image = #imageLiteral(resourceName: "fingerprint_logo")
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .center
-        imageView.layer.masksToBounds = true
-        
-        return imageView
-    }()
+    private let imageView = Generator.generateImageView(image: UIImage(imageLiteralResourceName: "fingerprint_logo"))
     private let passwordField = Generator.generateField(contentType: .password,
                                                         textColor: .white,
                                                         placeholder: "Master password",
                                                         placeholderColor: .systemGray)
-    private let authorizationButton: UIButton = {
-        let button = UIButton()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Go", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 25
-        
-        return button
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +26,13 @@ class AuthorizationViewController: UIViewController {
         configureElements()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        loginUsingBiometricData()
+    }
+    
     private func configureSubviews() {
         view.addSubview(imageView)
         view.addSubview(passwordField)
-        view.addSubview(authorizationButton)
     }
     
     private func configureElements() {
@@ -57,8 +40,8 @@ class AuthorizationViewController: UIViewController {
                                         backgroundColor: .black,
                                         lineColor: .white)
         
-        authorizationButton.addTarget(self, action: #selector(tapOnButton), for: .touchUpInside)
-        
+        passwordField.returnKeyType = .continue
+        passwordField.addTarget(self, action: #selector(tapOnContinueButton), for: .primaryActionTriggered)
         
         setupElementConstraints()
     }
@@ -72,29 +55,51 @@ class AuthorizationViewController: UIViewController {
         
         passwordField.anchor(top: nil,
                              leading: view.leadingAnchor,
-                             bottom: authorizationButton.topAnchor,
+                             bottom: nil,
                              trailing: view.trailingAnchor,
                              padding: UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30))
-        
-        authorizationButton.anchor(top: nil,
-                                   leading: view.leadingAnchor,
-                                   bottom: nil,
-                                   trailing: view.trailingAnchor,
-                                   padding: UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30),
-                                   size: CGSize(width: 0, height: 50))
     }
     
-    private func triggerErrorNotification(errorText: String) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
-            let clipboardNotification = ClipboardNotification()
+    private func loginUsingBiometricData() {
+        let context = LAContext()
+        var error: NSError? = nil
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Please authorize with Touch ID!"
             
-            clipboardNotification.messageLabel.text = errorText
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] (success, error) in
+                DispatchQueue.main.async {
+                    guard success, error == nil else {
+                        //                        let alert = UIAlertController(title: "Failed to Authenticate",
+                        //                                                      message: "Please try again.",
+                        //                                                      preferredStyle: .alert)
+                        //
+                        //                        alert.addAction(UIAlertAction(title: "Dismiss",
+                        //                                                      style: .cancel,
+                        //                                                      handler: nil))
+                        //
+                        //                        self?.present(alert, animated: true)
+                        
+                        return
+                    }
+                    
+                    self?.dismiss(animated: true)
+                }
+            }
+        } else {
+            let alert = UIAlertController(title: "Unavailable",
+                                          message: "You can not use this feature",
+                                          preferredStyle: .alert)
             
-            self!.view.addSubview(clipboardNotification)
+            alert.addAction(UIAlertAction(title: "Dismiss",
+                                          style: .cancel,
+                                          handler: nil))
+            
+            self.present(alert, animated: true)
         }
     }
     
-    @objc private func tapOnButton() {
+    @objc private func tapOnContinueButton() {
         guard let enteredPassword = passwordField.text else { return }
         
         let masterPassword = KeychainWrapper.standard.string(forKey: Keys.masterPassword)
@@ -102,7 +107,7 @@ class AuthorizationViewController: UIViewController {
         if enteredPassword == masterPassword {
             dismiss(animated: true)
         } else {
-            triggerErrorNotification(errorText: "Invalid password!")
+            self.triggerNotification(view: view, text: "Invalid password!")
         }
     }
     

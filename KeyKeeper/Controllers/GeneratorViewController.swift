@@ -243,15 +243,9 @@ class GeneratorViewController: UIViewController {
     }
     
     @objc func tapOnCopyButton() {
-        guard let rootVC = view.window?.rootViewController?.view,
-              let password = self.passwordField.text
-        else { return }
+        guard let password = self.passwordField.text else { return }
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
-            let clipboardNotification = ClipboardNotification()
-            
-            rootVC.addSubview(clipboardNotification)
-            
+        self.triggerNotification(view: view) {
             UIPasteboard.general.string = password
         }
     }

@@ -17,6 +17,20 @@ enum FieldContentType {
 
 class Generator {
     
+    static func generateImageView(image: UIImage? = nil) -> UIImageView {
+        let imageView = UIImageView()
+        
+        if let image = image {
+            imageView.image = image
+        }
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .center
+        imageView.layer.masksToBounds = true
+        
+        return imageView
+    }
+    
     static func generateLabel(text: String,
                               textAlignment: NSTextAlignment = .left,
                               textColor: UIColor = .secondaryLabel,

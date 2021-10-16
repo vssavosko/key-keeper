@@ -88,27 +88,17 @@ class MasterPasswordViewController: UIViewController {
                           size: CGSize(width: 0, height: 50))
     }
     
-    private func triggerErrorNotification(errorText: String) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
-            let clipboardNotification = ClipboardNotification()
-            
-            clipboardNotification.messageLabel.text = errorText
-            
-            self!.view.addSubview(clipboardNotification)
-        }
-    }
-    
     @objc private func tapOnSaveButton() {
         guard let password = passwordField.text,
               let repeatPassword = repeatPasswordField.text
         else { return }
         
         guard !password.isEmpty && !repeatPassword.isEmpty else {
-            return triggerErrorNotification(errorText: "Fill in the fields!")
+            return self.triggerNotification(view: view, text: "Fill in the fields!")
         }
         
         guard password == repeatPassword else {
-            return triggerErrorNotification(errorText: "Passwords do not match!")
+            return self.triggerNotification(view: view, text: "Passwords do not match!")
         }
         
         dismiss(animated: true)
