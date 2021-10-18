@@ -11,21 +11,11 @@ class OnboardingCell: UICollectionViewCell {
     
     static let identifier = "OnboardingCell"
     
-    private let slideImageView: UIImageView = {
-        let imageView = UIImageView()
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .center
-        imageView.layer.masksToBounds = true
-        
-        return imageView
-    }()
-    
+    private let slideImageView = Generator.generateImageView()
     private let slideTitleLabel = Generator.generateLabel(text: "",
                                                           textColor: .black,
                                                           font: .systemFont(ofSize: 22, weight: .semibold),
                                                           numberOfLines: 0)
-    
     private let slideDescriptionLabel = Generator.generateLabel(text: "",
                                                                 textColor: .black,
                                                                 font: .systemFont(ofSize: 14, weight: .regular),

@@ -27,7 +27,9 @@
 		8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */; };
 		8848BFE6270CF756001EBBCE /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE5270CF756001EBBCE /* OnboardingCell.swift */; };
 		8848BFE8270CFF15001EBBCE /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */; };
+		8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852CDFC27164885008CE83E /* AuthorizationViewController.swift */; };
 		8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateViewController.swift */; };
+		886953B6271B1D8D002CB1AF /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */; };
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
 		88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2096526FD1D7700C11770 /* ClipboardNotification.swift */; };
@@ -64,7 +66,9 @@
 		8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		8848BFE5270CF756001EBBCE /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		8852CDFC27164885008CE83E /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		8859F06226B04A9400ED0FAB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		88A2096526FD1D7700C11770 /* ClipboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardNotification.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				88228A3A26ACC7DA00C78456 /* UIView+Extensions.swift */,
 				88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */,
 				88EFD93226D5998500855F39 /* KeychainWrapper+Extensions.swift */,
+				886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			children = (
 				8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */,
 				88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */,
+				8852CDFC27164885008CE83E /* AuthorizationViewController.swift */,
 				88228A3C26ACC80600C78456 /* MainTabBarController.swift */,
 				8859F06126B0460C00ED0FAB /* MyVault */,
 				88228A4026ACC87B00C78456 /* GeneratorViewController.swift */,
@@ -375,9 +381,11 @@
 				8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIView+Extensions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
+				8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */,
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
 				88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */,
+				886953B6271B1D8D002CB1AF /* UIViewController+Extensions.swift in Sources */,
 				88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */,
 				88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,

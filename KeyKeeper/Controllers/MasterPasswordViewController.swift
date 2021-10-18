@@ -9,7 +9,7 @@ import UIKit
 
 class MasterPasswordViewController: UIViewController {
     
-    var completion: (() -> Void)!
+    var completion: ((String) -> Void)!
     
     private let titleLabel = Generator.generateLabel(text: "First, create a Master Password",
                                                      textColor: .black,
@@ -88,28 +88,22 @@ class MasterPasswordViewController: UIViewController {
                           size: CGSize(width: 0, height: 50))
     }
     
-    private func triggerErrorNotification(errorText: String) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
-            let clipboardNotification = ClipboardNotification()
-            
-            clipboardNotification.messageLabel.text = errorText
-            
-            self!.view.addSubview(clipboardNotification)
-        }
-    }
-    
     @objc private func tapOnSaveButton() {
-        guard !passwordField.text!.isEmpty && !repeatPasswordField.text!.isEmpty else {
-            return triggerErrorNotification(errorText: "Fill in the fields!")
+        guard let password = passwordField.text,
+              let repeatPassword = repeatPasswordField.text
+        else { return }
+        
+        guard !password.isEmpty && !repeatPassword.isEmpty else {
+            return self.triggerNotification(text: "Fill in the fields!")
         }
         
-        guard passwordField.text == repeatPasswordField.text else {
-            return triggerErrorNotification(errorText: "Passwords do not match!")
+        guard password == repeatPassword else {
+            return self.triggerNotification(text: "Passwords do not match!")
         }
         
         dismiss(animated: true)
         
-        completion()
+        completion(password)
     }
     
 }

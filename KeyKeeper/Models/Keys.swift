@@ -7,6 +7,7 @@
 
 struct Keys {
     
+    static let masterPassword = "masterPassword"
     static let accounts = "accounts"
     static let title = "title"
     static let login = "login"

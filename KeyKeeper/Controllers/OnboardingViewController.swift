@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class OnboardingViewController: UIViewController {
     
@@ -139,10 +140,12 @@ class OnboardingViewController: UIViewController {
         if currentPage == slides.count - 1 {
             let masterPasswordVC = MasterPasswordViewController()
             
-            masterPasswordVC.completion = { [weak self] in
+            masterPasswordVC.completion = { [weak self] (masterPassword: String) in
                 Core.shared.setIsNotFirstLaunch()
                 
-                self!.dismiss(animated: true)
+                KeychainWrapper.standard.set(masterPassword, forKey: Keys.masterPassword)
+                
+                self?.dismiss(animated: true)
             }
             
             present(masterPasswordVC, animated: true)
