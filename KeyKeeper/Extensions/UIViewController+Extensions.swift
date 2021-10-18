@@ -9,15 +9,15 @@ import UIKit
 
 extension UIViewController {
     
-    func triggerNotification(view: UIView, text: String? = nil, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+    func triggerNotification(text: String? = nil, completion: (() -> Void)? = nil) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
             let clipboardNotification = ClipboardNotification()
             
             if let text = text {
                 clipboardNotification.messageLabel.text = text
             }
             
-            view.addSubview(clipboardNotification)
+            self?.view.addSubview(clipboardNotification)
             
             if let completion = completion {
                 completion()

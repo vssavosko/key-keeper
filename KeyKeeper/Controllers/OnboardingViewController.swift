@@ -145,7 +145,7 @@ class OnboardingViewController: UIViewController {
                 
                 KeychainWrapper.standard.set(masterPassword, forKey: Keys.masterPassword)
                 
-                self!.dismiss(animated: true)
+                self?.dismiss(animated: true)
             }
             
             present(masterPasswordVC, animated: true)

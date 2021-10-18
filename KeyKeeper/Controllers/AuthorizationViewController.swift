@@ -27,7 +27,7 @@ class AuthorizationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loginUsingBiometricData()
+        logInUsingBiometricData()
     }
     
     private func configureSubviews() {
@@ -60,25 +60,30 @@ class AuthorizationViewController: UIViewController {
                              padding: UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30))
     }
     
-    private func loginUsingBiometricData() {
+    private func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss",
+                                      style: .cancel,
+                                      handler: nil))
+        
+        present(alert, animated: true)
+    }
+    
+    private func logInUsingBiometricData() {
         let context = LAContext()
         var error: NSError? = nil
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Please authorize with Touch ID!"
+            let reason = "Please authorize with Face ID!"
             
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] (success, error) in
-                DispatchQueue.main.async {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [weak self] (success, error) in DispatchQueue.main.async {
                     guard success, error == nil else {
-                        //                        let alert = UIAlertController(title: "Failed to Authenticate",
-                        //                                                      message: "Please try again.",
-                        //                                                      preferredStyle: .alert)
-                        //
-                        //                        alert.addAction(UIAlertAction(title: "Dismiss",
-                        //                                                      style: .cancel,
-                        //                                                      handler: nil))
-                        //
-                        //                        self?.present(alert, animated: true)
+                        self?.presentAlert(title: "Failed to Authenticate",
+                                           message: "Please try again.")
                         
                         return
                     }
@@ -87,15 +92,8 @@ class AuthorizationViewController: UIViewController {
                 }
             }
         } else {
-            let alert = UIAlertController(title: "Unavailable",
-                                          message: "You can not use this feature",
-                                          preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Dismiss",
-                                          style: .cancel,
-                                          handler: nil))
-            
-            self.present(alert, animated: true)
+            self.presentAlert(title: "Unavailable",
+                              message: "You can not use this feature.")
         }
     }
     
@@ -107,7 +105,7 @@ class AuthorizationViewController: UIViewController {
         if enteredPassword == masterPassword {
             dismiss(animated: true)
         } else {
-            self.triggerNotification(view: view, text: "Invalid password!")
+            self.triggerNotification(text: "Invalid password!")
         }
     }
     

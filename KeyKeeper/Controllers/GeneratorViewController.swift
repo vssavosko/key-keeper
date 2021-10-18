@@ -245,7 +245,7 @@ class GeneratorViewController: UIViewController {
     @objc func tapOnCopyButton() {
         guard let password = self.passwordField.text else { return }
         
-        self.triggerNotification(view: view) {
+        self.triggerNotification() {
             UIPasteboard.general.string = password
         }
     }

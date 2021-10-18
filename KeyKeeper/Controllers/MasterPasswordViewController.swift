@@ -94,11 +94,11 @@ class MasterPasswordViewController: UIViewController {
         else { return }
         
         guard !password.isEmpty && !repeatPassword.isEmpty else {
-            return self.triggerNotification(view: view, text: "Fill in the fields!")
+            return self.triggerNotification(text: "Fill in the fields!")
         }
         
         guard password == repeatPassword else {
-            return self.triggerNotification(view: view, text: "Passwords do not match!")
+            return self.triggerNotification(text: "Passwords do not match!")
         }
         
         dismiss(animated: true)
