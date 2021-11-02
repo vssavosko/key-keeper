@@ -27,19 +27,15 @@ class MyVaultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureView()
-        configureNavigationBar()
-        configureTableView()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
         if Core.shared.isFirstLaunch() {
             presentViewController(viewController: OnboardingViewController())
         } else {
             presentViewController(viewController: AuthorizationViewController())
         }
+        
+        configureView()
+        configureNavigationBar()
+        configureTableView()
     }
     
     private func presentViewController<T: UIViewController>(viewController: T) {

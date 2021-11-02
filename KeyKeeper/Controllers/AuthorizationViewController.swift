@@ -60,18 +60,6 @@ class AuthorizationViewController: UIViewController {
                              padding: UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30))
     }
     
-    private func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Dismiss",
-                                      style: .cancel,
-                                      handler: nil))
-        
-        present(alert, animated: true)
-    }
-    
     private func logInUsingBiometricData() {
         let context = LAContext()
         var error: NSError? = nil
