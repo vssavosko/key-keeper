@@ -123,15 +123,15 @@ class Generator {
         return image
     }
     
-    static func generateBottomLineFor(field: UITextField,
-                                      backgroundColor: UIColor = UIColor.systemBackground,
-                                      lineColor: UIColor = .systemGray5) {
-        field.layer.backgroundColor = backgroundColor.cgColor
-        field.layer.masksToBounds = false
-        field.layer.shadowColor = lineColor.cgColor
-        field.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
-        field.layer.shadowOpacity = 1.0
-        field.layer.shadowRadius = 0.0
+    static func generateBottomLineFor<T: UIView>(element: T,
+                                                 backgroundColor: UIColor = UIColor.systemBackground,
+                                                 lineColor: UIColor = .systemGray5) {
+        element.layer.backgroundColor = backgroundColor.cgColor
+        element.layer.masksToBounds = false
+        element.layer.shadowColor = lineColor.cgColor
+        element.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
+        element.layer.shadowOpacity = 1.0
+        element.layer.shadowRadius = 0.0
     }
     
     static var passwordButton: UIButton {

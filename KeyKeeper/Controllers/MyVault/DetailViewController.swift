@@ -73,8 +73,8 @@ class DetailViewController: UIViewController {
         passwordField.isEnabled = false
         websiteField.isEnabled = false
         
-        Generator.generateBottomLineFor(field: loginField)
-        Generator.generateBottomLineFor(field: websiteField)
+        Generator.generateBottomLineFor(element: loginField)
+        Generator.generateBottomLineFor(element: websiteField)
         
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         

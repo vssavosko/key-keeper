@@ -65,9 +65,9 @@ class EditViewController: UIViewController {
         passwordField.text = accountData.password
         websiteField.text = accountData.website
         
-        Generator.generateBottomLineFor(field: nameField)
-        Generator.generateBottomLineFor(field: loginField)
-        Generator.generateBottomLineFor(field: websiteField)
+        Generator.generateBottomLineFor(element: nameField)
+        Generator.generateBottomLineFor(element: loginField)
+        Generator.generateBottomLineFor(element: websiteField)
         
         nameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)

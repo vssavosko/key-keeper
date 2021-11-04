@@ -36,7 +36,7 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func configureElements() {
-        Generator.generateBottomLineFor(field: passwordField,
+        Generator.generateBottomLineFor(element: passwordField,
                                         backgroundColor: .black,
                                         lineColor: .white)
         

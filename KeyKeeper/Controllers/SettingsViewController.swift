@@ -25,6 +25,11 @@ class SettingsViewController: UIViewController {
                                                               font: .systemFont(ofSize: 17, weight: .regular))
     private let clipboardSwitch = Generator.generateSwitch()
     private lazy var clipboardStackView = Generator.generateStackView(subviews: [clipboardValueLabel, clipboardSwitch])
+    private let changePasswordLabel = Generator.generateLabel(text: "Change Master Password",
+                                                              textColor: .white,
+                                                              font: .systemFont(ofSize: 17, weight: .regular))
+    private let changePasswordImage = Generator.generateImageView(image: .init(systemName: "chevron.right"))
+    private lazy var changePasswordStackView = Generator.generateStackView(subviews: [changePasswordLabel, changePasswordImage])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +51,14 @@ class SettingsViewController: UIViewController {
         view.addSubview(biometricStackView)
         view.addSubview(clipboardDescriptionLabel)
         view.addSubview(clipboardStackView)
+        view.addSubview(changePasswordStackView)
     }
     
     func configureElements() {
+        Generator.generateBottomLineFor(element: biometricStackView)
+        Generator.generateBottomLineFor(element: clipboardStackView)
+        Generator.generateBottomLineFor(element: changePasswordStackView)
+        
         setupElementConstraints()
     }
     
@@ -57,25 +67,34 @@ class SettingsViewController: UIViewController {
                                          leading: view.leadingAnchor,
                                          bottom: nil,
                                          trailing: view.trailingAnchor,
-                                         padding: UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 16))
+                                         padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
         
         biometricStackView.anchor(top: biometricDescriptionLabel.bottomAnchor,
                                   leading: view.leadingAnchor,
                                   bottom: nil,
                                   trailing: view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 16))
+                                  padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
+                                  size: CGSize(width: 0, height: 50))
         
         clipboardDescriptionLabel.anchor(top: biometricStackView.bottomAnchor,
                                          leading: view.leadingAnchor,
                                          bottom: nil,
                                          trailing: view.trailingAnchor,
-                                         padding: UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 16))
+                                         padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
         
         clipboardStackView.anchor(top: clipboardDescriptionLabel.bottomAnchor,
                                   leading: view.leadingAnchor,
                                   bottom: nil,
                                   trailing: view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 16))
+                                  padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
+                                  size: CGSize(width: 0, height: 50))
+        
+        changePasswordStackView.anchor(top: clipboardStackView.bottomAnchor,
+                                       leading: view.leadingAnchor,
+                                       bottom: nil,
+                                       trailing: view.trailingAnchor,
+                                       padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16),
+                                       size: CGSize(width: 0, height: 50))
     }
     
 }

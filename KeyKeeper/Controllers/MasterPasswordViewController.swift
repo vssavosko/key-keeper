@@ -47,8 +47,12 @@ class MasterPasswordViewController: UIViewController {
     }
     
     private func configureElements() {
-        Generator.generateBottomLineFor(field: passwordField, backgroundColor: .white, lineColor: .lightGray)
-        Generator.generateBottomLineFor(field: repeatPasswordField, backgroundColor: .white, lineColor: .lightGray)
+        Generator.generateBottomLineFor(element: passwordField,
+                                        backgroundColor: .white,
+                                        lineColor: .lightGray)
+        Generator.generateBottomLineFor(element: repeatPasswordField,
+                                        backgroundColor: .white,
+                                        lineColor: .lightGray)
         
         saveButton.addTarget(self, action: #selector(tapOnSaveButton), for: .touchUpInside)
         
