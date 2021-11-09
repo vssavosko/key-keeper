@@ -7,29 +7,58 @@
 
 import UIKit
 
+struct Section {
+    
+    let title: String
+    let options: [SettingsOptionType]
+    
+}
+
+enum SettingsOptionType {
+    
+    case staticCell(model: SettingsOption)
+    case switchCell(model: SettingsSwitchOption)
+    
+}
+
+struct SettingsSwitchOption {
+    
+    let title: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    var isOn: Bool
+    
+}
+
+struct SettingsOption {
+    
+    let title: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    
+}
+
 class SettingsViewController: UIViewController {
     
-    private let biometricDescriptionLabel = Generator.generateLabel(text: "YOUR MASTER PASSWORD WILL BE PERIODICALLY\nREQUESTED FOR SECURITY",
-                                                                    font: .systemFont(ofSize: 13, weight: .regular),
-                                                                    numberOfLines: 2)
-    private let biometricValueLabel = Generator.generateLabel(text: "Touch ID / Face ID",
-                                                              textColor: .white,
-                                                              font: .systemFont(ofSize: 17, weight: .regular))
-    private let biometricSwitch = Generator.generateSwitch()
-    private lazy var biometricStackView = Generator.generateStackView(subviews: [biometricValueLabel, biometricSwitch])
-    private let clipboardDescriptionLabel = Generator.generateLabel(text: "AUTOMATICALLY CLEAR THE CLIPBOARD AFTER\n30 SECONDS",
-                                                                    font: .systemFont(ofSize: 13, weight: .regular),
-                                                                    numberOfLines: 2)
-    private let clipboardValueLabel = Generator.generateLabel(text: "Clear the clipboard",
-                                                              textColor: .white,
-                                                              font: .systemFont(ofSize: 17, weight: .regular))
-    private let clipboardSwitch = Generator.generateSwitch()
-    private lazy var clipboardStackView = Generator.generateStackView(subviews: [clipboardValueLabel, clipboardSwitch])
-    private let changePasswordLabel = Generator.generateLabel(text: "Change Master Password",
-                                                              textColor: .white,
-                                                              font: .systemFont(ofSize: 17, weight: .regular))
-    private let changePasswordImage = Generator.generateImageView(image: .init(systemName: "chevron.right"))
-    private lazy var changePasswordStackView = Generator.generateStackView(subviews: [changePasswordLabel, changePasswordImage])
+    var models = [Section]()
+    
+    private let tableView: UITableView = {
+        let table = UITableView(frame: .zero,
+                                style: .grouped)
+        
+        table.register(SettingsTableViewCell.self,
+                       forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        
+        table.register(SwitchTableViewCell.self,
+                       forCellReuseIdentifier: SwitchTableViewCell.identifier)
+        
+        table.clipsToBounds = true
+        table.layer.cornerRadius = 20
+        
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,63 +67,159 @@ class SettingsViewController: UIViewController {
         
         configureNavigationBar()
         configureSubviews()
+        setupDelegates()
         configureElements()
     }
     
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Settings"
     }
     
-    func configureSubviews() {
-        view.addSubview(biometricDescriptionLabel)
-        view.addSubview(biometricStackView)
-        view.addSubview(clipboardDescriptionLabel)
-        view.addSubview(clipboardStackView)
-        view.addSubview(changePasswordStackView)
+    private func configureSubviews() {
+        view.addSubview(tableView)
     }
     
-    func configureElements() {
-        Generator.generateBottomLineFor(element: biometricStackView)
-        Generator.generateBottomLineFor(element: clipboardStackView)
-        Generator.generateBottomLineFor(element: changePasswordStackView)
-        
-        setupElementConstraints()
+    private func setupDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-    func setupElementConstraints() {
-        biometricDescriptionLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                                         leading: view.leadingAnchor,
-                                         bottom: nil,
-                                         trailing: view.trailingAnchor,
-                                         padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
+    private func configureElements() {
+        self.models.append(
+            Section(
+                title: "PERIODICALLY REQUESTED FOR SECURITY",
+                options: [
+                    .switchCell(
+                        model: SettingsSwitchOption(
+                            title: "Touch ID / Face ID",
+                            icon: .init(systemName: "house"),
+                            iconBackgroundColor: .systemPink,
+                            handler: {
+                                print("yo Touch ID / Face ID")
+                            },
+                            isOn: false
+                        )
+                    )
+                ]
+            )
+        )
         
-        biometricStackView.anchor(top: biometricDescriptionLabel.bottomAnchor,
-                                  leading: view.leadingAnchor,
-                                  bottom: nil,
-                                  trailing: view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
-                                  size: CGSize(width: 0, height: 50))
+        self.models.append(
+            Section(
+                title: "CLEAR THE CLIPBOARD AFTER 30 SECONDS",
+                options: [
+                    .switchCell(
+                        model: SettingsSwitchOption(
+                            title: "Clear the clipboard",
+                            icon: .init(systemName: "house"),
+                            iconBackgroundColor: .systemPink,
+                            handler: {
+                                print("yo Touch ID / Face ID")
+                            },
+                            isOn: false
+                        )
+                    )
+                ]
+            )
+        )
         
-        clipboardDescriptionLabel.anchor(top: biometricStackView.bottomAnchor,
-                                         leading: view.leadingAnchor,
-                                         bottom: nil,
-                                         trailing: view.trailingAnchor,
-                                         padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
+        self.models.append(
+            Section(
+                title: "Other",
+                options: [
+                    .staticCell(
+                        model: SettingsOption(
+                            title: "Change color theme",
+                            icon: .init(systemName: "house"),
+                            iconBackgroundColor: .systemPink) {
+                                print("yo Clear the clipboard")
+                            }
+                    ),
+                    .staticCell(
+                        model: SettingsOption(
+                            title: "Change language",
+                            icon: .init(systemName: "house"),
+                            iconBackgroundColor: .systemPink) {
+                                print("yo Clear the clipboard")
+                            }
+                    ),
+                    .staticCell(
+                        model: SettingsOption(
+                            title: "Change Master Password",
+                            icon: .init(systemName: "house"),
+                            iconBackgroundColor: .systemPink) {
+                                print("yo Clear the clipboard")
+                            }
+                    )
+                ]
+            )
+        )
         
-        clipboardStackView.anchor(top: clipboardDescriptionLabel.bottomAnchor,
-                                  leading: view.leadingAnchor,
-                                  bottom: nil,
-                                  trailing: view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
-                                  size: CGSize(width: 0, height: 50))
+        tableView.frame = view.bounds
+    }
+    
+}
+
+extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = models[section]
         
-        changePasswordStackView.anchor(top: clipboardStackView.bottomAnchor,
-                                       leading: view.leadingAnchor,
-                                       bottom: nil,
-                                       trailing: view.trailingAnchor,
-                                       padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16),
-                                       size: CGSize(width: 0, height: 50))
+        return section.title
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return models.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return models[section].options.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = models[indexPath.section].options[indexPath.row]
+        
+        switch model.self {
+        case .staticCell(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SettingsTableViewCell.identifier,
+                for: indexPath
+            ) as? SettingsTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.configure(with: model)
+            
+            return cell
+        case .switchCell(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SwitchTableViewCell.identifier,
+                for: indexPath
+            ) as? SwitchTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.configure(with: model)
+            cell.completion = {
+                print("test")
+            }
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let type = models[indexPath.section].options[indexPath.row]
+        
+        switch type.self {
+        case .staticCell(let model):
+            model.handler()
+        case .switchCell:
+            break
+        }
     }
     
 }
