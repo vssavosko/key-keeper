@@ -7,13 +7,6 @@
 
 import UIKit
 
-struct Section {
-    
-    let title: String
-    let options: [SettingsOptionType]
-    
-}
-
 enum SettingsOptionType {
     
     case staticCell(model: SettingsOption)
@@ -21,28 +14,9 @@ enum SettingsOptionType {
     
 }
 
-struct SettingsSwitchOption {
-    
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    let handler: (() -> Void)
-    var isOn: Bool
-    
-}
-
-struct SettingsOption {
-    
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    let handler: (() -> Void)
-    
-}
-
 class SettingsViewController: UIViewController {
     
-    var models = [Section]()
+    private var models = [Section]()
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero,
@@ -51,8 +25,8 @@ class SettingsViewController: UIViewController {
         table.register(SettingsTableViewCell.self,
                        forCellReuseIdentifier: SettingsTableViewCell.identifier)
         
-        table.register(SwitchTableViewCell.self,
-                       forCellReuseIdentifier: SwitchTableViewCell.identifier)
+        table.register(SettingsSwitchTableViewCell.self,
+                       forCellReuseIdentifier: SettingsSwitchTableViewCell.identifier)
         
         table.clipsToBounds = true
         table.layer.cornerRadius = 20
@@ -67,7 +41,6 @@ class SettingsViewController: UIViewController {
         
         configureNavigationBar()
         configureSubviews()
-        setupDelegates()
         configureElements()
     }
     
@@ -80,83 +53,80 @@ class SettingsViewController: UIViewController {
         view.addSubview(tableView)
     }
     
-    private func setupDelegates() {
+    private func configureElements() {
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    private func configureElements() {
-        self.models.append(
+        
+        self.models = [
             Section(
                 title: "PERIODICALLY REQUESTED FOR SECURITY",
                 options: [
                     .switchCell(
                         model: SettingsSwitchOption(
                             title: "Touch ID / Face ID",
-                            icon: .init(systemName: "house"),
-                            iconBackgroundColor: .systemPink,
-                            handler: {
-                                print("yo Touch ID / Face ID")
-                            },
-                            isOn: false
-                        )
+                            icon: nil,
+                            iconBackgroundColor: .clear,
+                            isOn: false) {
+                                print("Touch ID / Face ID")
+                            }
                     )
                 ]
-            )
-        )
-        
-        self.models.append(
+            ),
             Section(
                 title: "CLEAR THE CLIPBOARD AFTER 30 SECONDS",
                 options: [
                     .switchCell(
                         model: SettingsSwitchOption(
                             title: "Clear the clipboard",
-                            icon: .init(systemName: "house"),
-                            iconBackgroundColor: .systemPink,
-                            handler: {
-                                print("yo Touch ID / Face ID")
-                            },
-                            isOn: false
-                        )
+                            icon: nil,
+                            iconBackgroundColor: .clear,
+                            isOn: false) {
+                                print("Clear the clipboard")
+                            }
                     )
                 ]
-            )
-        )
-        
-        self.models.append(
+            ),
             Section(
                 title: "Other",
                 options: [
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change color theme",
-                            icon: .init(systemName: "house"),
-                            iconBackgroundColor: .systemPink) {
-                                print("yo Clear the clipboard")
+                            title: "Change language",
+                            icon: nil,
+                            iconBackgroundColor: .clear) {
+                                print("yo Change language")
                             }
                     ),
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change language",
-                            icon: .init(systemName: "house"),
-                            iconBackgroundColor: .systemPink) {
-                                print("yo Clear the clipboard")
+                            title: "Change color theme",
+                            icon: nil,
+                            iconBackgroundColor: .clear) {
+                                print("yo Change color theme")
                             }
                     ),
                     .staticCell(
                         model: SettingsOption(
                             title: "Change Master Password",
-                            icon: .init(systemName: "house"),
-                            iconBackgroundColor: .systemPink) {
-                                print("yo Clear the clipboard")
+                            icon: nil,
+                            iconBackgroundColor: .clear) {
+                                print("yo Change Master Password")
                             }
                     )
                 ]
             )
-        )
+        ]
         
         tableView.frame = view.bounds
+    }
+    
+    private func getCell<T: UITableViewCell>(_: T.Type, identifier: String, indexPath: IndexPath) -> T {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: identifier,
+            for: indexPath
+        ) as! T
+        
+        return cell
     }
     
 }
@@ -182,28 +152,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch model.self {
         case .staticCell(let model):
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsTableViewCell.identifier,
-                for: indexPath
-            ) as? SettingsTableViewCell else {
-                return UITableViewCell()
-            }
+            let cell = getCell(SettingsTableViewCell.self,
+                               identifier: SettingsTableViewCell.identifier,
+                               indexPath: indexPath)
             
             cell.configure(with: model)
             
             return cell
         case .switchCell(let model):
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SwitchTableViewCell.identifier,
-                for: indexPath
-            ) as? SwitchTableViewCell else {
-                return UITableViewCell()
-            }
+            let cell = getCell(SettingsSwitchTableViewCell.self,
+                               identifier: SettingsSwitchTableViewCell.identifier,
+                               indexPath: indexPath)
             
             cell.configure(with: model)
-            cell.completion = {
-                print("test")
-            }
+            cell.completion = model.completion
             
             return cell
         }
@@ -216,7 +178,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch type.self {
         case .staticCell(let model):
-            model.handler()
+            model.completion()
         case .switchCell:
             break
         }

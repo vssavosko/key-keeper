@@ -22,6 +22,12 @@
 		88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4026ACC87B00C78456 /* GeneratorViewController.swift */; };
 		88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4226ACC88A00C78456 /* SettingsViewController.swift */; };
 		88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4426ACC8C800C78456 /* MyVaultCell.swift */; };
+		882814C7273DC3A500D54B25 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814C6273DC3A500D54B25 /* SettingsOption.swift */; };
+		882814C9273DC3D600D54B25 /* SettingsSwitchOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814C8273DC3D600D54B25 /* SettingsSwitchOption.swift */; };
+		882814CB273DC3F300D54B25 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814CA273DC3F300D54B25 /* Section.swift */; };
+		882814CD273DC54100D54B25 /* BaseSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */; };
+		882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814D0273DD7FD00D54B25 /* LanguageViewController.swift */; };
+		882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814D2273DD83900D54B25 /* ColorThemeViewController.swift */; };
 		8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8836037A26E81E3C00788E43 /* EnvVars.swift */; };
 		8848BFE2270CE565001EBBCE /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE1270CE565001EBBCE /* Core.swift */; };
 		8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */; };
@@ -32,7 +38,7 @@
 		886953B6271B1D8D002CB1AF /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */; };
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */; };
-		88879ECC273B181500D6187D /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88879ECB273B181500D6187D /* SwitchTableViewCell.swift */; };
+		88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
 		88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2096526FD1D7700C11770 /* ClipboardNotification.swift */; };
 		88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */; };
@@ -63,6 +69,12 @@
 		88228A4026ACC87B00C78456 /* GeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorViewController.swift; sourceTree = "<group>"; };
 		88228A4226ACC88A00C78456 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		88228A4426ACC8C800C78456 /* MyVaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVaultCell.swift; sourceTree = "<group>"; };
+		882814C6273DC3A500D54B25 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
+		882814C8273DC3D600D54B25 /* SettingsSwitchOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchOption.swift; sourceTree = "<group>"; };
+		882814CA273DC3F300D54B25 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		882814D0273DD7FD00D54B25 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		882814D2273DD83900D54B25 /* ColorThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeViewController.swift; sourceTree = "<group>"; };
 		8836037A26E81E3C00788E43 /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		8848BFE1270CE565001EBBCE /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +85,7 @@
 		886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		88879ECB273B181500D6187D /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		88A2096526FD1D7700C11770 /* ClipboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardNotification.swift; sourceTree = "<group>"; };
 		88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
@@ -114,10 +126,9 @@
 		8806EA392706547000E4F51C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				88228A4426ACC8C800C78456 /* MyVaultCell.swift */,
 				8848BFE5270CF756001EBBCE /* OnboardingCell.swift */,
-				88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */,
-				88879ECB273B181500D6187D /* SwitchTableViewCell.swift */,
+				88228A4426ACC8C800C78456 /* MyVaultCell.swift */,
+				882814CE273DC6C100D54B25 /* SettingsTableViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -193,6 +204,9 @@
 				88228A3826ACC7C000C78456 /* Account.swift */,
 				88EFD93026D58D1400855F39 /* Keys.swift */,
 				8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */,
+				882814CA273DC3F300D54B25 /* Section.swift */,
+				882814C6273DC3A500D54B25 /* SettingsOption.swift */,
+				882814C8273DC3D600D54B25 /* SettingsSwitchOption.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,9 +231,29 @@
 				88228A3C26ACC80600C78456 /* MainTabBarController.swift */,
 				8859F06126B0460C00ED0FAB /* MyVault */,
 				88228A4026ACC87B00C78456 /* GeneratorViewController.swift */,
-				88228A4226ACC88A00C78456 /* SettingsViewController.swift */,
+				882814CF273DD7B800D54B25 /* Settings */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		882814CE273DC6C100D54B25 /* SettingsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */,
+				88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */,
+				88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */,
+			);
+			path = SettingsTableViewCell;
+			sourceTree = "<group>";
+		};
+		882814CF273DD7B800D54B25 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				88228A4226ACC88A00C78456 /* SettingsViewController.swift */,
+				882814D0273DD7FD00D54B25 /* LanguageViewController.swift */,
+				882814D2273DD83900D54B25 /* ColorThemeViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		8859F06126B0460C00ED0FAB /* MyVault */ = {
@@ -381,14 +415,19 @@
 				8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */,
 				8848BFE6270CF756001EBBCE /* OnboardingCell.swift in Sources */,
 				88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */,
+				882814CD273DC54100D54B25 /* BaseSettingsTableViewCell.swift in Sources */,
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,
 				88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */,
 				8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */,
 				8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIView+Extensions.swift in Sources */,
+				882814C7273DC3A500D54B25 /* SettingsOption.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
+				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,
+				882814C9273DC3D600D54B25 /* SettingsSwitchOption.swift in Sources */,
 				88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */,
-				88879ECC273B181500D6187D /* SwitchTableViewCell.swift in Sources */,
+				88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */,
+				882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */,
 				8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */,
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
@@ -396,6 +435,7 @@
 				886953B6271B1D8D002CB1AF /* UIViewController+Extensions.swift in Sources */,
 				88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */,
 				88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */,
+				882814CB273DC3F300D54B25 /* Section.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,
 				88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */,
 			);
