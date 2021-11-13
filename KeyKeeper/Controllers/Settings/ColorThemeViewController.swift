@@ -7,12 +7,25 @@
 
 import UIKit
 
-class ColorThemeViewController: UIViewController {
+class ColorThemeViewController: BaseChecklistTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.items = [
+            "Automatic",
+            "Light",
+            "Dark",
+        ].compactMap({
+            ChecklistOption(title: $0)
+        })
+        
+        configureNavigationBar()
+    }
+    
+    func configureNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "Color theme"
     }
     
 }

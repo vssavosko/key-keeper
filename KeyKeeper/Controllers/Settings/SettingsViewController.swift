@@ -93,16 +93,20 @@ class SettingsViewController: UIViewController {
                         model: SettingsOption(
                             title: "Change language",
                             icon: nil,
-                            iconBackgroundColor: .clear) {
-                                print("yo Change language")
+                            iconBackgroundColor: .clear) { [weak self] in
+                                let languageVC = LanguageViewController()
+                                
+                                self?.navigationController?.pushViewController(languageVC, animated: true)
                             }
                     ),
                     .staticCell(
                         model: SettingsOption(
                             title: "Change color theme",
                             icon: nil,
-                            iconBackgroundColor: .clear) {
-                                print("yo Change color theme")
+                            iconBackgroundColor: .clear) { [weak self] in
+                                let colorThemeVC = ColorThemeViewController()
+                                
+                                self?.navigationController?.pushViewController(colorThemeVC, animated: true)
                             }
                     ),
                     .staticCell(

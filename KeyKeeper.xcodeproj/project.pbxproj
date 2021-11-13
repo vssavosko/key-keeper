@@ -28,6 +28,8 @@
 		882814CD273DC54100D54B25 /* BaseSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */; };
 		882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814D0273DD7FD00D54B25 /* LanguageViewController.swift */; };
 		882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814D2273DD83900D54B25 /* ColorThemeViewController.swift */; };
+		882A5F41273FF7AB0001B7ED /* ChecklistOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A5F40273FF7AB0001B7ED /* ChecklistOption.swift */; };
+		882A5F43273FF7FF0001B7ED /* BaseChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A5F42273FF7FF0001B7ED /* BaseChecklistTableViewController.swift */; };
 		8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8836037A26E81E3C00788E43 /* EnvVars.swift */; };
 		8848BFE2270CE565001EBBCE /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE1270CE565001EBBCE /* Core.swift */; };
 		8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */; };
@@ -75,6 +77,8 @@
 		882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		882814D0273DD7FD00D54B25 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		882814D2273DD83900D54B25 /* ColorThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeViewController.swift; sourceTree = "<group>"; };
+		882A5F40273FF7AB0001B7ED /* ChecklistOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistOption.swift; sourceTree = "<group>"; };
+		882A5F42273FF7FF0001B7ED /* BaseChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChecklistTableViewController.swift; sourceTree = "<group>"; };
 		8836037A26E81E3C00788E43 /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		8848BFE1270CE565001EBBCE /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				882814CA273DC3F300D54B25 /* Section.swift */,
 				882814C6273DC3A500D54B25 /* SettingsOption.swift */,
 				882814C8273DC3D600D54B25 /* SettingsSwitchOption.swift */,
+				882A5F40273FF7AB0001B7ED /* ChecklistOption.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				88228A4226ACC88A00C78456 /* SettingsViewController.swift */,
+				882A5F42273FF7FF0001B7ED /* BaseChecklistTableViewController.swift */,
 				882814D0273DD7FD00D54B25 /* LanguageViewController.swift */,
 				882814D2273DD83900D54B25 /* ColorThemeViewController.swift */,
 			);
@@ -430,10 +436,12 @@
 				882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */,
 				8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */,
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
+				882A5F41273FF7AB0001B7ED /* ChecklistOption.swift in Sources */,
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
 				88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */,
 				886953B6271B1D8D002CB1AF /* UIViewController+Extensions.swift in Sources */,
 				88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */,
+				882A5F43273FF7FF0001B7ED /* BaseChecklistTableViewController.swift in Sources */,
 				88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */,
 				882814CB273DC3F300D54B25 /* Section.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,

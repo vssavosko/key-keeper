@@ -7,12 +7,24 @@
 
 import UIKit
 
-class LanguageViewController: UIViewController {
+class LanguageViewController: BaseChecklistTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.items = [
+            "Russian",
+            "English"
+        ].compactMap({
+            ChecklistOption(title: $0)
+        })
+        
+        configureNavigationBar()
+    }
+    
+    func configureNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "Language"
     }
     
 }
