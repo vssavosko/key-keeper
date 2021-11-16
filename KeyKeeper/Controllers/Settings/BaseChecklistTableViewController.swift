@@ -9,12 +9,14 @@ import UIKit
 
 class BaseChecklistTableViewController: UIViewController {
     
-    internal var items: [ChecklistOption] = []
+    internal var options: [ChecklistOption] = []
     
     private let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero,
+                                    style: .grouped)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ChecklistTableViewCell")
+        tableView.register(ChecklistTableViewCell.self,
+                           forCellReuseIdentifier: ChecklistTableViewCell.identifier)
         
         return tableView
     }()
@@ -39,15 +41,15 @@ class BaseChecklistTableViewController: UIViewController {
 extension BaseChecklistTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell", for: indexPath)
+        let option = options[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier,
+                                                 for: indexPath) as! ChecklistTableViewCell
         
-        cell.textLabel?.text = item.title
-        cell.accessoryType = item.isChecked ? .checkmark : .none
+        cell.configure(with: option)
         
         return cell
     }
@@ -55,13 +57,13 @@ extension BaseChecklistTableViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let item = items[indexPath.row]
+        let option = options[indexPath.row]
         
-        for item in items {
-            item.isChecked = false
+        for option in options {
+            option.isChecked = false
         }
         
-        item.isChecked = true
+        option.isChecked = true
         
         tableView.reloadData()
     }

@@ -12,14 +12,15 @@ class LanguageViewController: BaseChecklistTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.items = [
+        configureNavigationBar()
+        
+        self.options = [
+            "Automatic",
             "Russian",
             "English"
         ].compactMap({
             ChecklistOption(title: $0)
         })
-        
-        configureNavigationBar()
     }
     
     func configureNavigationBar() {

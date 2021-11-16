@@ -46,6 +46,7 @@
 		88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */; };
 		88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */; };
 		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
+		88DA6D6527445D5900168D94 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */; };
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
 		88EFD93326D5998500855F39 /* KeychainWrapper+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93226D5998500855F39 /* KeychainWrapper+Extensions.swift */; };
@@ -95,6 +96,7 @@
 		88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPasswordViewController.swift; sourceTree = "<group>"; };
 		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyKeeper.entitlements; sourceTree = "<group>"; };
 		88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		88EFD93026D58D1400855F39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */,
+				88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */,
 				88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */,
 				88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */,
 			);
@@ -443,6 +446,7 @@
 				88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */,
 				882A5F43273FF7FF0001B7ED /* BaseChecklistTableViewController.swift in Sources */,
 				88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */,
+				88DA6D6527445D5900168D94 /* ChecklistTableViewCell.swift in Sources */,
 				882814CB273DC3F300D54B25 /* Section.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,
 				88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */,

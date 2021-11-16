@@ -12,15 +12,15 @@ class ColorThemeViewController: BaseChecklistTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.items = [
+        configureNavigationBar()
+        
+        self.options = [
             "Automatic",
             "Light",
             "Dark",
         ].compactMap({
             ChecklistOption(title: $0)
         })
-        
-        configureNavigationBar()
     }
     
     func configureNavigationBar() {

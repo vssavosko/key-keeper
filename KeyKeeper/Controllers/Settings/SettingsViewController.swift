@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 enum SettingsOptionType {
     
@@ -113,8 +114,65 @@ class SettingsViewController: UIViewController {
                         model: SettingsOption(
                             title: "Change Master Password",
                             icon: nil,
-                            iconBackgroundColor: .clear) {
-                                print("yo Change Master Password")
+                            iconBackgroundColor: .clear) { [weak self] in
+                                let masterPassword = KeychainWrapper.standard.string(forKey: Keys.masterPassword)
+                                let alert = UIAlertController(title: "Change Master Password",
+                                                              message: nil,
+                                                              preferredStyle: .alert)
+                                
+                                alert.addTextField { field in
+                                    field.placeholder = "Current password"
+                                    field.isSecureTextEntry = true
+                                }
+                                
+                                alert.addTextField { field in
+                                    field.placeholder = "New password"
+                                    field.isSecureTextEntry = true
+                                }
+                                
+                                alert.addTextField { field in
+                                    field.placeholder = "Repeat new password"
+                                    field.isSecureTextEntry = true
+                                }
+                                
+                                alert.addAction(UIAlertAction(title: "Cancel",
+                                                              style: .cancel,
+                                                              handler: nil))
+                                
+                                alert.addAction(
+                                    UIAlertAction(
+                                        title: "Change",
+                                        style: .default,
+                                        handler: { [weak self] _ in
+                                            guard let fields = alert.textFields, fields.count == 3 else { return }
+                                            
+                                            let currentPasswordField = fields[0]
+                                            let newPasswordField = fields[1]
+                                            let repeatNewPasswordField = fields[2]
+                                            
+                                            guard let currentPassword = currentPasswordField.text, !currentPassword.isEmpty,
+                                                  let newPassword = newPasswordField.text, !newPassword.isEmpty,
+                                                  let repeatNewPassword = repeatNewPasswordField.text, !repeatNewPassword.isEmpty
+                                            else {
+                                                return self!.triggerNotification(text: "Fill in the fields!")
+                                            }
+                                            
+                                            if currentPassword != masterPassword {
+                                                return self!.triggerNotification(text: "Invalid current password")
+                                            }
+                                            
+                                            if newPassword != repeatNewPassword {
+                                                return self!.triggerNotification(text: "Passwords do not match!")
+                                            }
+                                            
+                                            KeychainWrapper.standard.set(newPassword, forKey: Keys.masterPassword)
+                                            
+                                            return self!.triggerNotification(text: "Password changed")
+                                        }
+                                    )
+                                )
+                                
+                                self?.present(alert, animated: true)
                             }
                     )
                 ]
