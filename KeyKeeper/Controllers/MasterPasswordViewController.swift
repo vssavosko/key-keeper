@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class MasterPasswordViewController: UIViewController {
+    
+    private let userDefaults = UserDefaults.standard
     
     var completion: ((String) -> Void)!
     
@@ -93,6 +96,9 @@ class MasterPasswordViewController: UIViewController {
     }
     
     @objc private func tapOnSaveButton() {
+        let context = LAContext()
+        var error: NSError?
+        
         guard let password = passwordField.text,
               let repeatPassword = repeatPasswordField.text
         else { return }
@@ -105,9 +111,21 @@ class MasterPasswordViewController: UIViewController {
             return self.triggerNotification(text: "Passwords do not match!")
         }
         
-        dismiss(animated: true)
-        
-        completion(password)
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Please authorize with Face ID!"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [weak self] (success, error) in DispatchQueue.main.async {
+                    if success && error == nil {
+                        self?.userDefaults.set(true, forKey: Keys.biometricSwitchState)
+                    }
+                    
+                    self?.dismiss(animated: true)
+                    
+                    self?.completion(password)
+                }
+            }
+        }
     }
     
 }

@@ -11,6 +11,8 @@ import SwiftKeychainWrapper
 
 class AuthorizationViewController: UIViewController {
     
+    private let userDefaults = UserDefaults.standard
+    
     private let imageView = Generator.generateImageView(image: UIImage(imageLiteralResourceName: "fingerprint_logo"))
     private let passwordField = Generator.generateField(contentType: .password,
                                                         textColor: .white,
@@ -27,7 +29,30 @@ class AuthorizationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        logInUsingBiometricData()
+        if userDefaults.bool(forKey: Keys.biometricSwitchState) {
+            let context = LAContext()
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                let reason = "Please authorize with Face ID!"
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                    [weak self] (success, error) in DispatchQueue.main.async {
+                        guard success, error == nil else {
+                            self?.presentAlert(title: "Failed to Authenticate",
+                                               message: "Please try again.")
+                            
+                            return
+                        }
+                        
+                        self?.dismiss(animated: true)
+                    }
+                }
+            } else {
+                self.presentAlert(title: "Unavailable",
+                                  message: "Authorization using biometric is not possible. Enable this feature in Settings -> KeyKeeper")
+            }
+        }
     }
     
     private func configureSubviews() {
@@ -58,31 +83,6 @@ class AuthorizationViewController: UIViewController {
                              bottom: nil,
                              trailing: view.trailingAnchor,
                              padding: UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30))
-    }
-    
-    private func logInUsingBiometricData() {
-        let context = LAContext()
-        var error: NSError? = nil
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Please authorize with Face ID!"
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
-                [weak self] (success, error) in DispatchQueue.main.async {
-                    guard success, error == nil else {
-                        self?.presentAlert(title: "Failed to Authenticate",
-                                           message: "Please try again.")
-                        
-                        return
-                    }
-                    
-                    self?.dismiss(animated: true)
-                }
-            }
-        } else {
-            self.presentAlert(title: "Unavailable",
-                              message: "You can not use this feature.")
-        }
     }
     
     @objc private func tapOnContinueButton() {

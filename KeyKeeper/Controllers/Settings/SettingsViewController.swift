@@ -17,6 +17,8 @@ enum SettingsOptionType {
 
 class SettingsViewController: UIViewController {
     
+    private let userDefaults = UserDefaults.standard
+    
     private var models = [Section]()
     
     private let tableView: UITableView = {
@@ -67,22 +69,10 @@ class SettingsViewController: UIViewController {
                             title: "Touch ID / Face ID",
                             icon: nil,
                             iconBackgroundColor: .clear,
-                            isOn: false) {
-                                print("Touch ID / Face ID")
-                            }
-                    )
-                ]
-            ),
-            Section(
-                title: "CLEAR THE CLIPBOARD AFTER 30 SECONDS",
-                options: [
-                    .switchCell(
-                        model: SettingsSwitchOption(
-                            title: "Clear the clipboard",
-                            icon: nil,
-                            iconBackgroundColor: .clear,
-                            isOn: false) {
-                                print("Clear the clipboard")
+                            isOn: userDefaults.bool(forKey: Keys.biometricSwitchState)) { [weak self] in
+                                guard let state = self?.userDefaults.bool(forKey: Keys.biometricSwitchState) else { return }
+                                
+                                self?.userDefaults.set(!state, forKey: Keys.biometricSwitchState)
                             }
                     )
                 ]
