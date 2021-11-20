@@ -35,6 +35,7 @@
 		8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */; };
 		8848BFE6270CF756001EBBCE /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE5270CF756001EBBCE /* OnboardingCell.swift */; };
 		8848BFE8270CFF15001EBBCE /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */; };
+		884CACD0274942FF005B5892 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884CACCF274942FF005B5892 /* ColorTheme.swift */; };
 		8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852CDFC27164885008CE83E /* AuthorizationViewController.swift */; };
 		8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateViewController.swift */; };
 		886953B6271B1D8D002CB1AF /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */; };
@@ -85,6 +86,7 @@
 		8848BFE3270CE651001EBBCE /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		8848BFE5270CF756001EBBCE /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		884CACCF274942FF005B5892 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		8852CDFC27164885008CE83E /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		8859F06226B04A9400ED0FAB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
+				884CACCF274942FF005B5892 /* ColorTheme.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				882814CB273DC3F300D54B25 /* Section.swift in Sources */,
 				88228A3F26ACC84000C78456 /* MyVaultViewController.swift in Sources */,
 				88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */,
+				884CACD0274942FF005B5892 /* ColorTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

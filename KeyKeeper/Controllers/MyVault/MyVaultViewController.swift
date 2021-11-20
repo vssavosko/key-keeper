@@ -10,6 +10,8 @@ import SwiftKeychainWrapper
 
 class MyVaultViewController: UIViewController {
     
+    private let userDefaults = UserDefaults.standard
+    
     private let searchController = UISearchController(searchResultsController: nil)
     private let tableView = UITableView()
     
@@ -28,6 +30,9 @@ class MyVaultViewController: UIViewController {
         super.viewDidLoad()
         
         if Core.shared.isFirstLaunch() {
+            userDefaults.set(0, forKey: Keys.language)
+            userDefaults.set(0, forKey: Keys.theme)
+            
             presentViewController(viewController: OnboardingViewController())
         } else {
             presentViewController(viewController: AuthorizationViewController())

@@ -45,13 +45,7 @@ extension BaseChecklistTableViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let option = options[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier,
-                                                 for: indexPath) as! ChecklistTableViewCell
-        
-        cell.configure(with: option)
-        
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
