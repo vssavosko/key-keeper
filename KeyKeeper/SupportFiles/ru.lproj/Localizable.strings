@@ -1,0 +1,15 @@
+/* 
+ Localizable.strings
+ KeyKeeper
+ 
+ Created by Владислав Савосько on 23.11.2021.
+ 
+ */
+
+"My Vault" = "Моё хранилище";
+"Settings" = "Настройки";
+"Change language" = "Сменить язык";
+"Language" = "Язык";
+"Automatic" = "Системный";
+"Russian" = "Русский";
+"English" = "Английский";
