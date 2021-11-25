@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 protocol UpdateAccountDelegate {
     
@@ -22,12 +23,12 @@ class DetailViewController: UIViewController {
     
     var accountData: Account!
     
-    private let loginLabel = Generator.generateLabel(text: "Email or username")
+    private let loginLabel = Generator.generateLabel(text: "Email or username".localized())
     private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = Generator.generateLabel(text: "Password")
+    private let passwordLabel = Generator.generateLabel(text: "Password".localized())
     private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
     private let passwordButton = Generator.passwordButton
-    private let websiteLabel = Generator.generateLabel(text: "Website")
+    private let websiteLabel = Generator.generateLabel(text: "Website".localized())
     private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
     private let createdLabel = Generator.generateLabel(text: "", textAlignment: .center, font: .systemFont(ofSize: 13, weight: .regular))
     private let lastModifiedLabel = Generator.generateLabel(text: "", textAlignment: .center, font: .systemFont(ofSize: 13, weight: .regular))
@@ -49,7 +50,10 @@ class DetailViewController: UIViewController {
     
     func configureNavigationBar() {
         navigationItem.title = accountData.title
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tapOnEdit))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit".localized(),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(tapOnEdit))
     }
     
     func configureSubviews() {
@@ -85,8 +89,8 @@ class DetailViewController: UIViewController {
         createdLabel.isHidden = accountData.createdAt == ""
         lastModifiedLabel.isHidden = accountData.updatedAt == ""
         
-        createdLabel.text = "Created: \(DateFormatter.changeDateFormatFor(date: accountData.createdAt))"
-        lastModifiedLabel.text = "Last modified: \(DateFormatter.changeDateFormatFor(date: accountData.updatedAt))"
+        createdLabel.text = "\("Created".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.createdAt))"
+        lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.updatedAt))"
         
         setupLabelConstraints()
     }
@@ -192,7 +196,7 @@ class DetailViewController: UIViewController {
                                          createdAt: createdAt,
                                          updatedAt: dateFormatter.string(from: Date()))
             
-            lastModifiedLabel.text = "Last modified: \(DateFormatter.changeDateFormatFor(date: updatedAccount.updatedAt))"
+            lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: updatedAccount.updatedAt))"
             
             if lastModifiedLabel.isHidden {
                 lastModifiedLabel.isHidden = false

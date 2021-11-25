@@ -7,6 +7,7 @@
 
 import UIKit
 import LocalAuthentication
+import Localize_Swift
 
 class MasterPasswordViewController: UIViewController {
     
@@ -14,23 +15,23 @@ class MasterPasswordViewController: UIViewController {
     
     var completion: ((String) -> Void)!
     
-    private let titleLabel = Generator.generateLabel(text: "First, create a Master Password",
+    private let titleLabel = Generator.generateLabel(text: "First, create a Master Password".localized(),
                                                      textColor: .black,
                                                      font: .systemFont(ofSize: 22, weight: .semibold),
                                                      numberOfLines: 0)
-    private let descriptionLabel = Generator.generateLabel(text: "For your safety, we do not keep copies of",
+    private let descriptionLabel = Generator.generateLabel(text: "For your safety, we do not keep copies of your password".localized(),
                                                            textColor: .systemBlue,
                                                            font: .systemFont(ofSize: 14, weight: .regular),
                                                            numberOfLines: 0)
     private let passwordField = Generator.generateField(contentType: .password,
                                                         textColor: .black,
-                                                        placeholder: "Enter strong master password",
+                                                        placeholder: "Enter strong master password".localized(),
                                                         placeholderColor: .systemGray)
     private let repeatPasswordField = Generator.generateField(contentType: .password,
                                                               textColor: .black,
-                                                              placeholder: "Repeat master password",
+                                                              placeholder: "Repeat master password".localized(),
                                                               placeholderColor: .systemGray)
-    private let saveButton = Generator.roundButton(text: "Save")
+    private let saveButton = Generator.roundButton(text: "Save".localized())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,15 +105,15 @@ class MasterPasswordViewController: UIViewController {
         else { return }
         
         guard !password.isEmpty && !repeatPassword.isEmpty else {
-            return self.triggerNotification(text: "Fill in the fields!")
+            return self.triggerNotification(text: "Fill in the fields!".localized())
         }
         
         guard password == repeatPassword else {
-            return self.triggerNotification(text: "Passwords do not match!")
+            return self.triggerNotification(text: "Passwords do not match!".localized())
         }
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Please authorize with Face ID!"
+            let reason = "Please authorize with biometrics!".localized()
             
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                 [weak self] (success, error) in DispatchQueue.main.async {

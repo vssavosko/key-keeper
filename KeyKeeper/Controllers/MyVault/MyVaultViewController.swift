@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import Localize_Swift
 
 class MyVaultViewController: UIViewController {
     
@@ -55,13 +56,16 @@ class MyVaultViewController: UIViewController {
     
     func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "My Vault"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createAccount))
+        navigationItem.title = "My Vault".localized()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(createAccount))
         
         configureSearchBar()
     }
     
     func configureSearchBar() {
+        searchController.searchBar.placeholder = "Search".localized()
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         

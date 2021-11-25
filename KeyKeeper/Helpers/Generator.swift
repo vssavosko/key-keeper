@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 enum FieldContentType {
     
@@ -161,7 +162,7 @@ class Generator {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Generate password", for: .normal)
+        button.setTitle("Generate password".localized(), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
         

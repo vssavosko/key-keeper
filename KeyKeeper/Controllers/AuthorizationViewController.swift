@@ -8,6 +8,7 @@
 import UIKit
 import LocalAuthentication
 import SwiftKeychainWrapper
+import Localize_Swift
 
 class AuthorizationViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class AuthorizationViewController: UIViewController {
     private let imageView = Generator.generateImageView(image: UIImage(imageLiteralResourceName: "fingerprint_logo"))
     private let passwordField = Generator.generateField(contentType: .password,
                                                         textColor: .white,
-                                                        placeholder: "Master password",
+                                                        placeholder: "Master password".localized(),
                                                         placeholderColor: .systemGray)
     
     override func viewDidLoad() {
@@ -34,13 +35,13 @@ class AuthorizationViewController: UIViewController {
             var error: NSError?
             
             if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                let reason = "Please authorize with Face ID!"
+                let reason = "Please authorize with biometrics!".localized()
                 
                 context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                     [weak self] (success, error) in DispatchQueue.main.async {
                         guard success, error == nil else {
-                            self?.presentAlert(title: "Failed to Authenticate",
-                                               message: "Please try again.")
+                            self?.presentAlert(title: "Failed to authenticate".localized(),
+                                               message: "Please try again".localized())
                             
                             return
                         }
@@ -49,8 +50,8 @@ class AuthorizationViewController: UIViewController {
                     }
                 }
             } else {
-                self.presentAlert(title: "Unavailable",
-                                  message: "Authorization using biometric is not possible. Enable this feature in Settings -> KeyKeeper")
+                self.presentAlert(title: "Unavailable feature".localized(),
+                                  message: "Authorization using biometric is not possible. Enable this feature in Settings -> KeyKeeper".localized())
             }
         }
     }
@@ -93,7 +94,7 @@ class AuthorizationViewController: UIViewController {
         if enteredPassword == masterPassword {
             dismiss(animated: true)
         } else {
-            self.triggerNotification(text: "Invalid password!")
+            self.triggerNotification(text: "Invalid password!".localized())
         }
     }
     

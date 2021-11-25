@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class ColorThemeViewController: BaseChecklistTableViewController {
     
@@ -15,19 +16,22 @@ class ColorThemeViewController: BaseChecklistTableViewController {
         super.viewDidLoad()
         
         configureNavigationBar()
-        
+        configureElements()
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "Color theme".localized()
+    }
+    
+    private func configureElements() {
         self.options = [
-            "Automatic",
-            "Light",
-            "Dark",
+            "System theme".localized(),
+            "Light".localized(),
+            "Dark".localized(),
         ].compactMap({
             ChecklistOption(title: $0)
         })
-    }
-    
-    func configureNavigationBar() {
-        navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = "Color theme"
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

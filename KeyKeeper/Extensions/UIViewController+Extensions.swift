@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 extension UIViewController {
     
@@ -14,7 +15,7 @@ extension UIViewController {
                                       message: message,
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Dismiss",
+        alert.addAction(UIAlertAction(title: "Dismiss".localized(),
                                       style: .cancel,
                                       handler: nil))
         

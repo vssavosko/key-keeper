@@ -12,22 +12,18 @@ class LanguageViewController: BaseChecklistTableViewController {
     
     private let userDefaults = UserDefaults.standard
     
-    var automatic: String!
-    var russian: String!
-    var english: String!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setText()
         configureNavigationBar()
+        configureElements()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(setText),
+                                               selector: #selector(updateRootViewController),
                                                name: NSNotification.Name(LCLLanguageChangeNotification),
                                                object: nil)
     }
@@ -38,24 +34,37 @@ class LanguageViewController: BaseChecklistTableViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func setText() {
-        navigationItem.title = "Language".localized()
-
-        automatic = "Automatic".localized()
-        russian = "Russian".localized()
-        english = "English".localized()
+    @objc func updateRootViewController() {
+        let tabBarController = MainTabBarController()
         
-        self.options = [
-            automatic,
-            russian,
-            english,
-        ].compactMap({
-            ChecklistOption(title: $0)
-        })
+        let myVaultVC = tabBarController.createNavController(vc: MyVaultViewController(),
+                                                             image: "lock.fill",
+                                                             title: "My Vault".localized())
+        let generatorVC = tabBarController.createNavController(vc: GeneratorViewController(),
+                                                               image: "key.fill",
+                                                               title: "Generator".localized())
+        let settingsVC = tabBarController.createNavController(vc: SettingsViewController(),
+                                                              image: "gearshape.fill",
+                                                              title: "Settings".localized())
+        
+        tabBarController.setViewControllers([myVaultVC, generatorVC, settingsVC], animated: false)
+        
+        self.view.window?.rootViewController = tabBarController
     }
     
     func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "Language".localized()
+    }
+    
+    private func configureElements() {
+        self.options = [
+            "System language".localized(),
+            "Russian".localized(),
+            "English".localized(),
+        ].compactMap({
+            ChecklistOption(title: $0)
+        })
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

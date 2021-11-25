@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import Localize_Swift
 
 enum SettingsOptionType {
     
@@ -49,7 +50,7 @@ class SettingsViewController: UIViewController {
     
     private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Settings"
+        navigationItem.title = "Settings".localized()
     }
     
     private func configureSubviews() {
@@ -62,7 +63,7 @@ class SettingsViewController: UIViewController {
         
         self.models = [
             Section(
-                title: "PERIODICALLY REQUESTED FOR SECURITY",
+                title: "Biometrics management".localized(),
                 options: [
                     .switchCell(
                         model: SettingsSwitchOption(
@@ -78,11 +79,11 @@ class SettingsViewController: UIViewController {
                 ]
             ),
             Section(
-                title: "Other",
+                title: "Other".localized(),
                 options: [
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change language",
+                            title: "Change language".localized(),
                             icon: nil,
                             iconBackgroundColor: .clear) { [weak self] in
                                 let languageVC = LanguageViewController()
@@ -92,7 +93,7 @@ class SettingsViewController: UIViewController {
                     ),
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change color theme",
+                            title: "Change color theme".localized(),
                             icon: nil,
                             iconBackgroundColor: .clear) { [weak self] in
                                 let colorThemeVC = ColorThemeViewController()
@@ -102,36 +103,36 @@ class SettingsViewController: UIViewController {
                     ),
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change Master Password",
+                            title: "Change Master Password".localized(),
                             icon: nil,
                             iconBackgroundColor: .clear) { [weak self] in
                                 let masterPassword = KeychainWrapper.standard.string(forKey: Keys.masterPassword)
-                                let alert = UIAlertController(title: "Change Master Password",
+                                let alert = UIAlertController(title: "Change Master Password".localized(),
                                                               message: nil,
                                                               preferredStyle: .alert)
                                 
                                 alert.addTextField { field in
-                                    field.placeholder = "Current password"
+                                    field.placeholder = "Current password".localized()
                                     field.isSecureTextEntry = true
                                 }
                                 
                                 alert.addTextField { field in
-                                    field.placeholder = "New password"
+                                    field.placeholder = "New password".localized()
                                     field.isSecureTextEntry = true
                                 }
                                 
                                 alert.addTextField { field in
-                                    field.placeholder = "Repeat new password"
+                                    field.placeholder = "Repeat new password".localized()
                                     field.isSecureTextEntry = true
                                 }
                                 
-                                alert.addAction(UIAlertAction(title: "Cancel",
+                                alert.addAction(UIAlertAction(title: "Cancel".localized(),
                                                               style: .cancel,
                                                               handler: nil))
                                 
                                 alert.addAction(
                                     UIAlertAction(
-                                        title: "Change",
+                                        title: "Change".localized(),
                                         style: .default,
                                         handler: { [weak self] _ in
                                             guard let fields = alert.textFields, fields.count == 3 else { return }
@@ -144,20 +145,20 @@ class SettingsViewController: UIViewController {
                                                   let newPassword = newPasswordField.text, !newPassword.isEmpty,
                                                   let repeatNewPassword = repeatNewPasswordField.text, !repeatNewPassword.isEmpty
                                             else {
-                                                return self!.triggerNotification(text: "Fill in the fields!")
+                                                return self!.triggerNotification(text: "Fill in the fields!".localized())
                                             }
                                             
                                             if currentPassword != masterPassword {
-                                                return self!.triggerNotification(text: "Invalid current password")
+                                                return self!.triggerNotification(text: "Invalid current password".localized())
                                             }
                                             
                                             if newPassword != repeatNewPassword {
-                                                return self!.triggerNotification(text: "Passwords do not match!")
+                                                return self!.triggerNotification(text: "Passwords do not match!".localized())
                                             }
                                             
                                             KeychainWrapper.standard.set(newPassword, forKey: Keys.masterPassword)
                                             
-                                            return self!.triggerNotification(text: "Password changed")
+                                            return self!.triggerNotification(text: "Password changed".localized())
                                         }
                                     )
                                 )

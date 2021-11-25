@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 protocol AddAccountDelegate {
     
@@ -19,15 +20,15 @@ class CreateViewController: UIViewController {
     
     var delegate: AddAccountDelegate?
     
-    private let nameLabel = Generator.generateLabel(text: "Name")
+    private let nameLabel = Generator.generateLabel(text: "Name".localized())
     private let nameField = Generator.generateField(placeholder: "Pied Piper")
-    private let loginLabel = Generator.generateLabel(text: "Email or username")
+    private let loginLabel = Generator.generateLabel(text: "Email or username".localized())
     private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = Generator.generateLabel(text: "Password")
+    private let passwordLabel = Generator.generateLabel(text: "Password".localized())
     private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
     private let passwordButton = Generator.passwordButton
     private let generatePasswordButton = Generator.generatePasswordButton
-    private let websiteLabel = Generator.generateLabel(text: "Website")
+    private let websiteLabel = Generator.generateLabel(text: "Website".localized())
     private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
     
     override func viewDidLoad() {
@@ -42,9 +43,15 @@ class CreateViewController: UIViewController {
     
     func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = "Create"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(tapOnCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tapOnSave))
+        navigationItem.title = "Create".localized()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel".localized(),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(tapOnCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(tapOnSave))
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     

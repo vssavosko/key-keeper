@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class MainTabBarController: UITabBarController {
     

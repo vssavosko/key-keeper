@@ -7,19 +7,20 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import Localize_Swift
 
 class OnboardingViewController: UIViewController {
     
     private var slides = [
         OnboardingSlide(image: #imageLiteral(resourceName: "shield_eye"),
-                        title: "Strictly confidential",
-                        description: "The vault is protected by world encryption level. How safe is it that even we does not have access to your data."),
+                        title: "Strictly confidential".localized(),
+                        description: "All your passwords are securely protected. It is so secure that even we don not have access to your data.".localized()),
         OnboardingSlide(image: #imageLiteral(resourceName: "cloud_lock"),
-                        title: "Reliable and safe",
-                        description: "All the information you add to the app is encrypted and stored only on your device."),
+                        title: "Reliable and safe".localized(),
+                        description: "All data that you enter into the vault is encrypted and stored only on your device.".localized()),
         OnboardingSlide(image: #imageLiteral(resourceName: "fingerprint"),
-                        title: "There is nothing more to forget",
-                        description: "You only remember one Master Password and the app remembers all the others!")
+                        title: "There is nothing more to forget".localized(),
+                        description: "You only remember one Master Password and the app remembers all the others!".localized())
     ]
     
     private var currentPage = 0 {
@@ -27,9 +28,9 @@ class OnboardingViewController: UIViewController {
             pageControl.currentPage = currentPage
             
             if currentPage == slides.count - 1 {
-                onboardingButton.setTitle("Set master password", for: .normal)
+                onboardingButton.setTitle("Set the master password".localized(), for: .normal)
             } else {
-                onboardingButton.setTitle("Next", for: .normal)
+                onboardingButton.setTitle("Next".localized(), for: .normal)
             }
         }
     }
@@ -59,7 +60,7 @@ class OnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Next", for: .normal)
+        button.setTitle("Next".localized(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 25
