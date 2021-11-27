@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class ClipboardNotification: UIView {
     
@@ -23,10 +24,10 @@ class ClipboardNotification: UIView {
         
         return view
     }()
-    var messageLabel = Generator.generateLabel(text: "Password copied!",
-                                        textAlignment: .center,
-                                        textColor: .label,
-                                        font: .systemFont(ofSize: 13, weight: .semibold))
+    var messageLabel = Generator.generateLabel(text: "Password copied".localized(),
+                                               textAlignment: .center,
+                                               textColor: .label,
+                                               font: .systemFont(ofSize: 13, weight: .semibold))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,9 +53,9 @@ class ClipboardNotification: UIView {
                                 size: CGSize(width: 0, height: 50))
         
         messageLabel.anchor(top: notificationView.topAnchor,
-                     leading: notificationView.leadingAnchor,
-                     bottom: notificationView.bottomAnchor,
-                     trailing: notificationView.trailingAnchor)
+                            leading: notificationView.leadingAnchor,
+                            bottom: notificationView.bottomAnchor,
+                            trailing: notificationView.trailingAnchor)
     }
     
     private func animateIn() {

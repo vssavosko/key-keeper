@@ -7,8 +7,11 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import Localize_Swift
 
 class MyVaultViewController: UIViewController {
+    
+    private let userDefaults = UserDefaults.standard
     
     private let searchController = UISearchController(searchResultsController: nil)
     private let tableView = UITableView()
@@ -27,19 +30,18 @@ class MyVaultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureView()
-        configureNavigationBar()
-        configureTableView()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
         if Core.shared.isFirstLaunch() {
+            userDefaults.set(0, forKey: Keys.language)
+            userDefaults.set(0, forKey: Keys.theme)
+            
             presentViewController(viewController: OnboardingViewController())
         } else {
             presentViewController(viewController: AuthorizationViewController())
         }
+        
+        configureView()
+        configureNavigationBar()
+        configureTableView()
     }
     
     private func presentViewController<T: UIViewController>(viewController: T) {
@@ -54,13 +56,16 @@ class MyVaultViewController: UIViewController {
     
     func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "My Vault"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createAccount))
+        navigationItem.title = "My Vault".localized()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(createAccount))
         
         configureSearchBar()
     }
     
     func configureSearchBar() {
+        searchController.searchBar.placeholder = "Search".localized()
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         

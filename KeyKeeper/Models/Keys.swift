@@ -15,5 +15,8 @@ struct Keys {
     static let website = "website"
     static let createdAt = "createdAt"
     static let updatedAt = "updatedAt"
+    static let biometricSwitchState = "biometricSwitchState"
+    static let language = "language"
+    static let theme = "theme"
     
 }

@@ -5,13 +5,6 @@
 //  Created by Владислав Савосько on 08.09.2021.
 //
 
-enum AppMode: String {
-    
-    case DEV = "development"
-    case PROD = "production"
-    
-}
-
 class EnvVars {
     
     static let shared: EnvVars = EnvVars()
@@ -20,9 +13,9 @@ class EnvVars {
     
     func setUpEnvVars() {
         #if DEV
-        self.appMode = AppMode.DEV.rawValue
+        self.appMode = AppModeEnum.DEV.rawValue
         #elseif PROD
-        self.appMode = AppMode.PROD.rawValue
+        self.appMode = AppModeEnum.PROD.rawValue
         #endif
     }
     

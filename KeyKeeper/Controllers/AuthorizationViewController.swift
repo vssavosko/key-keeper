@@ -8,13 +8,16 @@
 import UIKit
 import LocalAuthentication
 import SwiftKeychainWrapper
+import Localize_Swift
 
 class AuthorizationViewController: UIViewController {
+    
+    private let userDefaults = UserDefaults.standard
     
     private let imageView = Generator.generateImageView(image: UIImage(imageLiteralResourceName: "fingerprint_logo"))
     private let passwordField = Generator.generateField(contentType: .password,
                                                         textColor: .white,
-                                                        placeholder: "Master password",
+                                                        placeholder: "Master password".localized(),
                                                         placeholderColor: .systemGray)
     
     override func viewDidLoad() {
@@ -27,7 +30,30 @@ class AuthorizationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        logInUsingBiometricData()
+        if userDefaults.bool(forKey: Keys.biometricSwitchState) {
+            let context = LAContext()
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                let reason = "Please authorize with biometrics".localized()
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                    [weak self] (success, error) in DispatchQueue.main.async {
+                        guard success, error == nil else {
+                            self?.presentAlert(title: "Failed to authenticate".localized(),
+                                               message: "Please try again".localized())
+                            
+                            return
+                        }
+                        
+                        self?.dismiss(animated: true)
+                    }
+                }
+            } else {
+                self.presentAlert(title: "Unavailable feature".localized(),
+                                  message: "Authorization using biometric is not possible. Enable this feature in Settings -> KeyKeeper".localized())
+            }
+        }
     }
     
     private func configureSubviews() {
@@ -36,7 +62,7 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func configureElements() {
-        Generator.generateBottomLineFor(field: passwordField,
+        Generator.generateBottomLineFor(element: passwordField,
                                         backgroundColor: .black,
                                         lineColor: .white)
         
@@ -60,43 +86,6 @@ class AuthorizationViewController: UIViewController {
                              padding: UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30))
     }
     
-    private func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Dismiss",
-                                      style: .cancel,
-                                      handler: nil))
-        
-        present(alert, animated: true)
-    }
-    
-    private func logInUsingBiometricData() {
-        let context = LAContext()
-        var error: NSError? = nil
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Please authorize with Face ID!"
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
-                [weak self] (success, error) in DispatchQueue.main.async {
-                    guard success, error == nil else {
-                        self?.presentAlert(title: "Failed to Authenticate",
-                                           message: "Please try again.")
-                        
-                        return
-                    }
-                    
-                    self?.dismiss(animated: true)
-                }
-            }
-        } else {
-            self.presentAlert(title: "Unavailable",
-                              message: "You can not use this feature.")
-        }
-    }
-    
     @objc private func tapOnContinueButton() {
         guard let enteredPassword = passwordField.text else { return }
         
@@ -105,7 +94,7 @@ class AuthorizationViewController: UIViewController {
         if enteredPassword == masterPassword {
             dismiss(animated: true)
         } else {
-            self.triggerNotification(text: "Invalid password!")
+            self.triggerNotification(text: "Invalid password".localized())
         }
     }
     

@@ -6,28 +6,32 @@
 //
 
 import UIKit
+import LocalAuthentication
+import Localize_Swift
 
 class MasterPasswordViewController: UIViewController {
     
+    private let userDefaults = UserDefaults.standard
+    
     var completion: ((String) -> Void)!
     
-    private let titleLabel = Generator.generateLabel(text: "First, create a Master Password",
+    private let titleLabel = Generator.generateLabel(text: "First, create a Master Password".localized(),
                                                      textColor: .black,
                                                      font: .systemFont(ofSize: 22, weight: .semibold),
                                                      numberOfLines: 0)
-    private let descriptionLabel = Generator.generateLabel(text: "For your safety, we do not keep copies of",
+    private let descriptionLabel = Generator.generateLabel(text: "For your safety, we do not keep copies of your password".localized(),
                                                            textColor: .systemBlue,
                                                            font: .systemFont(ofSize: 14, weight: .regular),
                                                            numberOfLines: 0)
     private let passwordField = Generator.generateField(contentType: .password,
                                                         textColor: .black,
-                                                        placeholder: "Enter strong master password",
+                                                        placeholder: "Enter strong master password".localized(),
                                                         placeholderColor: .systemGray)
     private let repeatPasswordField = Generator.generateField(contentType: .password,
                                                               textColor: .black,
-                                                              placeholder: "Repeat master password",
+                                                              placeholder: "Repeat master password".localized(),
                                                               placeholderColor: .systemGray)
-    private let saveButton = Generator.roundButton(text: "Save")
+    private let saveButton = Generator.roundButton(text: "Save".localized())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +51,12 @@ class MasterPasswordViewController: UIViewController {
     }
     
     private func configureElements() {
-        Generator.generateBottomLineFor(field: passwordField, backgroundColor: .white, lineColor: .lightGray)
-        Generator.generateBottomLineFor(field: repeatPasswordField, backgroundColor: .white, lineColor: .lightGray)
+        Generator.generateBottomLineFor(element: passwordField,
+                                        backgroundColor: .white,
+                                        lineColor: .lightGray)
+        Generator.generateBottomLineFor(element: repeatPasswordField,
+                                        backgroundColor: .white,
+                                        lineColor: .lightGray)
         
         saveButton.addTarget(self, action: #selector(tapOnSaveButton), for: .touchUpInside)
         
@@ -89,21 +97,36 @@ class MasterPasswordViewController: UIViewController {
     }
     
     @objc private func tapOnSaveButton() {
+        let context = LAContext()
+        var error: NSError?
+        
         guard let password = passwordField.text,
               let repeatPassword = repeatPasswordField.text
         else { return }
         
         guard !password.isEmpty && !repeatPassword.isEmpty else {
-            return self.triggerNotification(text: "Fill in the fields!")
+            return self.triggerNotification(text: "Fill in the fields".localized())
         }
         
         guard password == repeatPassword else {
-            return self.triggerNotification(text: "Passwords do not match!")
+            return self.triggerNotification(text: "Passwords do not match".localized())
         }
         
-        dismiss(animated: true)
-        
-        completion(password)
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Please authorize with biometrics".localized()
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [weak self] (success, error) in DispatchQueue.main.async {
+                    if success && error == nil {
+                        self?.userDefaults.set(true, forKey: Keys.biometricSwitchState)
+                    }
+                    
+                    self?.dismiss(animated: true)
+                    
+                    self?.completion(password)
+                }
+            }
+        }
     }
     
 }

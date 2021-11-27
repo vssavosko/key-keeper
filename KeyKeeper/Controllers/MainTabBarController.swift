@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class MainTabBarController: UITabBarController {
     
@@ -27,7 +28,7 @@ extension MainTabBarController {
         let navController = UINavigationController(rootViewController: vc)
         
         navController.tabBarItem.image = UIImage(systemName: image)
-        navController.tabBarItem.title = title
+        navController.tabBarItem.title = title.localized()
         
         return navController
     }

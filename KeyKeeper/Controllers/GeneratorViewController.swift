@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class GeneratorViewController: UIViewController {
     
@@ -71,8 +72,8 @@ class GeneratorViewController: UIViewController {
     }()
     private let lettersSwitch = Generator.generateSwitch()
     private let symbolsSwitch = Generator.generateSwitch()
-    private let copyButton = Generator.roundButton(text: "Copy")
-    private let replaceButton = Generator.roundButton(text: "Replace")
+    private let copyButton = Generator.roundButton(text: "Copy".localized())
+    private let replaceButton = Generator.roundButton(text: "Replace".localized())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,7 @@ class GeneratorViewController: UIViewController {
     
     private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Generator"
+        navigationItem.title = "Generator".localized()
     }
     
     private func configureSubviews() {
@@ -103,7 +104,7 @@ class GeneratorViewController: UIViewController {
         let randomValue = generateRandomValue(valueLength: 4, randomValueType: .numbers)
         
         passwordField.text = randomValue
-        lengthLabel.text = "\(randomValue.count) Length"
+        lengthLabel.text = "\(randomValue.count) \("Length".localized())"
         
         copyButton.isHidden = completion != nil
         replaceButton.isHidden = completion == nil
@@ -228,7 +229,7 @@ class GeneratorViewController: UIViewController {
         }
         
         if element == .slider {
-            lengthLabel.text = "\(value) Length"
+            lengthLabel.text = "\(value) \("Length".localized())"
         }
         
         passwordField.text = randomValue

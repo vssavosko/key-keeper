@@ -6,32 +6,35 @@
 //
 
 import UIKit
-
-enum FieldContentType {
-    
-    case login
-    case password
-    case website
-    
-}
+import Localize_Swift
 
 class Generator {
     
-    static func generateImageView(image: UIImage? = nil) -> UIImageView {
+    static func generateImageView(image: UIImage? = nil,
+                                  tintColor: UIColor? = nil,
+                                  contentMode: UIView.ContentMode? = .center) -> UIImageView {
         let imageView = UIImageView()
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         if let image = image {
             imageView.image = image
         }
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .center
+        if let tintColor = tintColor {
+            imageView.tintColor = tintColor
+        }
+        
+        if let contentMode = contentMode {
+            imageView.contentMode = contentMode
+        }
+        
         imageView.layer.masksToBounds = true
         
         return imageView
     }
     
-    static func generateLabel(text: String,
+    static func generateLabel(text: String? = nil,
                               textAlignment: NSTextAlignment = .left,
                               textColor: UIColor = .secondaryLabel,
                               font: UIFont = .systemFont(ofSize: 15, weight: .medium),
@@ -39,7 +42,11 @@ class Generator {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
+        
+        if let text = text {
+            label.text = text
+        }
+        
         label.textAlignment = textAlignment
         label.textColor = textColor
         label.font = font
@@ -48,7 +55,7 @@ class Generator {
         return label
     }
     
-    static func generateField(contentType: FieldContentType? = .none,
+    static func generateField(contentType: FieldContentTypeEnum? = .none,
                               textColor: UIColor = .label,
                               placeholder: String? = nil,
                               placeholderColor: UIColor? = nil) -> TextFieldWithPadding {
@@ -123,15 +130,15 @@ class Generator {
         return image
     }
     
-    static func generateBottomLineFor(field: UITextField,
-                                      backgroundColor: UIColor = UIColor.systemBackground,
-                                      lineColor: UIColor = .systemGray5) {
-        field.layer.backgroundColor = backgroundColor.cgColor
-        field.layer.masksToBounds = false
-        field.layer.shadowColor = lineColor.cgColor
-        field.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
-        field.layer.shadowOpacity = 1.0
-        field.layer.shadowRadius = 0.0
+    static func generateBottomLineFor<T: UIView>(element: T,
+                                                 backgroundColor: UIColor = UIColor.systemBackground,
+                                                 lineColor: UIColor = .systemGray5) {
+        element.layer.backgroundColor = backgroundColor.cgColor
+        element.layer.masksToBounds = false
+        element.layer.shadowColor = lineColor.cgColor
+        element.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
+        element.layer.shadowOpacity = 1.0
+        element.layer.shadowRadius = 0.0
     }
     
     static var passwordButton: UIButton {
@@ -147,7 +154,7 @@ class Generator {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Generate password", for: .normal)
+        button.setTitle("Generate password".localized(), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
         

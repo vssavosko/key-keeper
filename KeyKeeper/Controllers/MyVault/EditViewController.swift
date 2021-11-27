@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class EditViewController: UIViewController {
     
@@ -14,15 +15,15 @@ class EditViewController: UIViewController {
     var accountData: Account!
     var completion: ((String, String, String, String) -> Void)?
     
-    private let nameLabel = Generator.generateLabel(text: "Name")
-    private let nameField = Generator.generateField(placeholder: "Pied Piper")
-    private let loginLabel = Generator.generateLabel(text: "Email or username")
+    private let titleLabel = Generator.generateLabel(text: "Name".localized())
+    private let titleField = Generator.generateField(placeholder: "Pied Piper")
+    private let loginLabel = Generator.generateLabel(text: "Email or username".localized())
     private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = Generator.generateLabel(text: "Password")
+    private let passwordLabel = Generator.generateLabel(text: "Password".localized())
     private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
     private let passwordButton = Generator.passwordButton
     private let generatePasswordButton = Generator.generatePasswordButton
-    private let websiteLabel = Generator.generateLabel(text: "Website")
+    private let websiteLabel = Generator.generateLabel(text: "Website".localized())
     private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
     
     override func viewDidLoad() {
@@ -41,14 +42,20 @@ class EditViewController: UIViewController {
     
     func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = "Edit"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(tapOnCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tapOnSave))
+        navigationItem.title = "Edit".localized()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel".localized(),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(tapOnCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(tapOnSave))
     }
     
     func configureSubviews() {
-        view.addSubview(nameLabel)
-        view.addSubview(nameField)
+        view.addSubview(titleLabel)
+        view.addSubview(titleField)
         view.addSubview(loginLabel)
         view.addSubview(loginField)
         view.addSubview(passwordLabel)
@@ -60,16 +67,16 @@ class EditViewController: UIViewController {
     }
     
     func configureFields() {
-        nameField.text = accountData.title
+        titleField.text = accountData.title
         loginField.text = accountData.login
         passwordField.text = accountData.password
         websiteField.text = accountData.website
         
-        Generator.generateBottomLineFor(field: nameField)
-        Generator.generateBottomLineFor(field: loginField)
-        Generator.generateBottomLineFor(field: websiteField)
+        Generator.generateBottomLineFor(element: titleField)
+        Generator.generateBottomLineFor(element: loginField)
+        Generator.generateBottomLineFor(element: websiteField)
         
-        nameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        titleField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
@@ -79,12 +86,12 @@ class EditViewController: UIViewController {
     }
     
     func setupFieldConstraints() {
-        nameLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          leading: view.leadingAnchor,
-                         bottom: nameField.topAnchor,
+                         bottom: titleField.topAnchor,
                          trailing: view.trailingAnchor,
                          padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16))
-        nameField.anchor(top: nil,
+        titleField.anchor(top: nil,
                          leading: view.leadingAnchor,
                          bottom: loginLabel.topAnchor,
                          trailing: view.trailingAnchor,
@@ -141,7 +148,7 @@ class EditViewController: UIViewController {
     
     @objc func tapOnSave() {
         guard
-            let title = nameField.text,
+            let title = titleField.text,
             let login = loginField.text,
             let password = passwordField.text,
             let website = websiteField.text,
@@ -154,7 +161,7 @@ class EditViewController: UIViewController {
     }
     
     @objc func textFieldDidChange() {
-        if !nameField.hasText || !loginField.hasText || !passwordField.hasText {
+        if !titleField.hasText || !loginField.hasText || !passwordField.hasText {
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = true
