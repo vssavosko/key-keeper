@@ -11,8 +11,8 @@
 "Reliable and safe" = "Надежно и безопасно";
 "All data that you enter into the vault is encrypted and stored only on your device." = "Все данные, которые вы вводите в хранилище, зашифрованы и хранятся только на вашем устройстве.";
 "There is nothing more to forget" = "Больше нечего забывать";
-"You only remember one Master Password and the app remembers all the others!" = "Вы помните только один Мастер пароль, а приложение запоминает все остальные!";
-"Set the master password" = "Установите Мастер пароль";
+"You only remember one Master Password and the app remembers all the others." = "Вы помните только один Мастер пароль, а приложение запоминает все остальные.";
+"Set the master password" = "Установить Мастер пароль";
 "Next" = "Далее";
 "First, create a Master Password" = "Сначала создайте Мастер пароль";
 "For your safety, we do not keep copies of your password" = "Для вашей безопасности мы не храним копии вашего пароля";
@@ -20,7 +20,7 @@
 "Repeat master password" = "Повторите Мастер пароль";
 "Save" = "Сохранить";
 "Master password" = "Матер пароль";
-"Please authorize with biometrics" = "Пожалуйста, авторизуйтесь с помощью биометрии!";
+"Please authorize with biometrics" = "Пожалуйста, авторизуйтесь с помощью биометрии";
 "Failed to authenticate" = "Не удалось выполнить аутентификацию";
 "Please try again" = "Пожалуйста, попробуйте снова";
 "Unavailable feature" = "Недоступная функция";
@@ -29,14 +29,12 @@
 "My Vault" = "Моё хранилище";
 "Search" = "Поиск";
 "Create" = "Создать";
-"Name" = "Имя";
+"title" = "Название";
 "Email or username" = "Email или username";
 "Password" = "Пароль";
 "Website" = "Веб-сайт";
 "Created" = "Создано";
 "Last modified" = "Последнее изменение";
-"Edit" = "Изменить";
-"Add" = "Добавить";
 "Edit" = "Изменить";
 "Generator" = "Генератор";
 "Length" = "Длина";
@@ -45,8 +43,6 @@
 "Settings" = "Настройки";
 "Biometrics management" = "Управление биометрией";
 "Other" = "Другое";
-"Change language" = "Изменить язык";
-"Change color theme" = "Изменить цветовую схему";
 "Change Master Password" = "Изменить Мастер пароль";
 "Language" = "Язык";
 "System language" = "Системный язык";
@@ -61,9 +57,9 @@
 "Repeat new password" = "Повторите новый пароль";
 "Cancel" = "Отмена";
 "Change" = "Изменить";
-"Fill in the fields!" = "Заполните все поля!";
+"Fill in the fields" = "Заполните все поля";
 "Invalid current password" = "Неверный текущий пароль";
-"Passwords do not match!" = "Пароли не совпадают!";
+"Passwords do not match" = "Пароли не совпадают";
 "Password changed" = "Пароль изменён";
 "Password copied" = "Пароль скопирован";
 "Generate password" = "Сгенерировать пароль";

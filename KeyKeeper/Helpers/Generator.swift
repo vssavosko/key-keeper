@@ -8,14 +8,6 @@
 import UIKit
 import Localize_Swift
 
-enum FieldContentType {
-    
-    case login
-    case password
-    case website
-    
-}
-
 class Generator {
     
     static func generateImageView(image: UIImage? = nil,
@@ -63,7 +55,7 @@ class Generator {
         return label
     }
     
-    static func generateField(contentType: FieldContentType? = .none,
+    static func generateField(contentType: FieldContentTypeEnum? = .none,
                               textColor: UIColor = .label,
                               placeholder: String? = nil,
                               placeholderColor: UIColor? = nil) -> TextFieldWithPadding {

@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = MainTabBarController()
         
         if let window = window {
-            ColorTheme.setColorTheme(window: window, themeState: themeState)
+            ColorTheme.setColorTheme(window, themeState: themeState)
         }
     }
     

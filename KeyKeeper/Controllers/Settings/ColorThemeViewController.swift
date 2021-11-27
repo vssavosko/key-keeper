@@ -35,17 +35,18 @@ class ColorThemeViewController: BaseChecklistTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let themeState = userDefaults.integer(forKey: Keys.theme)
         let option = options[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier,
                                                  for: indexPath) as! ChecklistTableViewCell
+        
+        let themeState = userDefaults.integer(forKey: Keys.theme)
         
         if themeState == indexPath.row {
             option.isChecked = true
         }
         
         if let window = self.view.window {
-            ColorTheme.setColorTheme(window: window, themeState: themeState)
+            ColorTheme.setColorTheme(window, themeState: themeState)
         }
         
         cell.configure(with: option)

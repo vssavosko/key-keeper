@@ -105,15 +105,15 @@ class MasterPasswordViewController: UIViewController {
         else { return }
         
         guard !password.isEmpty && !repeatPassword.isEmpty else {
-            return self.triggerNotification(text: "Fill in the fields!".localized())
+            return self.triggerNotification(text: "Fill in the fields".localized())
         }
         
         guard password == repeatPassword else {
-            return self.triggerNotification(text: "Passwords do not match!".localized())
+            return self.triggerNotification(text: "Passwords do not match".localized())
         }
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Please authorize with biometrics!".localized()
+            let reason = "Please authorize with biometrics".localized()
             
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                 [weak self] (success, error) in DispatchQueue.main.async {

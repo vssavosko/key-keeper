@@ -10,8 +10,6 @@ import UIKit
 struct SettingsSwitchOption {
     
     let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
     var isOn: Bool
     let completion: (() -> Void)
     

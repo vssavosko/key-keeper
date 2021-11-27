@@ -20,8 +20,8 @@ class CreateViewController: UIViewController {
     
     var delegate: AddAccountDelegate?
     
-    private let nameLabel = Generator.generateLabel(text: "Name".localized())
-    private let nameField = Generator.generateField(placeholder: "Pied Piper")
+    private let titleLabel = Generator.generateLabel(text: "title".localized())
+    private let titleField = Generator.generateField(placeholder: "Pied Piper")
     private let loginLabel = Generator.generateLabel(text: "Email or username".localized())
     private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
     private let passwordLabel = Generator.generateLabel(text: "Password".localized())
@@ -56,8 +56,8 @@ class CreateViewController: UIViewController {
     }
     
     func configureSubviews() {
-        view.addSubview(nameLabel)
-        view.addSubview(nameField)
+        view.addSubview(titleLabel)
+        view.addSubview(titleField)
         view.addSubview(loginLabel)
         view.addSubview(loginField)
         view.addSubview(passwordLabel)
@@ -69,11 +69,11 @@ class CreateViewController: UIViewController {
     }
     
     func configureFields() {
-        Generator.generateBottomLineFor(element: nameField)
+        Generator.generateBottomLineFor(element: titleField)
         Generator.generateBottomLineFor(element: loginField)
         Generator.generateBottomLineFor(element: websiteField)
         
-        nameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        titleField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
@@ -85,12 +85,12 @@ class CreateViewController: UIViewController {
     }
     
     func setupFieldConstraints() {
-        nameLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          leading: view.leadingAnchor,
-                         bottom: nameField.topAnchor,
+                         bottom: titleField.topAnchor,
                          trailing: view.trailingAnchor,
                          padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16))
-        nameField.anchor(top: nil,
+        titleField.anchor(top: nil,
                          leading: view.leadingAnchor,
                          bottom: loginLabel.topAnchor,
                          trailing: view.trailingAnchor,
@@ -146,7 +146,7 @@ class CreateViewController: UIViewController {
     }
     
     @objc func tapOnSave() {
-        guard let title = nameField.text,
+        guard let title = titleField.text,
               let login = loginField.text
         else { return }
         
@@ -163,7 +163,7 @@ class CreateViewController: UIViewController {
     }
     
     @objc func textFieldDidChange() {
-        if !nameField.hasText || !loginField.hasText || !passwordField.hasText {
+        if !titleField.hasText || !loginField.hasText || !passwordField.hasText {
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = true

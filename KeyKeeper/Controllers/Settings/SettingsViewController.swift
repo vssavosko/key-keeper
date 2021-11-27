@@ -9,13 +9,6 @@ import UIKit
 import SwiftKeychainWrapper
 import Localize_Swift
 
-enum SettingsOptionType {
-    
-    case staticCell(model: SettingsOption)
-    case switchCell(model: SettingsSwitchOption)
-    
-}
-
 class SettingsViewController: UIViewController {
     
     private let userDefaults = UserDefaults.standard
@@ -43,8 +36,9 @@ class SettingsViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
+        view.addSubview(tableView)
+        
         configureNavigationBar()
-        configureSubviews()
         configureElements()
     }
     
@@ -53,13 +47,13 @@ class SettingsViewController: UIViewController {
         navigationItem.title = "Settings".localized()
     }
     
-    private func configureSubviews() {
-        view.addSubview(tableView)
+    private func configureDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func configureElements() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        configureDelegates()
         
         self.models = [
             Section(
@@ -68,8 +62,6 @@ class SettingsViewController: UIViewController {
                     .switchCell(
                         model: SettingsSwitchOption(
                             title: "Touch ID / Face ID",
-                            icon: nil,
-                            iconBackgroundColor: .clear,
                             isOn: userDefaults.bool(forKey: Keys.biometricSwitchState)) { [weak self] in
                                 guard let state = self?.userDefaults.bool(forKey: Keys.biometricSwitchState) else { return }
                                 
@@ -83,9 +75,7 @@ class SettingsViewController: UIViewController {
                 options: [
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change language".localized(),
-                            icon: nil,
-                            iconBackgroundColor: .clear) { [weak self] in
+                            title: "Language".localized()) { [weak self] in
                                 let languageVC = LanguageViewController()
                                 
                                 self?.navigationController?.pushViewController(languageVC, animated: true)
@@ -93,9 +83,7 @@ class SettingsViewController: UIViewController {
                     ),
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change color theme".localized(),
-                            icon: nil,
-                            iconBackgroundColor: .clear) { [weak self] in
+                            title: "Color theme".localized()) { [weak self] in
                                 let colorThemeVC = ColorThemeViewController()
                                 
                                 self?.navigationController?.pushViewController(colorThemeVC, animated: true)
@@ -103,27 +91,22 @@ class SettingsViewController: UIViewController {
                     ),
                     .staticCell(
                         model: SettingsOption(
-                            title: "Change Master Password".localized(),
-                            icon: nil,
-                            iconBackgroundColor: .clear) { [weak self] in
+                            title: "Change Master Password".localized()) { [weak self] in
                                 let masterPassword = KeychainWrapper.standard.string(forKey: Keys.masterPassword)
                                 let alert = UIAlertController(title: "Change Master Password".localized(),
                                                               message: nil,
                                                               preferredStyle: .alert)
                                 
                                 alert.addTextField { field in
-                                    field.placeholder = "Current password".localized()
-                                    field.isSecureTextEntry = true
+                                    self?.configureTextField(field, placeholder: "Current password")
                                 }
                                 
                                 alert.addTextField { field in
-                                    field.placeholder = "New password".localized()
-                                    field.isSecureTextEntry = true
+                                    self?.configureTextField(field, placeholder: "New password")
                                 }
                                 
                                 alert.addTextField { field in
-                                    field.placeholder = "Repeat new password".localized()
-                                    field.isSecureTextEntry = true
+                                    self?.configureTextField(field, placeholder: "Repeat new password")
                                 }
                                 
                                 alert.addAction(UIAlertAction(title: "Cancel".localized(),
@@ -145,7 +128,7 @@ class SettingsViewController: UIViewController {
                                                   let newPassword = newPasswordField.text, !newPassword.isEmpty,
                                                   let repeatNewPassword = repeatNewPasswordField.text, !repeatNewPassword.isEmpty
                                             else {
-                                                return self!.triggerNotification(text: "Fill in the fields!".localized())
+                                                return self!.triggerNotification(text: "Fill in the fields".localized())
                                             }
                                             
                                             if currentPassword != masterPassword {
@@ -153,7 +136,7 @@ class SettingsViewController: UIViewController {
                                             }
                                             
                                             if newPassword != repeatNewPassword {
-                                                return self!.triggerNotification(text: "Passwords do not match!".localized())
+                                                return self!.triggerNotification(text: "Passwords do not match".localized())
                                             }
                                             
                                             KeychainWrapper.standard.set(newPassword, forKey: Keys.masterPassword)
@@ -171,6 +154,11 @@ class SettingsViewController: UIViewController {
         ]
         
         tableView.frame = view.bounds
+    }
+    
+    private func configureTextField(_ field: UITextField, placeholder: String) {
+        field.placeholder = placeholder.localized()
+        field.isSecureTextEntry = true
     }
     
     private func getCell<T: UITableViewCell>(_: T.Type, identifier: String, indexPath: IndexPath) -> T {

@@ -20,7 +20,7 @@ class OnboardingViewController: UIViewController {
                         description: "All data that you enter into the vault is encrypted and stored only on your device.".localized()),
         OnboardingSlide(image: #imageLiteral(resourceName: "fingerprint"),
                         title: "There is nothing more to forget".localized(),
-                        description: "You only remember one Master Password and the app remembers all the others!".localized())
+                        description: "You only remember one Master Password and the app remembers all the others.".localized())
     ]
     
     private var currentPage = 0 {

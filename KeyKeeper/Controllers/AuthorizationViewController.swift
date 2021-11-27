@@ -35,7 +35,7 @@ class AuthorizationViewController: UIViewController {
             var error: NSError?
             
             if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                let reason = "Please authorize with biometrics!".localized()
+                let reason = "Please authorize with biometrics".localized()
                 
                 context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                     [weak self] (success, error) in DispatchQueue.main.async {
@@ -94,7 +94,7 @@ class AuthorizationViewController: UIViewController {
         if enteredPassword == masterPassword {
             dismiss(animated: true)
         } else {
-            self.triggerNotification(text: "Invalid password!".localized())
+            self.triggerNotification(text: "Invalid password".localized())
         }
     }
     

@@ -34,7 +34,7 @@ class LanguageViewController: BaseChecklistTableViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func updateRootViewController() {
+    @objc private func updateRootViewController() {
         let tabBarController = MainTabBarController()
         
         let myVaultVC = tabBarController.createNavController(vc: MyVaultViewController(),
@@ -104,8 +104,6 @@ class LanguageViewController: BaseChecklistTableViewController {
         default:
             Localize.resetCurrentLanguageToDefault()
         }
-        
-        print("current lang: \(Localize.currentLanguage())")
     }
     
 }

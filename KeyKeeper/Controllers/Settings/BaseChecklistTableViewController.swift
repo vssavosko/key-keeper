@@ -26,14 +26,18 @@ class BaseChecklistTableViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        configureDelegates()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         tableView.frame = view.bounds
+    }
+    
+    private func configureDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
 }

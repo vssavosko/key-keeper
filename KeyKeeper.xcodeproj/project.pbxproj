@@ -48,6 +48,9 @@
 		88A3858226C33167006913C2 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */; };
 		88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */; };
 		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
+		88C28CD7275288F0005366AD /* AppModeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD6275288F0005366AD /* AppModeEnum.swift */; };
+		88C28CD927528960005366AD /* SettingsOptionTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD82752895F005366AD /* SettingsOptionTypeEnum.swift */; };
+		88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */; };
 		88DA6D6527445D5900168D94 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */; };
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
@@ -102,6 +105,9 @@
 		88A3858126C33167006913C2 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPasswordViewController.swift; sourceTree = "<group>"; };
 		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		88C28CD6275288F0005366AD /* AppModeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeEnum.swift; sourceTree = "<group>"; };
+		88C28CD82752895F005366AD /* SettingsOptionTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionTypeEnum.swift; sourceTree = "<group>"; };
+		88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContentTypeEnum.swift; sourceTree = "<group>"; };
 		88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyKeeper.entitlements; sourceTree = "<group>"; };
 		88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -199,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				88228A3526ACC78800C78456 /* Models */,
+				88C28CD5275288DE005366AD /* Enums */,
 				88228A3726ACC7A200C78456 /* Controllers */,
 				8806EA392706547000E4F51C /* Cells */,
 				8806EA3C2706596B00E4F51C /* Components */,
@@ -281,6 +288,16 @@
 				8813D1CE26CC52EA0091840E /* EditViewController.swift */,
 			);
 			path = MyVault;
+			sourceTree = "<group>";
+		};
+		88C28CD5275288DE005366AD /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				88C28CD6275288F0005366AD /* AppModeEnum.swift */,
+				88C28CD82752895F005366AD /* SettingsOptionTypeEnum.swift */,
+				88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		88F5A6D626BECA0D00B056C1 /* Helpers */ = {
@@ -437,9 +454,11 @@
 				882814CD273DC54100D54B25 /* BaseSettingsTableViewCell.swift in Sources */,
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,
 				88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */,
+				88C28CD7275288F0005366AD /* AppModeEnum.swift in Sources */,
 				8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */,
 				8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIView+Extensions.swift in Sources */,
+				88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */,
 				882814C7273DC3A500D54B25 /* SettingsOption.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
 				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,
@@ -447,6 +466,7 @@
 				88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */,
 				88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */,
 				882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */,
+				88C28CD927528960005366AD /* SettingsOptionTypeEnum.swift in Sources */,
 				8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */,
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
 				882A5F41273FF7AB0001B7ED /* ChecklistOption.swift in Sources */,
