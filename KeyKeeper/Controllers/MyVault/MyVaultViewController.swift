@@ -14,7 +14,17 @@ class MyVaultViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
     
     private let searchController = UISearchController(searchResultsController: nil)
-    private let tableView = UITableView()
+    private let tableView: UITableView = {
+        let table = UITableView(frame: .zero,
+                                style: .plain)
+        
+        table.register(MyVaultCell.self, forCellReuseIdentifier: MyVaultCell.identifier)
+        
+        table.rowHeight = 60
+        table.tableFooterView = UIView(frame: .zero)
+        
+        return table
+    }()
     
     private var accounts = KeychainWrapper.standard.getAccounts(forKey: Keys.accounts) ?? []
     private var filteredAccounts = [Account]()
@@ -78,13 +88,8 @@ class MyVaultViewController: UIViewController {
     func configureTableView() {
         view.addSubview(tableView)
         
-        tableView.register(MyVaultCell.self, forCellReuseIdentifier: MyVaultCell.identifier)
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tableView.rowHeight = 60
-        tableView.tableFooterView = UIView(frame: .zero)
         
         setupTableViewConstraints()
     }

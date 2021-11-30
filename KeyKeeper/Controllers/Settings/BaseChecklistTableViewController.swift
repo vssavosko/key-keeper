@@ -13,7 +13,7 @@ class BaseChecklistTableViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero,
-                                    style: .grouped)
+                                    style: .insetGrouped)
         
         tableView.register(ChecklistTableViewCell.self,
                            forCellReuseIdentifier: ChecklistTableViewCell.identifier)

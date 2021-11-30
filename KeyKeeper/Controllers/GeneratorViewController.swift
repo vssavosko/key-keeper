@@ -60,12 +60,13 @@ class GeneratorViewController: UIViewController {
     private let lengthSlider: UISlider = {
         let slider = UISlider()
         
-        let thumbImage = Generator.generateThumb(size: CGSize(width: 20, height: 20))
+        let thumbImage = Generator.generateThumb(size: CGSize(width: 20, height: 20), backgroundColor: .systemBlue)
         
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.setThumbImage(thumbImage, for: .normal)
         slider.minimumValue = 4
         slider.maximumValue = 40
+        slider.value = 10
         slider.isContinuous = true
         
         return slider
@@ -101,10 +102,12 @@ class GeneratorViewController: UIViewController {
     }
     
     private func configureElements() {
-        let randomValue = generateRandomValue(valueLength: 4, randomValueType: .numbers)
+        let randomValue = generateRandomValue(valueLength: 10, randomValueType: .lettersAndNumbers)
         
         passwordField.text = randomValue
-        lengthLabel.text = "\(randomValue.count) \("Length".localized())"
+        lengthLabel.text = "\("Length".localized()) \(randomValue.count)"
+        
+        lettersSwitch.isOn = true
         
         copyButton.isHidden = completion != nil
         replaceButton.isHidden = completion == nil
@@ -229,7 +232,7 @@ class GeneratorViewController: UIViewController {
         }
         
         if element == .slider {
-            lengthLabel.text = "\(value) \("Length".localized())"
+            lengthLabel.text = "\("Length".localized()) \(value)"
         }
         
         passwordField.text = randomValue
