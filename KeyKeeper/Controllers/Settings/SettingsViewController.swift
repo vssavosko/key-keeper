@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero,
-                                style: .grouped)
+                                style: .insetGrouped)
         
         table.register(SettingsTableViewCell.self,
                        forCellReuseIdentifier: SettingsTableViewCell.identifier)

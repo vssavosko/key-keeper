@@ -87,15 +87,15 @@ class EditViewController: UIViewController {
     
     func setupFieldConstraints() {
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                         leading: view.leadingAnchor,
-                         bottom: titleField.topAnchor,
-                         trailing: view.trailingAnchor,
-                         padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16))
+                          leading: view.leadingAnchor,
+                          bottom: titleField.topAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16))
         titleField.anchor(top: nil,
-                         leading: view.leadingAnchor,
-                         bottom: loginLabel.topAnchor,
-                         trailing: view.trailingAnchor,
-                         padding: UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16))
+                          leading: view.leadingAnchor,
+                          bottom: loginLabel.topAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16))
         
         loginLabel.anchor(top: nil,
                           leading: view.leadingAnchor,
