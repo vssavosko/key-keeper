@@ -40,6 +40,7 @@
 		8859F06326B04A9400ED0FAB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859F06226B04A9400ED0FAB /* CreateViewController.swift */; };
 		885F2229274D88AB00D03F2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 885F222B274D88AB00D03F2D /* Localizable.strings */; };
 		886953B6271B1D8D002CB1AF /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */; };
+		886AE410275BB12500DB8CCB /* BaseMyVaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886AE40F275BB12500DB8CCB /* BaseMyVaultViewController.swift */; };
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */; };
 		88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */; };
@@ -97,6 +98,7 @@
 		885F222A274D88AB00D03F2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		885F222C274D88AC00D03F2D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		886953B5271B1D8D002CB1AF /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		886AE40F275BB12500DB8CCB /* BaseMyVaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMyVaultViewController.swift; sourceTree = "<group>"; };
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		8859F06126B0460C00ED0FAB /* MyVault */ = {
 			isa = PBXGroup;
 			children = (
+				886AE40F275BB12500DB8CCB /* BaseMyVaultViewController.swift */,
 				88228A3E26ACC84000C78456 /* MyVaultViewController.swift */,
 				8859F06226B04A9400ED0FAB /* CreateViewController.swift */,
 				88922B9A26BC71F20083A285 /* DetailViewController.swift */,
@@ -459,6 +462,7 @@
 				8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIView+Extensions.swift in Sources */,
 				88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */,
+				886AE410275BB12500DB8CCB /* BaseMyVaultViewController.swift in Sources */,
 				882814C7273DC3A500D54B25 /* SettingsOption.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
 				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,

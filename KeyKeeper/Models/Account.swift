@@ -13,6 +13,7 @@ class Account: NSObject, NSCoding {
     var login: String
     var password: String
     var website: String
+    var notes: String
     var createdAt: String
     var updatedAt: String
     
@@ -21,6 +22,7 @@ class Account: NSObject, NSCoding {
         coder.encode(login, forKey: "login")
         coder.encode(password, forKey: "password")
         coder.encode(website, forKey: "website")
+        coder.encode(notes, forKey: "notes")
         coder.encode(createdAt, forKey: "createdAt")
         coder.encode(updatedAt, forKey: "updatedAt")
     }
@@ -30,15 +32,23 @@ class Account: NSObject, NSCoding {
         login = coder.decodeObject(forKey: "login") as? String ?? ""
         password = coder.decodeObject(forKey: "password") as? String ?? ""
         website = coder.decodeObject(forKey: "website") as? String ?? ""
+        notes = coder.decodeObject(forKey: "notes") as? String ?? ""
         createdAt = coder.decodeObject(forKey: "createdAt") as? String ?? ""
         updatedAt = coder.decodeObject(forKey: "updatedAt") as? String ?? ""
     }
     
-    init(title: String, login: String, password: String, website: String, createdAt: String, updatedAt: String) {
+    init(title: String,
+         login: String,
+         password: String,
+         website: String,
+         notes: String,
+         createdAt: String,
+         updatedAt: String) {
         self.title = title
         self.login = login
         self.password = password
         self.website = website
+        self.notes = notes
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
