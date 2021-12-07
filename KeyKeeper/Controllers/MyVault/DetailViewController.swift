@@ -16,12 +16,11 @@ protocol UpdateAccountDelegate {
 
 class DetailViewController: BaseMyVaultViewController {
     
-    let dateFormatter = DateFormatter.configure()
+    private let dateFormatter = DateFormatter.configure()
     
     var delegate: UpdateAccountDelegate?
-    var indexRow: Int?
-    
     var accountData: Account!
+    var indexRow: Int?
     
     private let createdLabel: UILabel = {
         let label = UILabel()
@@ -29,7 +28,6 @@ class DetailViewController: BaseMyVaultViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 13, weight: .regular)
-        label.text = ""
         label.textAlignment = .center
         
         return label
@@ -40,7 +38,6 @@ class DetailViewController: BaseMyVaultViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 13, weight: .regular)
-        label.text = ""
         label.textAlignment = .center
         
         return label
@@ -53,6 +50,7 @@ class DetailViewController: BaseMyVaultViewController {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
+        stackView.spacing = 5.0
         
         return stackView
     }()
@@ -60,11 +58,9 @@ class DetailViewController: BaseMyVaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstStackView.addArrangedSubview(generatePasswordButton)
         secondStackView.addArrangedSubview(dateStackView)
         
-        configureFields()
-        configureLabels()
+        configureElements()
     }
     
     func set(account: Account) {
@@ -79,14 +75,27 @@ class DetailViewController: BaseMyVaultViewController {
                                                             action: #selector(tapOnEdit))
     }
     
-    override func configureFields() {
-        super.configureFields()
+    override func configureElements() {
+        super.configureElements()
+        
+        loginField.isEnabled = false
+        passwordField.isEnabled = false
+        websiteField.isEnabled = false
+        notesTextView.isEditable = false
+        
+        generatePasswordButton.isHidden = true
+        createdLabel.isHidden = accountData.createdAt == ""
+        lastModifiedLabel.isHidden = accountData.updatedAt == ""
         
         if accountData.website.isEmpty {
             websiteStackView.isHidden = true
         }
         
         if accountData.notes.isEmpty {
+            websiteStackView.layer.backgroundColor = .none
+        }
+        
+        if accountData.notes.isEmpty || accountData.notes == "Write some note..." {
             notesStackView.isHidden = true
         }
         
@@ -94,88 +103,64 @@ class DetailViewController: BaseMyVaultViewController {
         passwordField.text = accountData.password
         websiteField.text = accountData.website
         notesTextView.text = accountData.notes
-        
-        loginField.isEnabled = false
-        passwordField.isEnabled = false
-        websiteField.isEnabled = false
-        notesTextView.isEditable = false
-        
-        if !accountData.notes.isEmpty {
-            Generator.generateBottomLineFor(element: websiteStackView)
-        }
-    }
-    
-    func configureLabels() {
-        createdLabel.isHidden = accountData.createdAt == ""
-        lastModifiedLabel.isHidden = accountData.updatedAt == ""
-        
         createdLabel.text = "\("Created".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.createdAt))"
         lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.updatedAt))"
-        
-        lastModifiedLabel.anchor(top: createdLabel.bottomAnchor,
-                                 leading: nil,
-                                 bottom: nil,
-                                 trailing: nil,
-                                 padding: UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0))
     }
     
-    func updateViewControllerData(title: String, login: String, password: String, website: String, note: String) {
-        self.accountData.title = title
-        self.accountData.login = login
-        self.accountData.password = password
-        self.accountData.website = website
-        self.accountData.notes = note
+    private func updateViewControllerData(newAccountData: Account) {
+        accountData.title = newAccountData.title
+        accountData.login = newAccountData.login
+        accountData.password = newAccountData.password
+        accountData.website = newAccountData.website
+        accountData.notes = newAccountData.notes
         
-        navigationItem.title = title
-        loginField.text = login
-        passwordField.text = password
-        websiteField.text = website
-        notesTextView.text = note
+        navigationItem.title = newAccountData.title
+        loginField.text = newAccountData.login
+        passwordField.text = newAccountData.password
+        websiteField.text = newAccountData.website
+        notesTextView.text = newAccountData.notes
+        lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: newAccountData.updatedAt))"
         
-        if websiteStackView.isHidden == false && accountData.website.isEmpty {
+        if newAccountData.website.isEmpty {
             websiteStackView.isHidden = true
         } else {
             websiteStackView.isHidden = false
         }
         
-        if notesStackView.isHidden == false && accountData.notes.isEmpty {
+        if newAccountData.notes.isEmpty || newAccountData.notes == "Write some note..." {
             notesStackView.isHidden = true
+            
+            websiteStackView.layer.backgroundColor = .none
         } else {
             notesStackView.isHidden = false
+            
+            websiteStackView.layer.backgroundColor = UIColor.systemBackground.cgColor
+        }
+        
+        if lastModifiedLabel.isHidden {
+            lastModifiedLabel.isHidden = false
         }
     }
     
-    @objc func tapOnEdit() {
+    @objc private func tapOnEdit() {
         let editVC = EditViewController()
         
         editVC.delegate = self
         
         editVC.set(account: accountData)
         
-        editVC.completion = { [weak self] (title: String, login: String, password: String, website: String, note: String) in
-            guard
-                let dateFormatter = self?.dateFormatter,
-                let indexRow = self?.indexRow,
-                let createdAt = self?.accountData.createdAt,
-                let lastModifiedLabel = self?.lastModifiedLabel,
-                let updateViewControllerData = self?.updateViewControllerData
-            else { return }
+        editVC.completion = { [weak self] (newAccountData: Account) in
+            guard let indexRow = self?.indexRow else { return }
             
-            updateViewControllerData(title, login, password, website, note)
+            let updatedAccount = Account(title: newAccountData.title,
+                                         login: newAccountData.login,
+                                         password: newAccountData.password,
+                                         website: newAccountData.website,
+                                         notes: newAccountData.notes,
+                                         createdAt: self?.accountData.createdAt ?? "",
+                                         updatedAt: self?.dateFormatter.string(from: Date()) ?? "")
             
-            let updatedAccount = Account(title: title,
-                                         login: login,
-                                         password: password,
-                                         website: website,
-                                         notes: note,
-                                         createdAt: createdAt,
-                                         updatedAt: dateFormatter.string(from: Date()))
-            
-            lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: updatedAccount.updatedAt))"
-            
-            if lastModifiedLabel.isHidden {
-                lastModifiedLabel.isHidden = false
-            }
+            self?.updateViewControllerData(newAccountData: updatedAccount)
             
             self!.delegate?.updateAccount(account: updatedAccount, indexRow: indexRow)
         }

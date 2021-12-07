@@ -40,15 +40,15 @@ class CreateViewController: BaseMyVaultViewController {
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
-    override func configureFields() {
-        super.configureFields()
+    override func configureElements() {
+        super.configureElements()
+        
+        passwordButton.isEnabled = false
         
         titleField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         generatePasswordButton.addTarget(self, action: #selector(tapOnGeneratorButton), for: .touchUpInside)
-        
-        passwordButton.isEnabled = false
     }
     
     @objc func tapOnCancel() {

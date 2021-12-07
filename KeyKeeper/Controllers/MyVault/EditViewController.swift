@@ -11,9 +11,14 @@ import Localize_Swift
 class EditViewController: BaseMyVaultViewController {
     
     var delegate: DetailViewController?
-    
     var accountData: Account!
-    var completion: ((String, String, String, String, String) -> Void)?
+    var completion: ((Account) -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        firstStackView.insertArrangedSubview(titleStackView, at: 0)
+    }
     
     func set(account: Account) {
         accountData = account
@@ -32,8 +37,8 @@ class EditViewController: BaseMyVaultViewController {
                                                             action: #selector(tapOnSave))
     }
     
-    override func configureFields() {
-        super.configureFields()
+    override func configureElements() {
+        super.configureElements()
         
         titleField.text = accountData.title
         loginField.text = accountData.login
@@ -47,26 +52,36 @@ class EditViewController: BaseMyVaultViewController {
         generatePasswordButton.addTarget(self, action: #selector(tapOnGeneratorButton), for: .touchUpInside)
     }
     
-    @objc func tapOnCancel() {
+    @objc private func tapOnCancel() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func tapOnSave() {
+    @objc private func tapOnSave() {
         guard
+            let completion = completion,
             let title = titleField.text,
             let login = loginField.text,
             let password = passwordField.text,
             let website = websiteField.text,
-            let note = notesTextView.text,
-            let completion = completion
+            let notes = notesTextView.text
         else { return }
         
-        completion(title, login, password, website, note)
+        completion(
+            Account(
+                title: title,
+                login: login,
+                password: password,
+                website: website,
+                notes: notes,
+                createdAt: self.accountData.createdAt,
+                updatedAt: self.accountData.updatedAt
+            )
+        )
         
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func textFieldDidChange() {
+    @objc private func textFieldDidChange() {
         if !titleField.hasText || !loginField.hasText || !passwordField.hasText {
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
@@ -80,7 +95,7 @@ class EditViewController: BaseMyVaultViewController {
         }
     }
     
-    @objc func tapOnGeneratorButton() {
+    @objc private func tapOnGeneratorButton() {
         let generatorVC = GeneratorViewController()
         
         generatorVC.completion = { [weak self] (password: String) in
