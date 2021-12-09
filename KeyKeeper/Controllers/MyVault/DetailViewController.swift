@@ -14,41 +14,60 @@ protocol UpdateAccountDelegate {
     
 }
 
-class DetailViewController: UIViewController {
+class DetailViewController: BaseMyVaultViewController {
     
-    let dateFormatter = DateFormatter.configure()
+    private let dateFormatter = DateFormatter.configure()
     
     var delegate: UpdateAccountDelegate?
+    var accountData: Account!
     var indexRow: Int?
     
-    var accountData: Account!
+    private let createdLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 13, weight: .regular)
+        label.textAlignment = .center
+        
+        return label
+    }()
+    private let lastModifiedLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 13, weight: .regular)
+        label.textAlignment = .center
+        
+        return label
+    }()
     
-    private let loginLabel = Generator.generateLabel(text: "Email or username".localized())
-    private let loginField = Generator.generateField(contentType: .login, placeholder: "richardhendricks@piedpiper.com")
-    private let passwordLabel = Generator.generateLabel(text: "Password".localized())
-    private let passwordField = Generator.generateField(contentType: .password, placeholder: "QwEr123Ty456")
-    private let passwordButton = Generator.passwordButton
-    private let websiteLabel = Generator.generateLabel(text: "Website".localized())
-    private let websiteField = Generator.generateField(contentType: .website, placeholder: "www.piedpiper.com")
-    private let createdLabel = Generator.generateLabel(text: "", textAlignment: .center, font: .systemFont(ofSize: 13, weight: .regular))
-    private let lastModifiedLabel = Generator.generateLabel(text: "", textAlignment: .center, font: .systemFont(ofSize: 13, weight: .regular))
+    private lazy var dateStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [createdLabel, lastModifiedLabel])
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .fill
+        stackView.spacing = 5.0
+        
+        return stackView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        secondStackView.addArrangedSubview(dateStackView)
         
-        configureNavigationBar()
-        configureSubviews()
-        configureFields()
-        configureLabels()
+        configureElements()
     }
     
     func set(account: Account) {
         accountData = account
     }
     
-    func configureNavigationBar() {
+    override func configureNavigationBar() {
         navigationItem.title = accountData.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit".localized(),
                                                             style: .plain,
@@ -56,151 +75,92 @@ class DetailViewController: UIViewController {
                                                             action: #selector(tapOnEdit))
     }
     
-    func configureSubviews() {
-        view.addSubview(loginLabel)
-        view.addSubview(loginField)
-        view.addSubview(passwordLabel)
-        view.addSubview(passwordField)
-        view.addSubview(passwordButton)
-        view.addSubview(websiteLabel)
-        view.addSubview(websiteField)
-        view.addSubview(createdLabel)
-        view.addSubview(lastModifiedLabel)
-    }
-    
-    func configureFields() {
-        loginField.text = accountData.login
-        passwordField.text = accountData.password
-        websiteField.text = accountData.website
+    override func configureElements() {
+        super.configureElements()
         
         loginField.isEnabled = false
         passwordField.isEnabled = false
         websiteField.isEnabled = false
+        notesTextView.isEditable = false
         
-        Generator.generateBottomLineFor(element: loginField)
-        Generator.generateBottomLineFor(element: websiteField)
-        
-        passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
-        
-        setupFieldConstraints()
-    }
-    
-    func configureLabels() {
+        generatePasswordButton.isHidden = true
         createdLabel.isHidden = accountData.createdAt == ""
         lastModifiedLabel.isHidden = accountData.updatedAt == ""
         
+        if accountData.website.isEmpty {
+            websiteStackView.isHidden = true
+        }
+        
+        if accountData.notes.isEmpty {
+            websiteStackView.layer.backgroundColor = .none
+        }
+        
+        if accountData.notes.isEmpty || accountData.notes == "Write some note..." {
+            notesStackView.isHidden = true
+        }
+        
+        loginField.text = accountData.login
+        passwordField.text = accountData.password
+        websiteField.text = accountData.website
+        notesTextView.text = accountData.notes
         createdLabel.text = "\("Created".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.createdAt))"
         lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.updatedAt))"
-        
-        setupLabelConstraints()
     }
     
-    func setupFieldConstraints() {
-        loginLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          leading: view.leadingAnchor,
-                          bottom: loginField.topAnchor,
-                          trailing: view.trailingAnchor,
-                          padding: UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16))
-        loginField.anchor(top: nil,
-                          leading: view.leadingAnchor,
-                          bottom: passwordLabel.topAnchor,
-                          trailing: view.trailingAnchor,
-                          padding: UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16))
+    private func updateViewControllerData(newAccountData: Account) {
+        accountData.title = newAccountData.title
+        accountData.login = newAccountData.login
+        accountData.password = newAccountData.password
+        accountData.website = newAccountData.website
+        accountData.notes = newAccountData.notes
         
-        passwordLabel.anchor(top: nil,
-                             leading: view.leadingAnchor,
-                             bottom: passwordField.topAnchor,
-                             trailing: view.trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
-        passwordField.anchor(top: nil,
-                             leading: view.leadingAnchor,
-                             bottom: websiteLabel.topAnchor,
-                             trailing: view.trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 16, bottom: 41, right: 16))
+        navigationItem.title = newAccountData.title
+        loginField.text = newAccountData.login
+        passwordField.text = newAccountData.password
+        websiteField.text = newAccountData.website
+        notesTextView.text = newAccountData.notes
+        lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: newAccountData.updatedAt))"
         
-        passwordButton.anchor(top: passwordField.topAnchor,
-                              leading: nil,
-                              bottom: passwordField.bottomAnchor,
-                              trailing: passwordField.trailingAnchor,
-                              padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        
-        websiteLabel.anchor(top: nil,
-                            leading: view.leadingAnchor,
-                            bottom: websiteField.topAnchor,
-                            trailing: view.trailingAnchor,
-                            padding: UIEdgeInsets(top: 25, left: 16, bottom: 0, right: 16))
-        websiteField.anchor(top: nil,
-                            leading: view.leadingAnchor,
-                            bottom: createdLabel.topAnchor,
-                            trailing: view.trailingAnchor,
-                            padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16))
-    }
-    
-    func setupLabelConstraints() {
-        createdLabel.anchor(top: nil,
-                            leading: view.leadingAnchor,
-                            bottom: lastModifiedLabel.topAnchor,
-                            trailing: view.trailingAnchor,
-                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 0))
-        
-        lastModifiedLabel.anchor(top: nil,
-                                 leading: view.leadingAnchor,
-                                 bottom: nil,
-                                 trailing: view.trailingAnchor)
-    }
-    
-    func updateViewControllerData(title: String, login: String, password: String, website: String) {
-        self.accountData.title = title
-        self.accountData.login = login
-        self.accountData.password = password
-        self.accountData.website = website
-        
-        navigationItem.title = title
-        loginField.text = login
-        passwordField.text = password
-        websiteField.text = website
-    }
-    
-    @objc func tapOnPasswordButton(sender: UIButton!) {
-        passwordField.isSecureTextEntry = !passwordField.isSecureTextEntry
-        
-        if passwordField.isSecureTextEntry {
-            passwordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        if newAccountData.website.isEmpty {
+            websiteStackView.isHidden = true
         } else {
-            passwordButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+            websiteStackView.isHidden = false
+        }
+        
+        if newAccountData.notes.isEmpty || newAccountData.notes == "Write some note..." {
+            notesStackView.isHidden = true
+            
+            websiteStackView.layer.backgroundColor = .none
+        } else {
+            notesStackView.isHidden = false
+            
+            websiteStackView.layer.backgroundColor = UIColor.systemBackground.cgColor
+        }
+        
+        if lastModifiedLabel.isHidden {
+            lastModifiedLabel.isHidden = false
         }
     }
     
-    @objc func tapOnEdit() {
+    @objc private func tapOnEdit() {
         let editVC = EditViewController()
         
         editVC.delegate = self
         
         editVC.set(account: accountData)
         
-        editVC.completion = { [weak self] (title: String, login: String, password: String, website: String) in
-            guard
-                let dateFormatter = self?.dateFormatter,
-                let indexRow = self?.indexRow,
-                let createdAt = self?.accountData.createdAt,
-                let lastModifiedLabel = self?.lastModifiedLabel,
-                let updateViewControllerData = self?.updateViewControllerData
-            else { return }
+        editVC.completion = { [weak self] (newAccountData: Account) in
+            guard let indexRow = self?.indexRow else { return }
             
-            updateViewControllerData(title, login, password, website)
+            let updatedAccount = Account(title: newAccountData.title,
+                                         login: newAccountData.login,
+                                         password: newAccountData.password,
+                                         website: newAccountData.website,
+                                         notes: newAccountData.notes,
+                                         createdAt: self?.accountData.createdAt ?? "",
+                                         updatedAt: self?.dateFormatter.string(from: Date()) ?? "")
             
-            let updatedAccount = Account(title: title,
-                                         login: login,
-                                         password: password,
-                                         website: website,
-                                         createdAt: createdAt,
-                                         updatedAt: dateFormatter.string(from: Date()))
-            
-            lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: updatedAccount.updatedAt))"
-            
-            if lastModifiedLabel.isHidden {
-                lastModifiedLabel.isHidden = false
-            }
+            self?.updateViewControllerData(newAccountData: updatedAccount)
             
             self!.delegate?.updateAccount(account: updatedAccount, indexRow: indexRow)
         }

@@ -10,8 +10,6 @@ import Localize_Swift
 
 class ColorThemeViewController: BaseChecklistTableViewController {
     
-    private let userDefaults = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +37,7 @@ class ColorThemeViewController: BaseChecklistTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier,
                                                  for: indexPath) as! ChecklistTableViewCell
         
-        let themeState = userDefaults.integer(forKey: Keys.theme)
+        let themeState = UserDefaults.standard.integer(forKey: Keys.theme)
         
         if themeState == indexPath.row {
             option.isChecked = true
@@ -57,7 +55,7 @@ class ColorThemeViewController: BaseChecklistTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
         
-        userDefaults.set(indexPath.row, forKey: Keys.theme)
+        UserDefaults.standard.set(indexPath.row, forKey: Keys.theme)
     }
     
 }

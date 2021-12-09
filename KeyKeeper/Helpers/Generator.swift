@@ -91,13 +91,20 @@ class Generator {
         return field
     }
     
-    static func generateStackView(subviews: [UIView], axis: NSLayoutConstraint.Axis = .horizontal) -> UIStackView {
+    static func generateStackView(subviews: [UIView],
+                                  axis: NSLayoutConstraint.Axis = .horizontal,
+                                  alignment: UIStackView.Alignment = .center,
+                                  spacing: CGFloat? = nil ) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: subviews)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = axis
         stackView.distribution = .equalSpacing
-        stackView.alignment = .center
+        stackView.alignment = alignment
+        
+        if let spacing = spacing {
+            stackView.spacing = spacing
+        }
         
         return stackView
     }
