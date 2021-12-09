@@ -11,8 +11,6 @@ import Localize_Swift
 
 class MasterPasswordViewController: UIViewController {
     
-    private let userDefaults = UserDefaults.standard
-    
     var completion: ((String) -> Void)!
     
     private let titleLabel = Generator.generateLabel(text: "First, create a Master Password".localized(),
@@ -118,7 +116,7 @@ class MasterPasswordViewController: UIViewController {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                 [weak self] (success, error) in DispatchQueue.main.async {
                     if success && error == nil {
-                        self?.userDefaults.set(true, forKey: Keys.biometricSwitchState)
+                        UserDefaults.standard.set(true, forKey: Keys.biometricSwitchState)
                     }
                     
                     self?.dismiss(animated: true)

@@ -11,15 +11,13 @@ import Localize_Swift
 
 class MyVaultViewController: UIViewController {
     
-    private let userDefaults = UserDefaults.standard
-    
     private let searchController = UISearchController(searchResultsController: nil)
     private let tableView: UITableView = {
-        let table = UITableView(frame: .zero,
-                                style: .plain)
+        let table = UITableView(frame: .zero, style: .plain)
         
         table.register(MyVaultCell.self, forCellReuseIdentifier: MyVaultCell.identifier)
         
+        table.translatesAutoresizingMaskIntoConstraints = false
         table.rowHeight = 60
         table.tableFooterView = UIView(frame: .zero)
         
@@ -40,31 +38,22 @@ class MyVaultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
+        
         if Core.shared.isFirstLaunch() {
-            userDefaults.set(0, forKey: Keys.language)
-            userDefaults.set(0, forKey: Keys.theme)
+            UserDefaults.standard.set(0, forKey: Keys.language)
+            UserDefaults.standard.set(0, forKey: Keys.theme)
             
             presentViewController(viewController: OnboardingViewController())
         } else {
             presentViewController(viewController: AuthorizationViewController())
         }
         
-        configureView()
         configureNavigationBar()
         configureTableView()
     }
     
-    private func presentViewController<T: UIViewController>(viewController: T) {
-        viewController.modalPresentationStyle = .fullScreen
-        
-        present(viewController, animated: false)
-    }
-    
-    func configureView() {
-        view.backgroundColor = .systemBackground
-    }
-    
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "My Vault".localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
@@ -74,9 +63,9 @@ class MyVaultViewController: UIViewController {
         configureSearchBar()
     }
     
-    func configureSearchBar() {
-        searchController.searchBar.placeholder = "Search".localized()
+    private func configureSearchBar() {
         searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search".localized()
         searchController.obscuresBackgroundDuringPresentation = false
         
         navigationItem.searchController = searchController
@@ -85,21 +74,22 @@ class MyVaultViewController: UIViewController {
         definesPresentationContext = true
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         view.addSubview(tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        setupTableViewConstraints()
-    }
-    
-    func setupTableViewConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.fillSuperview()
     }
     
-    @objc func createAccount() {
+    private func presentViewController<T: UIViewController>(viewController: T) {
+        viewController.modalPresentationStyle = .fullScreen
+        
+        present(viewController, animated: false)
+    }
+    
+    @objc private func createAccount() {
         let createVC = CreateViewController()
         
         createVC.hidesBottomBarWhenPushed = true
@@ -114,7 +104,7 @@ class MyVaultViewController: UIViewController {
 extension MyVaultViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        let searchText = searchController.searchBar.text!
+        guard let searchText = searchController.searchBar.text else { return }
         
         filteredAccounts = accounts.filter({ (account: Account) -> Bool in
             return account.title.lowercased().contains(searchText.lowercased())

@@ -11,8 +11,6 @@ import Localize_Swift
 
 class SettingsViewController: UIViewController {
     
-    private let userDefaults = UserDefaults.standard
-    
     private var models = [Section]()
     
     private let tableView: UITableView = {
@@ -62,10 +60,10 @@ class SettingsViewController: UIViewController {
                     .switchCell(
                         model: SettingsSwitchOption(
                             title: "Touch ID / Face ID",
-                            isOn: userDefaults.bool(forKey: Keys.biometricSwitchState)) { [weak self] in
-                                guard let state = self?.userDefaults.bool(forKey: Keys.biometricSwitchState) else { return }
+                            isOn: UserDefaults.standard.bool(forKey: Keys.biometricSwitchState)) {
+                                let biometricState = UserDefaults.standard.bool(forKey: Keys.biometricSwitchState)
                                 
-                                self?.userDefaults.set(!state, forKey: Keys.biometricSwitchState)
+                                UserDefaults.standard.set(!biometricState, forKey: Keys.biometricSwitchState)
                             }
                     )
                 ]

@@ -9,7 +9,7 @@ import UIKit
 
 class TextFieldWithPadding: UITextField {
 
-    var textPadding = UIEdgeInsets(
+    private let textPadding = UIEdgeInsets(
         top: 5,
         left: 0,
         bottom: 10,

@@ -12,8 +12,6 @@ import Localize_Swift
 
 class AuthorizationViewController: UIViewController {
     
-    private let userDefaults = UserDefaults.standard
-    
     private let imageView = Generator.generateImageView(image: UIImage(imageLiteralResourceName: "fingerprint_logo"))
     private let passwordField = Generator.generateField(contentType: .password,
                                                         textColor: .white,
@@ -30,7 +28,7 @@ class AuthorizationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if userDefaults.bool(forKey: Keys.biometricSwitchState) {
+        if UserDefaults.standard.bool(forKey: Keys.biometricSwitchState) {
             let context = LAContext()
             var error: NSError?
             

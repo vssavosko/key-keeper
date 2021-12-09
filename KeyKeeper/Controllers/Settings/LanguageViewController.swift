@@ -10,8 +10,6 @@ import Localize_Swift
 
 class LanguageViewController: BaseChecklistTableViewController {
     
-    private let userDefaults = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,7 +70,7 @@ class LanguageViewController: BaseChecklistTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier,
                                                  for: indexPath) as! ChecklistTableViewCell
         
-        let languageState = userDefaults.integer(forKey: Keys.language)
+        let languageState = UserDefaults.standard.integer(forKey: Keys.language)
         
         if languageState == indexPath.row {
             option.isChecked = true
@@ -86,7 +84,7 @@ class LanguageViewController: BaseChecklistTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
         
-        userDefaults.set(indexPath.row, forKey: Keys.language)
+        UserDefaults.standard.set(indexPath.row, forKey: Keys.language)
         
         switch indexPath.row {
         case 0:
