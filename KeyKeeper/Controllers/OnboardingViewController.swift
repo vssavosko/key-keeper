@@ -28,9 +28,9 @@ class OnboardingViewController: UIViewController {
             pageControl.currentPage = currentPage
             
             if currentPage == slides.count - 1 {
-                onboardingButton.setTitle("Set the master password".localized(), for: .normal)
+                onboardingNextButton.setTitle("Set the master password".localized(), for: .normal)
             } else {
-                onboardingButton.setTitle("Next".localized(), for: .normal)
+                onboardingNextButton.setTitle("Next".localized(), for: .normal)
             }
         }
     }
@@ -56,7 +56,7 @@ class OnboardingViewController: UIViewController {
         return pageControl
     }()
     
-    private let onboardingButton: UIButton = {
+    private let onboardingNextButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -80,12 +80,12 @@ class OnboardingViewController: UIViewController {
     private func configureSubviews() {
         view.addSubview(collectionView)
         view.addSubview(pageControl)
-        view.addSubview(onboardingButton)
+        view.addSubview(onboardingNextButton)
     }
     
     private func configureElements() {
         pageControl.addTarget(self, action: #selector(tapOnPageControl), for: .valueChanged)
-        onboardingButton.addTarget(self, action: #selector(tapOnOnboardingButton), for: .touchUpInside)
+        onboardingNextButton.addTarget(self, action: #selector(tapOnOnboardingNextButton), for: .touchUpInside)
         
         configureCollectionView()
         
@@ -113,16 +113,16 @@ class OnboardingViewController: UIViewController {
         
         pageControl.anchor(top: nil,
                            leading: view.leadingAnchor,
-                           bottom: onboardingButton.topAnchor,
+                           bottom: onboardingNextButton.topAnchor,
                            trailing: view.trailingAnchor,
                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
         
-        onboardingButton.anchor(top: nil,
-                                leading: view.leadingAnchor,
-                                bottom: view.bottomAnchor,
-                                trailing: view.trailingAnchor,
-                                padding: UIEdgeInsets(top: 0, left: view.frame.width / 5, bottom: 50, right: view.frame.width / 5),
-                                size: CGSize(width: 0, height: 50))
+        onboardingNextButton.anchor(top: nil,
+                                    leading: view.leadingAnchor,
+                                    bottom: view.bottomAnchor,
+                                    trailing: view.trailingAnchor,
+                                    padding: UIEdgeInsets(top: 0, left: view.frame.width / 5, bottom: 50, right: view.frame.width / 5),
+                                    size: CGSize(width: 0, height: 50))
     }
     
     private func scrollTo(page: Int) {
@@ -137,7 +137,7 @@ class OnboardingViewController: UIViewController {
         scrollTo(page: sender.currentPage)
     }
     
-    @objc private func tapOnOnboardingButton() {
+    @objc private func tapOnOnboardingNextButton() {
         if currentPage == slides.count - 1 {
             let masterPasswordVC = MasterPasswordViewController()
             
