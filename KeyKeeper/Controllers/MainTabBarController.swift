@@ -20,11 +20,7 @@ class MainTabBarController: UITabBarController {
         self.setViewControllers([myVaultVC, generatorVC, settingsVC], animated: false)
     }
     
-}
-
-extension MainTabBarController {
-    
-    func createNavController(vc: UIViewController, image: String, title: String) -> UINavigationController {
+    internal func createNavController(vc: UIViewController, image: String, title: String) -> UINavigationController {
         let navController = UINavigationController(rootViewController: vc)
         
         navController.tabBarItem.image = UIImage(systemName: image)

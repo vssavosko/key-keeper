@@ -12,11 +12,31 @@ import Localize_Swift
 
 class AuthorizationViewController: UIViewController {
     
-    private let imageView = Generator.generateImageView(image: UIImage(imageLiteralResourceName: "fingerprint_logo"))
-    private let passwordField = Generator.generateField(contentType: .password,
-                                                        textColor: .white,
-                                                        placeholder: "Master password".localized(),
-                                                        placeholderColor: .systemGray)
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = .init(imageLiteralResourceName: "fingerprint_logo")
+        imageView.contentMode = .center
+        
+        imageView.layer.masksToBounds = true
+        
+        return imageView
+    }()
+    private let passwordField: TextFieldWithPadding = {
+        let field = TextFieldWithPadding()
+        
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.font = .systemFont(ofSize: 17, weight: .regular)
+        field.textColor = .white
+        field.attributedPlaceholder = NSAttributedString(string: "Master password".localized(),
+                                                         attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
+        field.textContentType = .password
+        field.isSecureTextEntry = true
+        field.returnKeyType = .continue
+        
+        return field
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +80,10 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func configureElements() {
-        Generator.generateBottomLineFor(element: passwordField,
-                                        backgroundColor: .black,
-                                        lineColor: .white)
+        BottomLine.generateFor(element: passwordField,
+                                backgroundColor: .black,
+                                lineColor: .white)
         
-        passwordField.returnKeyType = .continue
         passwordField.addTarget(self, action: #selector(tapOnContinueButton), for: .primaryActionTriggered)
         
         setupElementConstraints()

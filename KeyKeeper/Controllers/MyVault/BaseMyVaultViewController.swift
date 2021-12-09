@@ -218,9 +218,9 @@ class BaseMyVaultViewController: UIViewController {
     }
     
     internal func configureElements() {
-        generateBottomLineFor(element: titleStackView)
-        generateBottomLineFor(element: loginStackView)
-        generateBottomLineFor(element: websiteStackView)
+        BottomLine.generateFor(element: titleStackView)
+        BottomLine.generateFor(element: loginStackView)
+        BottomLine.generateFor(element: websiteStackView)
         
         passwordButton.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         
@@ -251,17 +251,6 @@ class BaseMyVaultViewController: UIViewController {
                                bottom: nil,
                                trailing: view.trailingAnchor,
                                padding: UIEdgeInsets(top: 41, left: 16, bottom: 0, right: 16))
-    }
-    
-    internal func generateBottomLineFor<T: UIView>(element: T,
-                                                   backgroundColor: UIColor = UIColor.systemBackground,
-                                                   lineColor: UIColor = .systemGray5) {
-        element.layer.backgroundColor = backgroundColor.cgColor
-        element.layer.masksToBounds = false
-        element.layer.shadowColor = lineColor.cgColor
-        element.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
-        element.layer.shadowOpacity = 1.0
-        element.layer.shadowRadius = 0.0
     }
     
     @objc internal func tapOnPasswordButton(sender: UIButton!) {
