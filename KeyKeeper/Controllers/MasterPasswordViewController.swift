@@ -13,23 +13,59 @@ class MasterPasswordViewController: UIViewController {
     
     var completion: ((String) -> Void)!
     
-    private let titleLabel = Generator.generateLabel(text: "First, create a Master Password".localized(),
-                                                     textColor: .black,
-                                                     font: .systemFont(ofSize: 22, weight: .semibold),
-                                                     numberOfLines: 0)
-    private let descriptionLabel = Generator.generateLabel(text: "For your safety, we do not keep copies of your password".localized(),
-                                                           textColor: .systemBlue,
-                                                           font: .systemFont(ofSize: 14, weight: .regular),
-                                                           numberOfLines: 0)
-    private let passwordField = Generator.generateField(contentType: .password,
-                                                        textColor: .black,
-                                                        placeholder: "Enter strong master password".localized(),
-                                                        placeholderColor: .systemGray)
-    private let repeatPasswordField = Generator.generateField(contentType: .password,
-                                                              textColor: .black,
-                                                              placeholder: "Repeat master password".localized(),
-                                                              placeholderColor: .systemGray)
-    private let saveButton = Generator.roundButton(text: "Save".localized())
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.text = "First, create a Master Password".localized()
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemBlue
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.text = "For your safety, we do not keep copies of your password".localized()
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    private let passwordField: TextFieldWithPadding = {
+        let field = TextFieldWithPadding()
+        
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.textColor = .black
+        field.attributedPlaceholder = NSAttributedString(string: "Enter strong master password".localized(),
+                                                         attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
+        field.textContentType = .password
+        field.isSecureTextEntry = true
+        
+        return field
+    }()
+    private let repeatPasswordField: TextFieldWithPadding = {
+        let field = TextFieldWithPadding()
+        
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.textColor = .black
+        field.attributedPlaceholder = NSAttributedString(string: "Repeat master password".localized(),
+                                                         attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
+        field.textContentType = .password
+        field.isSecureTextEntry = true
+        
+        return field
+    }()
+    private let saveButton: RoundButton = {
+        let button = RoundButton(text: "Save".localized())
+        
+        button.addTarget(self, action: #selector(tapOnSaveButton), for: .touchUpInside)
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +85,8 @@ class MasterPasswordViewController: UIViewController {
     }
     
     private func configureElements() {
-        Generator.generateBottomLineFor(element: passwordField,
-                                        backgroundColor: .white,
-                                        lineColor: .lightGray)
-        Generator.generateBottomLineFor(element: repeatPasswordField,
-                                        backgroundColor: .white,
-                                        lineColor: .lightGray)
-        
-        saveButton.addTarget(self, action: #selector(tapOnSaveButton), for: .touchUpInside)
+        BottomLine.generateFor(element: passwordField, backgroundColor: .white, lineColor: .lightGray)
+        BottomLine.generateFor(element: repeatPasswordField, backgroundColor: .white, lineColor: .lightGray)
         
         setupConstraints()
     }
