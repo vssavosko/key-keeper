@@ -129,7 +129,7 @@ extension MyVaultViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyVaultCell.identifier, for: indexPath) as! MyVaultCell
         let currentAccount = isFiltering ? filteredAccounts[indexPath.row] : accounts[indexPath.row]
         
-        cell.set(account: currentAccount)
+        cell.configure(account: currentAccount)
         
         return cell
     }

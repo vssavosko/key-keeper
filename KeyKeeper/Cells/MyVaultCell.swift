@@ -28,48 +28,42 @@ class MyVaultCell: UITableViewCell {
         
         return label
     }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupStackView()
-    }
-    
-    func set(account: Account) {
-        accountTitle.text = account.title
-        accountLogin.text = account.login
-    }
-    
-    func setupLabels() {
-        addSubview(accountTitle)
-        addSubview(accountLogin)
-        
-        accountTitle.anchor(top: topAnchor,
-                            leading: leadingAnchor,
-                            bottom: accountLogin.topAnchor,
-                            trailing: trailingAnchor)
-        accountLogin.anchor(top: accountTitle.bottomAnchor,
-                            leading: leadingAnchor,
-                            bottom: bottomAnchor,
-                            trailing: trailingAnchor)
-    }
-    
-    func setupStackView() {
-        setupLabels()
-        
+    private lazy var labelsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [accountTitle, accountLogin])
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         
-        addSubview(stackView)
+        return stackView
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        stackView.anchor(top: contentView.topAnchor,
-                         leading: leadingAnchor,
-                         bottom: contentView.bottomAnchor,
-                         trailing: trailingAnchor,
-                         padding: UIEdgeInsets(top: 7, left: 20, bottom: 7, right: 0))
+        configureElements()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        accountTitle.text = nil
+        accountLogin.text = nil
+    }
+    
+    public func configure(account: Account) {
+        accountTitle.text = account.title
+        accountLogin.text = account.login
+    }
+    
+    private func configureElements() {
+        addSubview(labelsStackView)
+        
+        labelsStackView.anchor(top: contentView.topAnchor,
+                               leading: leadingAnchor,
+                               bottom: contentView.bottomAnchor,
+                               trailing: trailingAnchor,
+                               padding: UIEdgeInsets(top: 7, left: 20, bottom: 7, right: 0))
     }
     
     required init?(coder: NSCoder) {

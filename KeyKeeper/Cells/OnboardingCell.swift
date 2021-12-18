@@ -11,40 +11,67 @@ class OnboardingCell: UICollectionViewCell {
     
     static let identifier = "OnboardingCell"
     
-    private let slideImageView = Generator.generateImageView()
-    private let slideTitleLabel = Generator.generateLabel(text: "",
-                                                          textColor: .black,
-                                                          font: .systemFont(ofSize: 22, weight: .semibold),
-                                                          numberOfLines: 0)
-    private let slideDescriptionLabel = Generator.generateLabel(text: "",
-                                                                textColor: .black,
-                                                                font: .systemFont(ofSize: 14, weight: .regular),
-                                                                numberOfLines: 0)
+    private let slideImageView: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .center
+        imageView.layer.masksToBounds = true
+        
+        return imageView
+    }()
+    private let slideTitleLabel: UILabel = {
+        let label = UILabel()
+        
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.text = ""
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    private let slideDescriptionLabel: UILabel = {
+        let label = UILabel()
+        
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.text = ""
+        label.numberOfLines = 0
+        
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        backgroundColor = .white
         
         configureSubviews()
-        
         setupElementConstraints()
     }
     
-    func set(slide: OnboardingSlide) {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        slideImageView.image = nil
+        slideTitleLabel.text = nil
+        slideDescriptionLabel.text = nil
+    }
+    
+    public func configure(slide: OnboardingSlide) {
         slideImageView.image = slide.image
         slideTitleLabel.text = slide.title
         slideDescriptionLabel.text = slide.description
     }
     
     private func configureSubviews() {
-        self.addSubview(slideImageView)
-        self.addSubview(slideTitleLabel)
-        self.addSubview(slideDescriptionLabel)
+        addSubview(slideImageView)
+        addSubview(slideTitleLabel)
+        addSubview(slideDescriptionLabel)
     }
     
     private func setupElementConstraints() {
-        slideImageView.anchor(top: self.safeAreaLayoutGuide.topAnchor,
+        slideImageView.anchor(top: safeAreaLayoutGuide.topAnchor,
                               leading: self.leadingAnchor,
                               bottom: slideTitleLabel.topAnchor,
                               trailing: self.trailingAnchor,
