@@ -11,7 +11,15 @@ class ChecklistTableViewCell: UITableViewCell {
     
     static let identifier = "ChecklistTableViewCell"
     
-    public let label = Generator.generateLabel(textColor: .label, numberOfLines: 1)
+    public let label: UILabel = {
+        let label = UILabel()
+        
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.numberOfLines = 1
+        
+        return label
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,7 +45,7 @@ class ChecklistTableViewCell: UITableViewCell {
     public func configure(with option: ChecklistOption) {
         label.text = option.title
         
-        self.accessoryType = option.isChecked ? .checkmark : .none
+        accessoryType = option.isChecked ? .checkmark : .none
     }
     
     required init?(coder: NSCoder) {

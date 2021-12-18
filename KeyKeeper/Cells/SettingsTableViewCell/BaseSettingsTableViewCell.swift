@@ -9,7 +9,15 @@ import UIKit
 
 class BaseSettingsTableViewCell: UITableViewCell {
     
-    internal let label = Generator.generateLabel(textColor: .label, numberOfLines: 1)
+    internal let label: UILabel = {
+        let label = UILabel()
+        
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.numberOfLines = 1
+        
+        return label
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

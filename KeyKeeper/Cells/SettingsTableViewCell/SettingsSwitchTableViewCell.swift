@@ -15,7 +15,13 @@ class SettingsSwitchTableViewCell: BaseSettingsTableViewCell {
     
     public var completion: (() -> Void)?
     
-    private let cellSwitch = Generator.generateSwitch()
+    private let cellSwitch: UISwitch = {
+        let uiSwitch = UISwitch()
+        
+        uiSwitch.addTarget(self, action: #selector(triggerSwitch), for: .valueChanged)
+        
+        return uiSwitch
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

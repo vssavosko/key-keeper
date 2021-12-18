@@ -169,7 +169,7 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.identifier, for: indexPath) as! OnboardingCell
         let currentSlide = slides[indexPath.row]
         
-        cell.set(slide: currentSlide)
+        cell.configure(slide: currentSlide)
         
         return cell
     }
