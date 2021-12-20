@@ -23,9 +23,6 @@ class SettingsViewController: UIViewController {
         table.register(SettingsSwitchTableViewCell.self,
                        forCellReuseIdentifier: SettingsSwitchTableViewCell.identifier)
         
-        table.clipsToBounds = true
-        table.layer.cornerRadius = 20
-        
         return table
     }()
     
@@ -45,14 +42,7 @@ class SettingsViewController: UIViewController {
         navigationItem.title = "Settings".localized()
     }
     
-    private func configureDelegates() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
     private func configureElements() {
-        configureDelegates()
-        
         self.models = [
             Section(
                 title: "Biometrics management".localized(),
@@ -96,15 +86,15 @@ class SettingsViewController: UIViewController {
                                                               preferredStyle: .alert)
                                 
                                 alert.addTextField { field in
-                                    self?.configureTextField(field, placeholder: "Current password")
+                                    self?.configurePasswordTextField(field, placeholder: "Current password")
                                 }
                                 
                                 alert.addTextField { field in
-                                    self?.configureTextField(field, placeholder: "New password")
+                                    self?.configurePasswordTextField(field, placeholder: "New password")
                                 }
                                 
                                 alert.addTextField { field in
-                                    self?.configureTextField(field, placeholder: "Repeat new password")
+                                    self?.configurePasswordTextField(field, placeholder: "Repeat new password")
                                 }
                                 
                                 alert.addAction(UIAlertAction(title: "Cancel".localized(),
@@ -151,10 +141,13 @@ class SettingsViewController: UIViewController {
             )
         ]
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         tableView.frame = view.bounds
     }
     
-    private func configureTextField(_ field: UITextField, placeholder: String) {
+    private func configurePasswordTextField(_ field: UITextField, placeholder: String) {
         field.placeholder = placeholder.localized()
         field.isSecureTextEntry = true
     }
