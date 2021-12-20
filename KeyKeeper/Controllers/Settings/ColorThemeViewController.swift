@@ -17,21 +17,6 @@ class ColorThemeViewController: BaseChecklistTableViewController {
         configureElements()
     }
     
-    private func configureNavigationBar() {
-        navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = "Color theme".localized()
-    }
-    
-    private func configureElements() {
-        self.options = [
-            "System theme".localized(),
-            "Light".localized(),
-            "Dark".localized(),
-        ].compactMap({
-            ChecklistOption(title: $0)
-        })
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let option = options[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier,
@@ -56,6 +41,21 @@ class ColorThemeViewController: BaseChecklistTableViewController {
         super.tableView(tableView, didSelectRowAt: indexPath)
         
         UserDefaults.standard.set(indexPath.row, forKey: Keys.theme)
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "Color theme".localized()
+    }
+    
+    private func configureElements() {
+        self.options = [
+            "System theme".localized(),
+            "Light".localized(),
+            "Dark".localized(),
+        ].compactMap({
+            ChecklistOption(title: $0)
+        })
     }
     
 }

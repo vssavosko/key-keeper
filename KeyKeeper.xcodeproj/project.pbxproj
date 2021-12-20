@@ -184,9 +184,9 @@
 		8806EA3C2706596B00E4F51C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				88A2096526FD1D7700C11770 /* ClipboardNotification.swift */,
 				88CFBC662764D949007DE2FC /* RoundButton.swift */,
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
+				88A2096526FD1D7700C11770 /* ClipboardNotification.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
