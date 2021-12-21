@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SettingsOption {
+struct SettingOptions {
     
     let title: String
     let completion: (() -> Void)

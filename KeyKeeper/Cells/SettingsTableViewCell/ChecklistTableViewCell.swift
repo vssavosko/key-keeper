@@ -42,7 +42,7 @@ class ChecklistTableViewCell: UITableViewCell {
         label.text = nil
     }
     
-    public func configure(with option: ChecklistOption) {
+    public func configure(with option: ChecklistOptions) {
         label.text = option.title
         
         accessoryType = option.isChecked ? .checkmark : .none

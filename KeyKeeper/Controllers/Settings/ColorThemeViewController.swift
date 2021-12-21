@@ -29,7 +29,7 @@ class ColorThemeViewController: BaseChecklistTableViewController {
         }
         
         if let window = self.view.window {
-            ColorTheme.setColorTheme(window, themeState: themeState)
+            ColorTheme.shared.setColorTheme(window, themeState: themeState)
         }
         
         cell.configure(with: option)
@@ -54,7 +54,7 @@ class ColorThemeViewController: BaseChecklistTableViewController {
             "Light".localized(),
             "Dark".localized(),
         ].compactMap({
-            ChecklistOption(title: $0)
+            ChecklistOptions(title: $0)
         })
     }
     

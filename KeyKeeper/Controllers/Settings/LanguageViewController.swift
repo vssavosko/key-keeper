@@ -67,7 +67,7 @@ class LanguageViewController: BaseChecklistTableViewController {
             "Russian".localized(),
             "English".localized(),
         ].compactMap({
-            ChecklistOption(title: $0)
+            ChecklistOptions(title: $0)
         })
     }
     

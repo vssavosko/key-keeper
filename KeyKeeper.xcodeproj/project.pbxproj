@@ -22,13 +22,13 @@
 		88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4026ACC87B00C78456 /* GeneratorViewController.swift */; };
 		88228A4326ACC88A00C78456 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4226ACC88A00C78456 /* SettingsViewController.swift */; };
 		88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88228A4426ACC8C800C78456 /* MyVaultCell.swift */; };
-		882814C7273DC3A500D54B25 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814C6273DC3A500D54B25 /* SettingsOption.swift */; };
-		882814C9273DC3D600D54B25 /* SettingsSwitchOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814C8273DC3D600D54B25 /* SettingsSwitchOption.swift */; };
+		882814C7273DC3A500D54B25 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814C6273DC3A500D54B25 /* SettingOptions.swift */; };
+		882814C9273DC3D600D54B25 /* SettingSwitchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814C8273DC3D600D54B25 /* SettingSwitchOptions.swift */; };
 		882814CB273DC3F300D54B25 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814CA273DC3F300D54B25 /* Section.swift */; };
 		882814CD273DC54100D54B25 /* BaseSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */; };
 		882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814D0273DD7FD00D54B25 /* LanguageViewController.swift */; };
 		882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882814D2273DD83900D54B25 /* ColorThemeViewController.swift */; };
-		882A5F41273FF7AB0001B7ED /* ChecklistOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A5F40273FF7AB0001B7ED /* ChecklistOption.swift */; };
+		882A5F41273FF7AB0001B7ED /* ChecklistOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A5F40273FF7AB0001B7ED /* ChecklistOptions.swift */; };
 		882A5F43273FF7FF0001B7ED /* BaseChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A5F42273FF7FF0001B7ED /* BaseChecklistTableViewController.swift */; };
 		8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8836037A26E81E3C00788E43 /* EnvVars.swift */; };
 		8848BFE2270CE565001EBBCE /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848BFE1270CE565001EBBCE /* Core.swift */; };
@@ -51,7 +51,7 @@
 		88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */; };
 		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
 		88C28CD7275288F0005366AD /* AppModeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD6275288F0005366AD /* AppModeEnum.swift */; };
-		88C28CD927528960005366AD /* SettingsOptionTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD82752895F005366AD /* SettingsOptionTypeEnum.swift */; };
+		88C28CD927528960005366AD /* SettingOptionTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD82752895F005366AD /* SettingOptionTypeEnum.swift */; };
 		88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */; };
 		88CFBC672764D949007DE2FC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFBC662764D949007DE2FC /* RoundButton.swift */; };
 		88DA6D6527445D5900168D94 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */; };
@@ -80,13 +80,13 @@
 		88228A4026ACC87B00C78456 /* GeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorViewController.swift; sourceTree = "<group>"; };
 		88228A4226ACC88A00C78456 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		88228A4426ACC8C800C78456 /* MyVaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVaultCell.swift; sourceTree = "<group>"; };
-		882814C6273DC3A500D54B25 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
-		882814C8273DC3D600D54B25 /* SettingsSwitchOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchOption.swift; sourceTree = "<group>"; };
+		882814C6273DC3A500D54B25 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
+		882814C8273DC3D600D54B25 /* SettingSwitchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchOptions.swift; sourceTree = "<group>"; };
 		882814CA273DC3F300D54B25 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		882814CC273DC54100D54B25 /* BaseSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		882814D0273DD7FD00D54B25 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		882814D2273DD83900D54B25 /* ColorThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeViewController.swift; sourceTree = "<group>"; };
-		882A5F40273FF7AB0001B7ED /* ChecklistOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistOption.swift; sourceTree = "<group>"; };
+		882A5F40273FF7AB0001B7ED /* ChecklistOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistOptions.swift; sourceTree = "<group>"; };
 		882A5F42273FF7FF0001B7ED /* BaseChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChecklistTableViewController.swift; sourceTree = "<group>"; };
 		8836037A26E81E3C00788E43 /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		8848BFE1270CE565001EBBCE /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPasswordViewController.swift; sourceTree = "<group>"; };
 		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		88C28CD6275288F0005366AD /* AppModeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeEnum.swift; sourceTree = "<group>"; };
-		88C28CD82752895F005366AD /* SettingsOptionTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionTypeEnum.swift; sourceTree = "<group>"; };
+		88C28CD82752895F005366AD /* SettingOptionTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionTypeEnum.swift; sourceTree = "<group>"; };
 		88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContentTypeEnum.swift; sourceTree = "<group>"; };
 		88CFBC662764D949007DE2FC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +173,7 @@
 				88228A2026ACC74200C78456 /* SceneDelegate.swift */,
 				8836037A26E81E3C00788E43 /* EnvVars.swift */,
 				8848BFE1270CE565001EBBCE /* Core.swift */,
+				884CACCF274942FF005B5892 /* ColorTheme.swift */,
 				88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */,
 				88228A2C26ACC74500C78456 /* Info.plist */,
 				885F222B274D88AB00D03F2D /* Localizable.strings */,
@@ -233,9 +234,9 @@
 				88EFD93026D58D1400855F39 /* Keys.swift */,
 				8848BFE7270CFF15001EBBCE /* OnboardingSlide.swift */,
 				882814CA273DC3F300D54B25 /* Section.swift */,
-				882814C6273DC3A500D54B25 /* SettingsOption.swift */,
-				882814C8273DC3D600D54B25 /* SettingsSwitchOption.swift */,
-				882A5F40273FF7AB0001B7ED /* ChecklistOption.swift */,
+				882814C6273DC3A500D54B25 /* SettingOptions.swift */,
+				882814C8273DC3D600D54B25 /* SettingSwitchOptions.swift */,
+				882A5F40273FF7AB0001B7ED /* ChecklistOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,7 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				88C28CD6275288F0005366AD /* AppModeEnum.swift */,
-				88C28CD82752895F005366AD /* SettingsOptionTypeEnum.swift */,
+				88C28CD82752895F005366AD /* SettingOptionTypeEnum.swift */,
 				88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */,
 			);
 			path = Enums;
@@ -314,7 +315,6 @@
 			children = (
 				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
 				888B40852762B47300C08749 /* BottomLine.swift */,
-				884CACCF274942FF005B5892 /* ColorTheme.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -469,18 +469,18 @@
 				88228A3B26ACC7DA00C78456 /* UIView+Extension.swift in Sources */,
 				88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */,
 				886AE410275BB12500DB8CCB /* BaseMyVaultViewController.swift in Sources */,
-				882814C7273DC3A500D54B25 /* SettingsOption.swift in Sources */,
+				882814C7273DC3A500D54B25 /* SettingOptions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
 				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,
 				888B40862762B47300C08749 /* BottomLine.swift in Sources */,
-				882814C9273DC3D600D54B25 /* SettingsSwitchOption.swift in Sources */,
+				882814C9273DC3D600D54B25 /* SettingSwitchOptions.swift in Sources */,
 				88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */,
 				88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */,
 				882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */,
-				88C28CD927528960005366AD /* SettingsOptionTypeEnum.swift in Sources */,
+				88C28CD927528960005366AD /* SettingOptionTypeEnum.swift in Sources */,
 				8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */,
 				88228A4526ACC8C800C78456 /* MyVaultCell.swift in Sources */,
-				882A5F41273FF7AB0001B7ED /* ChecklistOption.swift in Sources */,
+				882A5F41273FF7AB0001B7ED /* ChecklistOptions.swift in Sources */,
 				88228A2126ACC74200C78456 /* SceneDelegate.swift in Sources */,
 				88228A4126ACC87B00C78456 /* GeneratorViewController.swift in Sources */,
 				886953B6271B1D8D002CB1AF /* UIViewController+Extension.swift in Sources */,

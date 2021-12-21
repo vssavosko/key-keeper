@@ -32,7 +32,7 @@ class SettingsTableViewCell: BaseSettingsTableViewCell {
         label.text = nil
     }
     
-    public func configure(with model: SettingsOption) {
+    public func configure(with model: SettingOptions) {
         label.text = model.title
     }
     

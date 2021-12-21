@@ -5,9 +5,9 @@
 //  Created by Владислав Савосько on 27.11.2021.
 //
 
-enum SettingsOptionTypeEnum {
+enum SettingOptionTypeEnum {
     
-    case staticCell(model: SettingsOption)
-    case switchCell(model: SettingsSwitchOption)
+    case staticCell(model: SettingOptions)
+    case switchCell(model: SettingSwitchOptions)
     
 }

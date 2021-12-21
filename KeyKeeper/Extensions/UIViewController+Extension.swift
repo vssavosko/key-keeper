@@ -15,7 +15,7 @@ extension UIViewController {
                                       message: message,
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Dismiss".localized(),
+        alert.addAction(UIAlertAction(title: "Cancel".localized(),
                                       style: .cancel,
                                       handler: nil))
         

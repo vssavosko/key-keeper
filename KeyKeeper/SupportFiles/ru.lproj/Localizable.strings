@@ -61,6 +61,7 @@
 "Invalid current password" = "Неверный текущий пароль";
 "Passwords do not match" = "Пароли не совпадают";
 "Password changed" = "Пароль изменён";
+"Username copied" = "Имя пользователя скопировано";
 "Password copied" = "Пароль скопирован";
 "Generate password" = "Сгенерировать пароль";
 "The data cannot be encoded" = "Данные не могут быть закодированы";
