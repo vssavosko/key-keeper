@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChecklistOption {
+class ChecklistOptions {
     
     var title: String
     var isChecked: Bool = false

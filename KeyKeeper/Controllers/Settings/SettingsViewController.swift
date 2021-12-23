@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController {
                 title: "Biometrics management".localized(),
                 options: [
                     .switchCell(
-                        model: SettingsSwitchOption(
+                        model: SettingSwitchOptions(
                             title: "Touch ID / Face ID",
                             isOn: UserDefaults.standard.bool(forKey: Keys.biometricSwitchState)) {
                                 let biometricState = UserDefaults.standard.bool(forKey: Keys.biometricSwitchState)
@@ -62,7 +62,7 @@ class SettingsViewController: UIViewController {
                 title: "Other".localized(),
                 options: [
                     .staticCell(
-                        model: SettingsOption(
+                        model: SettingOptions(
                             title: "Language".localized()) { [weak self] in
                                 let languageVC = LanguageViewController()
                                 
@@ -70,7 +70,7 @@ class SettingsViewController: UIViewController {
                             }
                     ),
                     .staticCell(
-                        model: SettingsOption(
+                        model: SettingOptions(
                             title: "Color theme".localized()) { [weak self] in
                                 let colorThemeVC = ColorThemeViewController()
                                 
@@ -78,7 +78,7 @@ class SettingsViewController: UIViewController {
                             }
                     ),
                     .staticCell(
-                        model: SettingsOption(
+                        model: SettingOptions(
                             title: "Change Master Password".localized()) { [weak self] in
                                 let masterPassword = KeychainWrapper.standard.string(forKey: Keys.masterPassword)
                                 let alert = UIAlertController(title: "Change Master Password".localized(),

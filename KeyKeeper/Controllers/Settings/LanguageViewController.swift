@@ -17,6 +17,21 @@ class LanguageViewController: BaseChecklistTableViewController {
         configureElements()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateRootViewController),
+                                               name: NSNotification.Name(LCLLanguageChangeNotification),
+                                               object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let option = options[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier,
@@ -67,7 +82,7 @@ class LanguageViewController: BaseChecklistTableViewController {
             "Russian".localized(),
             "English".localized(),
         ].compactMap({
-            ChecklistOption(title: $0)
+            ChecklistOptions(title: $0)
         })
     }
     

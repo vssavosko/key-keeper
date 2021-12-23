@@ -42,7 +42,6 @@ class DetailViewController: BaseMyVaultViewController {
         
         return label
     }()
-    
     private lazy var dateStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [createdLabel, lastModifiedLabel])
         
@@ -78,11 +77,16 @@ class DetailViewController: BaseMyVaultViewController {
     override func configureElements() {
         super.configureElements()
         
+        oneIconConstraint?.isActive = false
+        twoIconConstraint?.isActive = true
+        
         loginField.isEnabled = false
         passwordField.isEnabled = false
         websiteField.isEnabled = false
         notesTextView.isEditable = false
         
+        copyLoginButton.isHidden = false
+        copyPasswordButton.isHidden = false
         generatePasswordButton.isHidden = true
         createdLabel.isHidden = accountData.createdAt == ""
         lastModifiedLabel.isHidden = accountData.updatedAt == ""
@@ -105,6 +109,9 @@ class DetailViewController: BaseMyVaultViewController {
         notesTextView.text = accountData.notes
         createdLabel.text = "\("Created".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.createdAt))"
         lastModifiedLabel.text = "\("Last modified".localized()): \(DateFormatter.changeDateFormatFor(date: accountData.updatedAt))"
+        
+        copyLoginButton.addTarget(self, action: #selector(tapOnCopyLoginButton), for: .touchUpInside)
+        copyPasswordButton.addTarget(self, action: #selector(tapOnCopyPasswordButton), for: .touchUpInside)
     }
     
     private func updateViewControllerData(newAccountData: Account) {
@@ -166,6 +173,22 @@ class DetailViewController: BaseMyVaultViewController {
         }
         
         navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    private func copyValueOf(field: UITextField, text: String? = nil) {
+        guard let value = field.text else { return }
+        
+        self.triggerNotification(text: text) {
+            UIPasteboard.general.string = value
+        }
+    }
+    
+    @objc private func tapOnCopyLoginButton() {
+        copyValueOf(field: loginField, text: "Username copied".localized())
+    }
+    
+    @objc private func tapOnCopyPasswordButton() {
+        copyValueOf(field: passwordField)
     }
     
 }

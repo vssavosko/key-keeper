@@ -51,7 +51,7 @@ class SettingsSwitchTableViewCell: BaseSettingsTableViewCell {
         cellSwitch.isOn = false
     }
     
-    public func configure(with model: SettingsSwitchOption) {
+    public func configure(with model: SettingSwitchOptions) {
         label.text = model.title
         cellSwitch.isOn = model.isOn
         

@@ -10,6 +10,6 @@ import UIKit
 struct Section {
     
     let title: String
-    let options: [SettingsOptionTypeEnum]
+    let options: [SettingOptionTypeEnum]
     
 }

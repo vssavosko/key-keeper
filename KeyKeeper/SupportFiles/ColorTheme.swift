@@ -9,7 +9,9 @@ import UIKit
 
 class ColorTheme {
     
-    static public func setColorTheme(_ window: UIWindow, themeState: Int) {
+    static let shared = ColorTheme()
+    
+    func setColorTheme(_ window: UIWindow, themeState: Int) {
         switch themeState {
         case 0:
             window.overrideUserInterfaceStyle = .unspecified

@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SettingsSwitchOption {
+struct SettingSwitchOptions {
     
     let title: String
     var isOn: Bool

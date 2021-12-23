@@ -88,7 +88,6 @@ class OnboardingViewController: UIViewController {
         onboardingNextButton.addTarget(self, action: #selector(tapOnOnboardingNextButton), for: .touchUpInside)
         
         configureCollectionView()
-        
         setupElementConstraints()
     }
     

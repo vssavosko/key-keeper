@@ -24,10 +24,17 @@ class ClipboardNotification: UIView {
         
         return view
     }()
-    var messageLabel = Generator.generateLabel(text: "Password copied".localized(),
-                                               textAlignment: .center,
-                                               textColor: .label,
-                                               font: .systemFont(ofSize: 13, weight: .semibold))
+    var messageLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 13, weight: .semibold)
+        label.text = "Password copied".localized()
+        label.textAlignment = .center
+        
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

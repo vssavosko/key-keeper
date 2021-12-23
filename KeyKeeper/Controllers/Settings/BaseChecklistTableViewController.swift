@@ -9,7 +9,7 @@ import UIKit
 
 class BaseChecklistTableViewController: UIViewController {
     
-    internal var options: [ChecklistOption] = []
+    internal var options: [ChecklistOptions] = []
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero,

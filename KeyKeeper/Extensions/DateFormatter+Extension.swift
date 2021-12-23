@@ -12,6 +12,7 @@ extension DateFormatter {
     static func configure(timeZone: TimeZone = .current, dateFormat: String = "yyyy-MM-dd'T'HH:mm:ss") -> DateFormatter {
         let formatter = DateFormatter()
         
+        formatter.locale = Locale(identifier: Language.shared.getLanguage())
         formatter.timeZone = timeZone
         formatter.dateFormat = dateFormat
         
@@ -22,6 +23,7 @@ extension DateFormatter {
         let formatter = DateFormatter()
         let ISODateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
+        formatter.locale = Locale(identifier: Language.shared.getLanguage())
         formatter.dateFormat = ISODateFormat
         
         guard let dateWithDateType = formatter.date(from: date) else { return date }
