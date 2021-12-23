@@ -58,6 +58,7 @@
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
 		88EFD93326D5998500855F39 /* KeychainWrapper+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93226D5998500855F39 /* KeychainWrapper+Extension.swift */; };
+		88F5FAEF2775292300C994A5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5FAEE2775292300C994A5 /* Language.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		88EFD93026D58D1400855F39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		88EFD93226D5998500855F39 /* KeychainWrapper+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+Extension.swift"; sourceTree = "<group>"; };
+		88F5FAEE2775292300C994A5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		97059BD31E78D6A32B4D736D /* Pods_KeyKeeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyKeeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED0DAAB16AAEC6A3BDF5B0B /* Pods-KeyKeeper.debugdev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.debugdev.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.debugdev.xcconfig"; sourceTree = "<group>"; };
 		E4EB1C5BB8B9FDB7DE374D88 /* Pods-KeyKeeper.releaseprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.releaseprod.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.releaseprod.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				88228A2C26ACC74500C78456 /* Info.plist */,
 				885F222B274D88AB00D03F2D /* Localizable.strings */,
 				88228A2726ACC74500C78456 /* Assets.xcassets */,
+				88F5FAEE2775292300C994A5 /* Language.swift */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				88228A3B26ACC7DA00C78456 /* UIView+Extension.swift in Sources */,
 				88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */,
 				886AE410275BB12500DB8CCB /* BaseMyVaultViewController.swift in Sources */,
+				88F5FAEF2775292300C994A5 /* Language.swift in Sources */,
 				882814C7273DC3A500D54B25 /* SettingOptions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
 				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,

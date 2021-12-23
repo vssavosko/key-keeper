@@ -10,6 +10,9 @@ import Localize_Swift
 
 class BaseMyVaultViewController: UIViewController {
     
+    internal var oneIconConstraint: NSLayoutConstraint?
+    internal var twoIconConstraint: NSLayoutConstraint?
+    
     internal let titleLabel: UILabel = {
         let label = UILabel()
         
@@ -168,13 +171,7 @@ class BaseMyVaultViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [loginField, copyLoginButton])
         
         stackView.axis = .horizontal
-        
-        return stackView
-    }()
-    internal lazy var passwordFieldStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [passwordField, passwordButton, copyPasswordButton])
-        
-        stackView.axis = .horizontal
+        stackView.spacing = 10.0
         
         return stackView
     }()
@@ -182,6 +179,22 @@ class BaseMyVaultViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [loginLabel, loginFieldStackView])
         
         stackView.axis = .vertical
+        
+        return stackView
+    }()
+    internal lazy var passwordButtonsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [passwordButton, copyPasswordButton])
+        
+        stackView.axis = .horizontal
+        stackView.spacing = 16.0
+        
+        return stackView
+    }()
+    internal lazy var passwordFieldStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [passwordField, passwordButtonsStackView])
+        
+        stackView.axis = .horizontal
+        stackView.spacing = 10.0
         
         return stackView
     }()
@@ -232,15 +245,19 @@ class BaseMyVaultViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
+        oneIconConstraint = passwordButtonsStackView.widthAnchor.constraint(equalToConstant: 25)
+        oneIconConstraint?.isActive = true
+        
+        twoIconConstraint = passwordButtonsStackView.widthAnchor.constraint(equalToConstant: 70)
+        
         configureNavigationBar()
         configureSubviews()
         configureElements()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        notesTextView.delegate = self
         notesTextView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
     }
     
@@ -253,6 +270,8 @@ class BaseMyVaultViewController: UIViewController {
     }
     
     internal func configureElements() {
+        notesTextView.delegate = self
+        
         BottomLine.generateFor(element: titleStackView)
         BottomLine.generateFor(element: loginStackView)
         BottomLine.generateFor(element: websiteStackView)
@@ -270,26 +289,25 @@ class BaseMyVaultViewController: UIViewController {
         loginField.anchor(top: loginFieldStackView.topAnchor,
                           leading: loginFieldStackView.leadingAnchor,
                           bottom: loginFieldStackView.bottomAnchor,
-                          trailing: copyLoginButton.leadingAnchor,
+                          trailing: nil,
                           size: CGSize(width: loginFieldStackView.frame.width - copyLoginButton.frame.width, height: 0))
+        
+        copyLoginButton.anchor(top: nil,
+                               leading: nil,
+                               bottom: nil,
+                               trailing: loginFieldStackView.trailingAnchor,
+                               size: CGSize(width: 25, height: 0))
         
         passwordField.anchor(top: passwordFieldStackView.topAnchor,
                              leading: passwordFieldStackView.leadingAnchor,
                              bottom: passwordFieldStackView.bottomAnchor,
-                             trailing: passwordButton.leadingAnchor,
-                             size: CGSize(width: passwordFieldStackView.frame.width - passwordButton.frame.width, height: 0))
+                             trailing: nil,
+                             size: CGSize(width: passwordFieldStackView.frame.width - passwordButtonsStackView.frame.width, height: 0))
         
-        passwordButton.anchor(top: passwordField.topAnchor,
-                              leading: passwordField.trailingAnchor,
-                              bottom: passwordField.bottomAnchor,
-                              trailing: copyPasswordButton.leadingAnchor,
-                              padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16))
-        
-        copyPasswordButton.anchor(top: passwordField.topAnchor,
-                                  leading: nil,
-                                  bottom: passwordField.bottomAnchor,
-                                  trailing: passwordFieldStackView.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        passwordButtonsStackView.anchor(top: nil,
+                                        leading: nil,
+                                        bottom: nil,
+                                        trailing: passwordFieldStackView.trailingAnchor)
         
         generatePasswordButton.anchor(top: firstStackView.bottomAnchor,
                                       leading: nil,

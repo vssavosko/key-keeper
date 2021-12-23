@@ -77,6 +77,9 @@ class DetailViewController: BaseMyVaultViewController {
     override func configureElements() {
         super.configureElements()
         
+        oneIconConstraint?.isActive = false
+        twoIconConstraint?.isActive = true
+        
         loginField.isEnabled = false
         passwordField.isEnabled = false
         websiteField.isEnabled = false
