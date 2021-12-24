@@ -38,8 +38,6 @@ class EditViewController: BaseMyVaultViewController {
     }
     
     override func configureElements() {
-        super.configureElements()
-        
         titleField.text = accountData.title
         loginField.text = accountData.login
         passwordField.text = accountData.password
@@ -50,6 +48,8 @@ class EditViewController: BaseMyVaultViewController {
         loginField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         generatePasswordButton.addTarget(self, action: #selector(tapOnGeneratorButton), for: .touchUpInside)
+        
+        super.configureElements()
     }
     
     @objc private func tapOnCancel() {

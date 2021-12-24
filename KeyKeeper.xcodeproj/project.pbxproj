@@ -44,7 +44,6 @@
 		88793B5226CEF85400462B02 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */; };
 		88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */; };
 		88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */; };
-		888B40862762B47300C08749 /* BottomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888B40852762B47300C08749 /* BottomLine.swift */; };
 		88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922B9A26BC71F20083A285 /* DetailViewController.swift */; };
 		88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2096526FD1D7700C11770 /* ClipboardNotification.swift */; };
 		88A3858226C33167006913C2 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter+Extension.swift */; };
@@ -54,6 +53,8 @@
 		88C28CD927528960005366AD /* SettingOptionTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD82752895F005366AD /* SettingOptionTypeEnum.swift */; };
 		88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */; };
 		88CFBC672764D949007DE2FC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFBC662764D949007DE2FC /* RoundButton.swift */; };
+		88D38D772776744D003231EE /* TextFieldWithPadding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D38D762776744D003231EE /* TextFieldWithPadding+Extension.swift */; };
+		88D38D79277674B9003231EE /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D38D78277674B9003231EE /* UIStackView+Extension.swift */; };
 		88DA6D6527445D5900168D94 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */; };
 		88E60EB726D84C9A00FDC31B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */; };
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
@@ -105,7 +106,6 @@
 		88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		88879EC9273B04B400D6187D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		88879ECB273B181500D6187D /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
-		888B40852762B47300C08749 /* BottomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLine.swift; sourceTree = "<group>"; };
 		88922B9A26BC71F20083A285 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		88A2096526FD1D7700C11770 /* ClipboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardNotification.swift; sourceTree = "<group>"; };
 		88A3858126C33167006913C2 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
@@ -115,6 +115,8 @@
 		88C28CD82752895F005366AD /* SettingOptionTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionTypeEnum.swift; sourceTree = "<group>"; };
 		88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContentTypeEnum.swift; sourceTree = "<group>"; };
 		88CFBC662764D949007DE2FC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		88D38D762776744D003231EE /* TextFieldWithPadding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldWithPadding+Extension.swift"; sourceTree = "<group>"; };
+		88D38D78277674B9003231EE /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		88DA6D6427445D5900168D94 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		88E60EB526D8496100FDC31B /* KeyKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyKeeper.entitlements; sourceTree = "<group>"; };
 		88E60EB626D84C9A00FDC31B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -251,6 +253,8 @@
 				88A3858126C33167006913C2 /* DateFormatter+Extension.swift */,
 				88EFD93226D5998500855F39 /* KeychainWrapper+Extension.swift */,
 				886953B5271B1D8D002CB1AF /* UIViewController+Extension.swift */,
+				88D38D762776744D003231EE /* TextFieldWithPadding+Extension.swift */,
+				88D38D78277674B9003231EE /* UIStackView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
-				888B40852762B47300C08749 /* BottomLine.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				88EFD93126D58D1400855F39 /* Keys.swift in Sources */,
 				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
 				8848BFE2270CE565001EBBCE /* Core.swift in Sources */,
+				88D38D772776744D003231EE /* TextFieldWithPadding+Extension.swift in Sources */,
 				8848BFE8270CFF15001EBBCE /* OnboardingSlide.swift in Sources */,
 				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
 				88EFD93326D5998500855F39 /* KeychainWrapper+Extension.swift in Sources */,
@@ -476,9 +480,9 @@
 				882814C7273DC3A500D54B25 /* SettingOptions.swift in Sources */,
 				88228A1F26ACC74200C78456 /* AppDelegate.swift in Sources */,
 				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,
-				888B40862762B47300C08749 /* BottomLine.swift in Sources */,
 				882814C9273DC3D600D54B25 /* SettingSwitchOptions.swift in Sources */,
 				88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */,
+				88D38D79277674B9003231EE /* UIStackView+Extension.swift in Sources */,
 				88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */,
 				882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */,
 				88C28CD927528960005366AD /* SettingOptionTypeEnum.swift in Sources */,

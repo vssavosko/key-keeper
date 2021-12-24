@@ -99,7 +99,7 @@ class DetailViewController: BaseMyVaultViewController {
             websiteStackView.layer.backgroundColor = .none
         }
         
-        if accountData.notes.isEmpty || accountData.notes == "Write some note..." {
+        if accountData.notes.isEmpty || accountData.notes == notePlaceholder {
             notesStackView.isHidden = true
         }
         
@@ -134,7 +134,7 @@ class DetailViewController: BaseMyVaultViewController {
             websiteStackView.isHidden = false
         }
         
-        if newAccountData.notes.isEmpty || newAccountData.notes == "Write some note..." {
+        if newAccountData.notes.isEmpty || newAccountData.notes == notePlaceholder {
             notesStackView.isHidden = true
             
             websiteStackView.layer.backgroundColor = .none
