@@ -45,7 +45,7 @@ class MasterPasswordViewController: UIViewController {
         field.textContentType = .password
         field.isSecureTextEntry = true
         
-        field.generateBottomLine()
+        field.addBottomLine()
         
         return field
     }()
@@ -59,7 +59,7 @@ class MasterPasswordViewController: UIViewController {
         field.textContentType = .password
         field.isSecureTextEntry = true
         
-        field.generateBottomLine()
+        field.addBottomLine()
         
         return field
     }()

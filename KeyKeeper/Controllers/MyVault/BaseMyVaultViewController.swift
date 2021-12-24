@@ -167,7 +167,7 @@ class BaseMyVaultViewController: UIViewController {
         
         stackView.axis = .vertical
         
-        stackView.generateBottomLine()
+        stackView.addBottomLine()
         
         return stackView
     }()
@@ -184,7 +184,7 @@ class BaseMyVaultViewController: UIViewController {
         
         stackView.axis = .vertical
         
-        stackView.generateBottomLine()
+        stackView.addBottomLine()
         
         return stackView
     }()
@@ -216,7 +216,7 @@ class BaseMyVaultViewController: UIViewController {
         
         stackView.axis = .vertical
         
-        stackView.generateBottomLine()
+        stackView.addBottomLine()
         
         return stackView
     }()

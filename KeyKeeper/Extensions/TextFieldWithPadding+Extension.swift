@@ -9,8 +9,8 @@ import UIKit
 
 extension TextFieldWithPadding {
     
-    func generateBottomLine(backgroundColor: UIColor = UIColor.systemBackground,
-                            lineColor: UIColor = .systemGray5) {
+    func addBottomLine(backgroundColor: UIColor = UIColor.systemBackground,
+                       lineColor: UIColor = .systemGray5) {
         self.layer.backgroundColor = backgroundColor.cgColor
         self.layer.masksToBounds = false
         self.layer.shadowColor = lineColor.cgColor

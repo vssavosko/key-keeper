@@ -35,8 +35,8 @@ class AuthorizationViewController: UIViewController {
         field.isSecureTextEntry = true
         field.returnKeyType = .continue
         
-        field.generateBottomLine(backgroundColor: .black, lineColor: .white)
-
+        field.addBottomLine(backgroundColor: .black, lineColor: .white)
+        
         field.addTarget(self, action: #selector(tapOnContinueButton), for: .primaryActionTriggered)
         
         return field
