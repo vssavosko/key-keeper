@@ -45,6 +45,8 @@ class MasterPasswordViewController: UIViewController {
         field.textContentType = .password
         field.isSecureTextEntry = true
         
+        field.generateBottomLine()
+        
         return field
     }()
     private let repeatPasswordField: TextFieldWithPadding = {
@@ -56,6 +58,8 @@ class MasterPasswordViewController: UIViewController {
                                                          attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
         field.textContentType = .password
         field.isSecureTextEntry = true
+        
+        field.generateBottomLine()
         
         return field
     }()
@@ -73,7 +77,7 @@ class MasterPasswordViewController: UIViewController {
         view.backgroundColor = .white
         
         configureSubviews()
-        configureElements()
+        setupConstraints()
     }
     
     private func configureSubviews() {
@@ -82,13 +86,6 @@ class MasterPasswordViewController: UIViewController {
         view.addSubview(passwordField)
         view.addSubview(repeatPasswordField)
         view.addSubview(saveButton)
-    }
-    
-    private func configureElements() {
-        BottomLine.generateFor(element: passwordField, backgroundColor: .white, lineColor: .lightGray)
-        BottomLine.generateFor(element: repeatPasswordField, backgroundColor: .white, lineColor: .lightGray)
-        
-        setupConstraints()
     }
     
     private func setupConstraints() {

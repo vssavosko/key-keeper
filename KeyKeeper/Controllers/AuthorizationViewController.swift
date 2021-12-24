@@ -35,6 +35,10 @@ class AuthorizationViewController: UIViewController {
         field.isSecureTextEntry = true
         field.returnKeyType = .continue
         
+        field.generateBottomLine(backgroundColor: .black, lineColor: .white)
+
+        field.addTarget(self, action: #selector(tapOnContinueButton), for: .primaryActionTriggered)
+        
         return field
     }()
     
@@ -44,7 +48,7 @@ class AuthorizationViewController: UIViewController {
         view.backgroundColor = .black
         
         configureSubviews()
-        configureElements()
+        setupElementConstraints()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,16 +81,6 @@ class AuthorizationViewController: UIViewController {
     private func configureSubviews() {
         view.addSubview(imageView)
         view.addSubview(passwordField)
-    }
-    
-    private func configureElements() {
-        BottomLine.generateFor(element: passwordField,
-                                backgroundColor: .black,
-                                lineColor: .white)
-        
-        passwordField.addTarget(self, action: #selector(tapOnContinueButton), for: .primaryActionTriggered)
-        
-        setupElementConstraints()
     }
     
     private func setupElementConstraints() {

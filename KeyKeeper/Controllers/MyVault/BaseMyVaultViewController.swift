@@ -10,6 +10,7 @@ import Localize_Swift
 
 class BaseMyVaultViewController: UIViewController {
     
+    internal let notePlaceholder = "You can leave a note here"
     internal var oneIconConstraint: NSLayoutConstraint?
     internal var twoIconConstraint: NSLayoutConstraint?
     
@@ -89,7 +90,7 @@ class BaseMyVaultViewController: UIViewController {
         
         field.font = .systemFont(ofSize: 17, weight: .regular)
         field.textColor = .label
-        field.placeholder = "www.piedpiper.com"
+        field.placeholder = "piedpiper.com"
         field.textContentType = .URL
         field.keyboardType = .URL
         field.autocapitalizationType = .none
@@ -106,12 +107,13 @@ class BaseMyVaultViewController: UIViewController {
         
         return label
     }()
-    internal let notesTextView: UITextView = {
+    internal lazy var notesTextView: UITextView = {
         let textView = UITextView()
         
         textView.font = .systemFont(ofSize: 16)
-        textView.textColor = .label
-        textView.text = "Write some note..."
+        textView.textColor = .placeholderText
+        textView.text = notePlaceholder
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         textView.backgroundColor = .systemGray5
         textView.isScrollEnabled = false
         textView.layer.cornerRadius = 8
@@ -165,6 +167,8 @@ class BaseMyVaultViewController: UIViewController {
         
         stackView.axis = .vertical
         
+        stackView.generateBottomLine()
+        
         return stackView
     }()
     internal lazy var loginFieldStackView: UIStackView = {
@@ -179,6 +183,8 @@ class BaseMyVaultViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [loginLabel, loginFieldStackView])
         
         stackView.axis = .vertical
+        
+        stackView.generateBottomLine()
         
         return stackView
     }()
@@ -209,6 +215,8 @@ class BaseMyVaultViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [websiteLabel, websiteField])
         
         stackView.axis = .vertical
+        
+        stackView.generateBottomLine()
         
         return stackView
     }()
@@ -255,12 +263,6 @@ class BaseMyVaultViewController: UIViewController {
         configureElements()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        notesTextView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
-    }
-    
     internal func configureNavigationBar() {}
     
     internal func configureSubviews() {
@@ -272,9 +274,9 @@ class BaseMyVaultViewController: UIViewController {
     internal func configureElements() {
         notesTextView.delegate = self
         
-        BottomLine.generateFor(element: titleStackView)
-        BottomLine.generateFor(element: loginStackView)
-        BottomLine.generateFor(element: websiteStackView)
+        if notesTextView.text != notePlaceholder {
+            notesTextView.textColor = .label
+        }
         
         setupFieldConstraints()
     }
@@ -320,6 +322,13 @@ class BaseMyVaultViewController: UIViewController {
                                bottom: nil,
                                trailing: view.trailingAnchor,
                                padding: UIEdgeInsets(top: 41, left: 16, bottom: 0, right: 16))
+        
+        notesTextView.anchor(top: notesLabel.bottomAnchor,
+                             leading: secondStackView.leadingAnchor,
+                             bottom: nil,
+                             trailing: secondStackView.trailingAnchor,
+                             padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0),
+                             size: CGSize(width: 0, height: 75))
     }
     
     @objc internal func tapOnPasswordButton(sender: UIButton!) {
@@ -339,7 +348,7 @@ extension BaseMyVaultViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         guard let notesTextViewText = notesTextView.text else { return }
         
-        if !notesTextViewText.isEmpty && notesTextViewText == "Write some note..." {
+        if !notesTextViewText.isEmpty && notesTextViewText == notePlaceholder {
             notesTextView.text = ""
             notesTextView.textColor = .label
         }
@@ -347,8 +356,8 @@ extension BaseMyVaultViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if notesTextView.text.isEmpty {
-            notesTextView.text = "Write some note..."
-            notesTextView.textColor = .lightGray
+            notesTextView.text = notePlaceholder
+            notesTextView.textColor = .placeholderText
         }
     }
     
