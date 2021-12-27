@@ -22,22 +22,18 @@ class DetailViewController: BaseMyVaultViewController {
     var accountData: Account!
     var indexRow: Int?
     
-    private let createdLabel: UILabel = {
-        let label = UILabel()
+    private let createdLabel: FormLabel = {
+        let label = FormLabel(font: .systemFont(ofSize: 13, weight: .regular))
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textAlignment = .center
         
         return label
     }()
-    private let lastModifiedLabel: UILabel = {
-        let label = UILabel()
+    private let lastModifiedLabel: FormLabel = {
+        let label = FormLabel(font: .systemFont(ofSize: 13, weight: .regular))
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textAlignment = .center
         
         return label
@@ -57,7 +53,7 @@ class DetailViewController: BaseMyVaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        secondStackView.addArrangedSubview(dateStackView)
+        additionalInfoStackView.addArrangedSubview(dateStackView)
         
         configureElements()
     }

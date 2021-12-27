@@ -14,96 +14,52 @@ class BaseMyVaultViewController: UIViewController {
     internal var oneIconConstraint: NSLayoutConstraint?
     internal var twoIconConstraint: NSLayoutConstraint?
     
-    internal let titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 15, weight: .medium)
-        label.text = "Title".localized()
+    internal let titleLabel: FormLabel = {
+        let label = FormLabel(text: "Title")
         
         return label
     }()
-    internal let titleField: TextFieldWithPadding = {
-        let field = TextFieldWithPadding()
-        
-        field.font = .systemFont(ofSize: 17, weight: .regular)
-        field.textColor = .label
-        field.placeholder = "Pied Piper"
+    internal let titleField: FormField = {
+        let field = FormField(placeholder: "Pied Piper")
         
         return field
     }()
     
-    internal let loginLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 15, weight: .medium)
-        label.text = "Email or username".localized()
+    internal let loginLabel: FormLabel = {
+        let label = FormLabel(text: "Email or username")
         
         return label
     }()
-    internal let loginField: TextFieldWithPadding = {
-        let field = TextFieldWithPadding()
-        
-        field.font = .systemFont(ofSize: 17, weight: .regular)
-        field.textColor = .label
-        field.placeholder = "richardhendricks@piedpiper.com"
-        field.textContentType = .username
-        field.keyboardType = .emailAddress
-        field.autocapitalizationType = .none
+    internal let loginField: FormField = {
+        let field = FormField(placeholder: "richardhendricks@piedpiper.com", fieldType: .login)
         
         return field
     }()
     
-    internal let passwordLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 15, weight: .medium)
-        label.text = "Password".localized()
+    internal let passwordLabel: FormLabel = {
+        let label = FormLabel(text: "Password")
         
         return label
     }()
-    internal let passwordField: TextFieldWithPadding = {
-        let field = TextFieldWithPadding()
-        
-        field.font = .systemFont(ofSize: 17, weight: .regular)
-        field.textColor = .label
-        field.placeholder = "QwEr123Ty456"
-        field.textContentType = .password
-        field.isSecureTextEntry = true
+    internal let passwordField: FormField = {
+        let field = FormField(placeholder: "QwEr123Ty456", fieldType: .password)
         
         return field
     }()
     
-    internal let websiteLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 15, weight: .medium)
-        label.text = "Website".localized()
+    internal let websiteLabel: FormLabel = {
+        let label = FormLabel(text: "Website")
         
         return label
     }()
-    internal let websiteField: TextFieldWithPadding = {
-        let field = TextFieldWithPadding()
-        
-        field.font = .systemFont(ofSize: 17, weight: .regular)
-        field.textColor = .label
-        field.placeholder = "piedpiper.com"
-        field.textContentType = .URL
-        field.keyboardType = .URL
-        field.autocapitalizationType = .none
+    internal let websiteField: FormField = {
+        let field = FormField(placeholder: "piedpiper.com", fieldType: .website)
         
         return field
     }()
     
-    internal let notesLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 15, weight: .medium)
-        label.text = "Notes".localized()
+    internal let notesLabel: FormLabel = {
+        let label = FormLabel(text: "Notes")
         
         return label
     }()
@@ -121,31 +77,22 @@ class BaseMyVaultViewController: UIViewController {
         return textView
     }()
     
-    internal let passwordButton: UIButton = {
-        let button = UIButton()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+    internal let passwordButton: FormButton = {
+        let button = FormButton(systemImageName: "eye.fill")
         
         button.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         
         return button
     }()
-    internal let copyLoginButton: UIButton = {
-        let button = UIButton()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "doc.on.doc.fill"), for: .normal)
+    internal let copyLoginButton: FormButton = {
+        let button = FormButton(systemImageName: "doc.on.doc.fill")
         
         button.isHidden = true
         
         return button
     }()
     internal let copyPasswordButton: UIButton = {
-        let button = UIButton()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "doc.on.doc.fill"), for: .normal)
+        let button = FormButton(systemImageName: "doc.on.doc.fill")
         
         button.isHidden = true
         
@@ -229,21 +176,13 @@ class BaseMyVaultViewController: UIViewController {
         return stackView
     }()
     
-    internal lazy var firstStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [loginStackView, passwordStackView])
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 10.0
+    internal lazy var accountDataStackView: FormStackView = {
+        let stackView = FormStackView(arrangedSubviews: [loginStackView, passwordStackView])
         
         return stackView
     }()
-    internal lazy var secondStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [websiteStackView, notesStackView])
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 10.0
+    internal lazy var additionalInfoStackView: FormStackView = {
+        let stackView = FormStackView(arrangedSubviews: [websiteStackView, notesStackView])
         
         return stackView
     }()
@@ -266,8 +205,8 @@ class BaseMyVaultViewController: UIViewController {
     internal func configureNavigationBar() {}
     
     internal func configureSubviews() {
-        view.addSubview(firstStackView)
-        view.addSubview(secondStackView)
+        view.addSubview(accountDataStackView)
+        view.addSubview(additionalInfoStackView)
         view.addSubview(generatePasswordButton)
     }
     
@@ -278,15 +217,15 @@ class BaseMyVaultViewController: UIViewController {
             notesTextView.textColor = .label
         }
         
-        setupFieldConstraints()
+        setupElementConstraints()
     }
     
-    internal func setupFieldConstraints() {
-        firstStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                              leading: view.leadingAnchor,
-                              bottom: nil,
-                              trailing: view.trailingAnchor,
-                              padding: UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16))
+    internal func setupElementConstraints() {
+        accountDataStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                    leading: view.leadingAnchor,
+                                    bottom: nil,
+                                    trailing: view.trailingAnchor,
+                                    padding: UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16))
         
         loginField.anchor(top: loginFieldStackView.topAnchor,
                           leading: loginFieldStackView.leadingAnchor,
@@ -311,22 +250,22 @@ class BaseMyVaultViewController: UIViewController {
                                         bottom: nil,
                                         trailing: passwordFieldStackView.trailingAnchor)
         
-        generatePasswordButton.anchor(top: firstStackView.bottomAnchor,
+        generatePasswordButton.anchor(top: accountDataStackView.bottomAnchor,
                                       leading: nil,
-                                      bottom: secondStackView.topAnchor,
+                                      bottom: additionalInfoStackView.topAnchor,
                                       trailing: view.trailingAnchor,
                                       padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
         
-        secondStackView.anchor(top: firstStackView.bottomAnchor,
-                               leading: view.leadingAnchor,
-                               bottom: nil,
-                               trailing: view.trailingAnchor,
-                               padding: UIEdgeInsets(top: 41, left: 16, bottom: 0, right: 16))
+        additionalInfoStackView.anchor(top: accountDataStackView.bottomAnchor,
+                                       leading: view.leadingAnchor,
+                                       bottom: nil,
+                                       trailing: view.trailingAnchor,
+                                       padding: UIEdgeInsets(top: 41, left: 16, bottom: 0, right: 16))
         
         notesTextView.anchor(top: notesLabel.bottomAnchor,
-                             leading: secondStackView.leadingAnchor,
+                             leading: additionalInfoStackView.leadingAnchor,
                              bottom: nil,
-                             trailing: secondStackView.trailingAnchor,
+                             trailing: additionalInfoStackView.trailingAnchor,
                              padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0),
                              size: CGSize(width: 0, height: 75))
     }

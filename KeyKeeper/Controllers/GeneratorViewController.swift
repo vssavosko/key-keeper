@@ -36,41 +36,33 @@ class GeneratorViewController: UIViewController {
         
         return field
     }()
-    private let refreshButton: UIButton = {
-        let button = UIButton()
+    private let refreshButton: FormButton = {
+        let button = FormButton(systemImageName: "arrow.clockwise")
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
         button.imageView?.layer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
         
         button.addTarget(self, action: #selector(tapOnRefreshButton), for: .touchUpInside)
         
         return button
     }()
-    private let lengthLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .label
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.text = ""
+    private let lengthLabel: FormLabel = {
+        let label = FormLabel(font: .systemFont(ofSize: 16, weight: .regular),
+                              textColor: .label,
+                              text: "")
         
         return label
     }()
-    private let lettersLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .label
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.text = "A-Z a-z"
+    private let lettersLabel: FormLabel = {
+        let label = FormLabel(font: .systemFont(ofSize: 16, weight: .regular),
+                              textColor: .label,
+                              text: "A-Z a-z")
         
         return label
     }()
     private let symbolsLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .label
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.text = "!@#$%^&*"
+        let label = FormLabel(font: .systemFont(ofSize: 16, weight: .regular),
+                              textColor: .label,
+                              text: "!@#$%^&*")
         
         return label
     }()

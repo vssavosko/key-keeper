@@ -20,22 +20,20 @@ class OnboardingCell: UICollectionViewCell {
         
         return imageView
     }()
-    private let slideTitleLabel: UILabel = {
-        let label = UILabel()
+    private let slideTitleLabel: FormLabel = {
+        let label = FormLabel(font: .systemFont(ofSize: 22, weight: .semibold),
+                              textColor: .black,
+                              text: "")
         
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 22, weight: .semibold)
-        label.text = ""
         label.numberOfLines = 0
         
         return label
     }()
     private let slideDescriptionLabel: UILabel = {
-        let label = UILabel()
+        let label = FormLabel(font: .systemFont(ofSize: 14, weight: .semibold),
+                              textColor: .black,
+                              text: "")
         
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.text = ""
         label.numberOfLines = 0
         
         return label

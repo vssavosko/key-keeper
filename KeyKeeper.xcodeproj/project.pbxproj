@@ -48,7 +48,6 @@
 		88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2096526FD1D7700C11770 /* ClipboardNotification.swift */; };
 		88A3858226C33167006913C2 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3858126C33167006913C2 /* DateFormatter+Extension.swift */; };
 		88B2A1BC270FA030000F7595 /* MasterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */; };
-		88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBD3CB26F15D9400ABBFE4 /* Generator.swift */; };
 		88C28CD7275288F0005366AD /* AppModeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD6275288F0005366AD /* AppModeEnum.swift */; };
 		88C28CD927528960005366AD /* SettingOptionTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CD82752895F005366AD /* SettingOptionTypeEnum.swift */; };
 		88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */; };
@@ -60,6 +59,10 @@
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
 		88EFD93326D5998500855F39 /* KeychainWrapper+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93226D5998500855F39 /* KeychainWrapper+Extension.swift */; };
 		88F5FAEF2775292300C994A5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5FAEE2775292300C994A5 /* Language.swift */; };
+		88F60F28277A1C70005A7CAF /* FormLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F27277A1C70005A7CAF /* FormLabel.swift */; };
+		88F60F2A277A1CE7005A7CAF /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F29277A1CE7005A7CAF /* FormField.swift */; };
+		88F60F2C277A206C005A7CAF /* FormStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F2B277A206C005A7CAF /* FormStackView.swift */; };
+		88F60F2E277A2793005A7CAF /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F2D277A2793005A7CAF /* FormButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +113,6 @@
 		88A2096526FD1D7700C11770 /* ClipboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardNotification.swift; sourceTree = "<group>"; };
 		88A3858126C33167006913C2 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		88B2A1BB270FA030000F7595 /* MasterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPasswordViewController.swift; sourceTree = "<group>"; };
-		88BBD3CB26F15D9400ABBFE4 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		88C28CD6275288F0005366AD /* AppModeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeEnum.swift; sourceTree = "<group>"; };
 		88C28CD82752895F005366AD /* SettingOptionTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionTypeEnum.swift; sourceTree = "<group>"; };
 		88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContentTypeEnum.swift; sourceTree = "<group>"; };
@@ -123,6 +125,10 @@
 		88EFD93026D58D1400855F39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		88EFD93226D5998500855F39 /* KeychainWrapper+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+Extension.swift"; sourceTree = "<group>"; };
 		88F5FAEE2775292300C994A5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		88F60F27277A1C70005A7CAF /* FormLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabel.swift; sourceTree = "<group>"; };
+		88F60F29277A1CE7005A7CAF /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		88F60F2B277A206C005A7CAF /* FormStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackView.swift; sourceTree = "<group>"; };
+		88F60F2D277A2793005A7CAF /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		97059BD31E78D6A32B4D736D /* Pods_KeyKeeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyKeeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED0DAAB16AAEC6A3BDF5B0B /* Pods-KeyKeeper.debugdev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.debugdev.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.debugdev.xcconfig"; sourceTree = "<group>"; };
 		E4EB1C5BB8B9FDB7DE374D88 /* Pods-KeyKeeper.releaseprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.releaseprod.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.releaseprod.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 		8806EA3C2706596B00E4F51C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				88F60F2F277A2870005A7CAF /* Form */,
 				88CFBC662764D949007DE2FC /* RoundButton.swift */,
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
 				88A2096526FD1D7700C11770 /* ClipboardNotification.swift */,
@@ -224,7 +231,6 @@
 				8806EA392706547000E4F51C /* Cells */,
 				8806EA3C2706596B00E4F51C /* Components */,
 				88228A3626ACC79000C78456 /* Extensions */,
-				88F5A6D626BECA0D00B056C1 /* Helpers */,
 				8806EA3B2706585100E4F51C /* SupportFiles */,
 				8806EA3A2706581F00E4F51C /* IBuilder */,
 				88228A2226ACC74200C78456 /* ViewController.swift */,
@@ -317,12 +323,15 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		88F5A6D626BECA0D00B056C1 /* Helpers */ = {
+		88F60F2F277A2870005A7CAF /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				88BBD3CB26F15D9400ABBFE4 /* Generator.swift */,
+				88F60F27277A1C70005A7CAF /* FormLabel.swift */,
+				88F60F29277A1CE7005A7CAF /* FormField.swift */,
+				88F60F2B277A206C005A7CAF /* FormStackView.swift */,
+				88F60F2D277A2793005A7CAF /* FormButton.swift */,
 			);
-			path = Helpers;
+			path = Form;
 			sourceTree = "<group>";
 		};
 		AB756454E762A10907C35EA1 /* Pods */ = {
@@ -459,6 +468,7 @@
 				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
 				8848BFE2270CE565001EBBCE /* Core.swift in Sources */,
 				88D38D772776744D003231EE /* TextFieldWithPadding+Extension.swift in Sources */,
+				88F60F2E277A2793005A7CAF /* FormButton.swift in Sources */,
 				8848BFE8270CFF15001EBBCE /* OnboardingSlide.swift in Sources */,
 				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
 				88EFD93326D5998500855F39 /* KeychainWrapper+Extension.swift in Sources */,
@@ -466,7 +476,6 @@
 				88922B9B26BC71F20083A285 /* DetailViewController.swift in Sources */,
 				8836037B26E81E3C00788E43 /* EnvVars.swift in Sources */,
 				8848BFE6270CF756001EBBCE /* OnboardingCell.swift in Sources */,
-				88BBD3CC26F15D9400ABBFE4 /* Generator.swift in Sources */,
 				882814CD273DC54100D54B25 /* BaseSettingsTableViewCell.swift in Sources */,
 				8813D1CF26CC52EA0091840E /* EditViewController.swift in Sources */,
 				88A2096626FD1D7700C11770 /* ClipboardNotification.swift in Sources */,
@@ -475,6 +484,7 @@
 				8848BFE4270CE651001EBBCE /* OnboardingViewController.swift in Sources */,
 				88228A3B26ACC7DA00C78456 /* UIView+Extension.swift in Sources */,
 				88C28CDB275289A5005366AD /* FieldContentTypeEnum.swift in Sources */,
+				88F60F2C277A206C005A7CAF /* FormStackView.swift in Sources */,
 				886AE410275BB12500DB8CCB /* BaseMyVaultViewController.swift in Sources */,
 				88F5FAEF2775292300C994A5 /* Language.swift in Sources */,
 				882814C7273DC3A500D54B25 /* SettingOptions.swift in Sources */,
@@ -482,8 +492,10 @@
 				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,
 				882814C9273DC3D600D54B25 /* SettingSwitchOptions.swift in Sources */,
 				88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */,
+				88F60F2A277A1CE7005A7CAF /* FormField.swift in Sources */,
 				88D38D79277674B9003231EE /* UIStackView+Extension.swift in Sources */,
 				88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */,
+				88F60F28277A1C70005A7CAF /* FormLabel.swift in Sources */,
 				882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */,
 				88C28CD927528960005366AD /* SettingOptionTypeEnum.swift in Sources */,
 				8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */,

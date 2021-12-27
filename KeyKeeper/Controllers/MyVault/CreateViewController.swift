@@ -23,7 +23,7 @@ class CreateViewController: BaseMyVaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstStackView.insertArrangedSubview(titleStackView, at: 0)
+        accountDataStackView.insertArrangedSubview(titleStackView, at: 0)
     }
     
     override func configureNavigationBar() {

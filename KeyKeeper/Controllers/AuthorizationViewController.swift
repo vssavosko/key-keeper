@@ -23,16 +23,12 @@ class AuthorizationViewController: UIViewController {
         
         return imageView
     }()
-    private let passwordField: TextFieldWithPadding = {
-        let field = TextFieldWithPadding()
+    private let passwordField: FormField = {
+        let field = FormField(textColor: .white, fieldType: .password)
         
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.font = .systemFont(ofSize: 17, weight: .regular)
-        field.textColor = .white
         field.attributedPlaceholder = NSAttributedString(string: "Master password".localized(),
                                                          attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
-        field.textContentType = .password
-        field.isSecureTextEntry = true
         field.returnKeyType = .continue
         
         field.addBottomLine(backgroundColor: .black, lineColor: .white)
