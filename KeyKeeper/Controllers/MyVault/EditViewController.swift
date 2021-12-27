@@ -17,7 +17,7 @@ class EditViewController: BaseMyVaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstStackView.insertArrangedSubview(titleStackView, at: 0)
+        accountDataStackView.insertArrangedSubview(titleStackView, at: 0)
     }
     
     func set(account: Account) {

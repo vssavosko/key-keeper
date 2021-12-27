@@ -13,51 +13,43 @@ class MasterPasswordViewController: UIViewController {
     
     var completion: ((String) -> Void)!
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
+    private let titleLabel: FormLabel = {
+        let label = FormLabel(font: .systemFont(ofSize: 22, weight: .semibold),
+                              textColor: .black,
+                              text: "First, create a Master Password")
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 22, weight: .semibold)
-        label.text = "First, create a Master Password".localized()
         label.numberOfLines = 0
         
         return label
     }()
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
+    private let descriptionLabel: FormLabel = {
+        let label = FormLabel(font: .systemFont(ofSize: 14, weight: .regular),
+                              textColor: .systemBlue,
+                              text: "For your safety, we do not keep copies of your password")
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .systemBlue
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.text = "For your safety, we do not keep copies of your password".localized()
         label.numberOfLines = 0
         
         return label
     }()
-    private let passwordField: TextFieldWithPadding = {
-        let field = TextFieldWithPadding()
+    private let passwordField: FormField = {
+        let field = FormField(textColor: .black, fieldType: .password)
         
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.textColor = .black
         field.attributedPlaceholder = NSAttributedString(string: "Enter strong master password".localized(),
                                                          attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
-        field.textContentType = .password
-        field.isSecureTextEntry = true
         
         field.addBottomLine()
         
         return field
     }()
     private let repeatPasswordField: TextFieldWithPadding = {
-        let field = TextFieldWithPadding()
+        let field = FormField(textColor: .black, fieldType: .password)
         
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.textColor = .black
         field.attributedPlaceholder = NSAttributedString(string: "Repeat master password".localized(),
                                                          attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
-        field.textContentType = .password
-        field.isSecureTextEntry = true
         
         field.addBottomLine()
         
