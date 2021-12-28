@@ -24,10 +24,10 @@ class ClipboardNotification: UIView {
         
         return view
     }()
-    var messageLabel: FormLabel = {
-        let label = FormLabel(font: .systemFont(ofSize: 13, weight: .semibold),
-                              textColor: .label,
-                              text: "Password copied")
+    var messageLabel: UniversalLabel = {
+        let label = UniversalLabel(font: .systemFont(ofSize: 13, weight: .semibold),
+                                   textColor: .label,
+                                   text: "Password copied")
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center

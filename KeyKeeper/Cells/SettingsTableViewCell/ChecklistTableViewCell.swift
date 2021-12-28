@@ -11,8 +11,8 @@ class ChecklistTableViewCell: UITableViewCell {
     
     static let identifier = "ChecklistTableViewCell"
     
-    public let label: FormLabel = {
-        let label = FormLabel(textColor: .label)
+    public let label: UniversalLabel = {
+        let label = UniversalLabel(textColor: .label)
         
         label.numberOfLines = 1
         

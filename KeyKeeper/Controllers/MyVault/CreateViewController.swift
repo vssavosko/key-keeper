@@ -16,7 +16,7 @@ protocol AddAccountDelegate {
 
 class CreateViewController: BaseMyVaultViewController {
     
-    let dateFormatter = DateFormatter.configure()
+    private let dateFormatter = DateFormatter.configure()
     
     var delegate: AddAccountDelegate?
     
@@ -51,11 +51,11 @@ class CreateViewController: BaseMyVaultViewController {
         generatePasswordButton.addTarget(self, action: #selector(tapOnGeneratorButton), for: .touchUpInside)
     }
     
-    @objc func tapOnCancel() {
+    @objc private func tapOnCancel() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func tapOnSave() {
+    @objc private func tapOnSave() {
         guard let title = titleField.text,
               let login = loginField.text,
               let password = passwordField.text
@@ -74,7 +74,7 @@ class CreateViewController: BaseMyVaultViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func textFieldDidChange() {
+    @objc private func textFieldDidChange() {
         if !titleField.hasText || !loginField.hasText || !passwordField.hasText {
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
@@ -88,7 +88,7 @@ class CreateViewController: BaseMyVaultViewController {
         }
     }
     
-    @objc func tapOnGeneratorButton() {
+    @objc private func tapOnGeneratorButton() {
         let generatorVC = GeneratorViewController()
         
         generatorVC.completion = { [weak self] (password: String) in

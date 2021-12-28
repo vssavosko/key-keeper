@@ -22,16 +22,16 @@ class DetailViewController: BaseMyVaultViewController {
     var accountData: Account!
     var indexRow: Int?
     
-    private let createdLabel: FormLabel = {
-        let label = FormLabel(font: .systemFont(ofSize: 13, weight: .regular))
+    private let createdLabel: UniversalLabel = {
+        let label = UniversalLabel(font: .systemFont(ofSize: 13, weight: .regular))
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         
         return label
     }()
-    private let lastModifiedLabel: FormLabel = {
-        let label = FormLabel(font: .systemFont(ofSize: 13, weight: .regular))
+    private let lastModifiedLabel: UniversalLabel = {
+        let label = UniversalLabel(font: .systemFont(ofSize: 13, weight: .regular))
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -58,7 +58,7 @@ class DetailViewController: BaseMyVaultViewController {
         configureElements()
     }
     
-    func set(account: Account) {
+    public func set(account: Account) {
         accountData = account
     }
     
@@ -145,6 +145,14 @@ class DetailViewController: BaseMyVaultViewController {
         }
     }
     
+    private func copyValueOf(field: UITextField, text: String? = nil) {
+        guard let value = field.text else { return }
+        
+        self.triggerNotification(text: text) {
+            UIPasteboard.general.string = value
+        }
+    }
+    
     @objc private func tapOnEdit() {
         let editVC = EditViewController()
         
@@ -169,14 +177,6 @@ class DetailViewController: BaseMyVaultViewController {
         }
         
         navigationController?.pushViewController(editVC, animated: true)
-    }
-    
-    private func copyValueOf(field: UITextField, text: String? = nil) {
-        guard let value = field.text else { return }
-        
-        self.triggerNotification(text: text) {
-            UIPasteboard.general.string = value
-        }
     }
     
     @objc private func tapOnCopyLoginButton() {

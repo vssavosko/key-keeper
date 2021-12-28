@@ -23,8 +23,8 @@ class AuthorizationViewController: UIViewController {
         
         return imageView
     }()
-    private let passwordField: FormField = {
-        let field = FormField(textColor: .white, fieldType: .password)
+    private let passwordField: UniversalField = {
+        let field = UniversalField(textColor: .white, fieldType: .password)
         
         field.translatesAutoresizingMaskIntoConstraints = false
         field.attributedPlaceholder = NSAttributedString(string: "Master password".localized(),

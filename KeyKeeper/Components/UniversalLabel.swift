@@ -1,5 +1,5 @@
 //
-//  FormLabel.swift
+//  UniversalLabel.swift
 //  KeyKeeper
 //
 //  Created by Владислав Савосько on 27.12.2021.
@@ -8,7 +8,7 @@
 import UIKit
 import Localize_Swift
 
-class FormLabel: UILabel {
+class UniversalLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -1,5 +1,5 @@
 //
-//  FormField.swift
+//  UniversalField.swift
 //  KeyKeeper
 //
 //  Created by Владислав Савосько on 27.12.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FormField: TextFieldWithPadding {
+class UniversalField: TextFieldWithPadding {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
