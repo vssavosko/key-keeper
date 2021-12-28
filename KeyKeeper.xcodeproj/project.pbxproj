@@ -59,10 +59,10 @@
 		88EFD93126D58D1400855F39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93026D58D1400855F39 /* Keys.swift */; };
 		88EFD93326D5998500855F39 /* KeychainWrapper+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD93226D5998500855F39 /* KeychainWrapper+Extension.swift */; };
 		88F5FAEF2775292300C994A5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5FAEE2775292300C994A5 /* Language.swift */; };
-		88F60F28277A1C70005A7CAF /* FormLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F27277A1C70005A7CAF /* FormLabel.swift */; };
-		88F60F2A277A1CE7005A7CAF /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F29277A1CE7005A7CAF /* FormField.swift */; };
+		88F60F28277A1C70005A7CAF /* UniversalLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F27277A1C70005A7CAF /* UniversalLabel.swift */; };
+		88F60F2A277A1CE7005A7CAF /* UniversalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F29277A1CE7005A7CAF /* UniversalField.swift */; };
 		88F60F2C277A206C005A7CAF /* FormStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F2B277A206C005A7CAF /* FormStackView.swift */; };
-		88F60F2E277A2793005A7CAF /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F2D277A2793005A7CAF /* FormButton.swift */; };
+		88F60F2E277A2793005A7CAF /* UniversalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F60F2D277A2793005A7CAF /* UniversalButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,10 +125,10 @@
 		88EFD93026D58D1400855F39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		88EFD93226D5998500855F39 /* KeychainWrapper+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+Extension.swift"; sourceTree = "<group>"; };
 		88F5FAEE2775292300C994A5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
-		88F60F27277A1C70005A7CAF /* FormLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabel.swift; sourceTree = "<group>"; };
-		88F60F29277A1CE7005A7CAF /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		88F60F27277A1C70005A7CAF /* UniversalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalLabel.swift; sourceTree = "<group>"; };
+		88F60F29277A1CE7005A7CAF /* UniversalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalField.swift; sourceTree = "<group>"; };
 		88F60F2B277A206C005A7CAF /* FormStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackView.swift; sourceTree = "<group>"; };
-		88F60F2D277A2793005A7CAF /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
+		88F60F2D277A2793005A7CAF /* UniversalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalButton.swift; sourceTree = "<group>"; };
 		97059BD31E78D6A32B4D736D /* Pods_KeyKeeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyKeeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED0DAAB16AAEC6A3BDF5B0B /* Pods-KeyKeeper.debugdev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.debugdev.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.debugdev.xcconfig"; sourceTree = "<group>"; };
 		E4EB1C5BB8B9FDB7DE374D88 /* Pods-KeyKeeper.releaseprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyKeeper.releaseprod.xcconfig"; path = "Target Support Files/Pods-KeyKeeper/Pods-KeyKeeper.releaseprod.xcconfig"; sourceTree = "<group>"; };
@@ -196,8 +196,11 @@
 		8806EA3C2706596B00E4F51C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				88F60F2F277A2870005A7CAF /* Form */,
+				88F60F27277A1C70005A7CAF /* UniversalLabel.swift */,
+				88F60F29277A1CE7005A7CAF /* UniversalField.swift */,
+				88F60F2D277A2793005A7CAF /* UniversalButton.swift */,
 				88CFBC662764D949007DE2FC /* RoundButton.swift */,
+				88F60F2B277A206C005A7CAF /* FormStackView.swift */,
 				88793B5126CEF85400462B02 /* TextFieldWithPadding.swift */,
 				88A2096526FD1D7700C11770 /* ClipboardNotification.swift */,
 			);
@@ -321,17 +324,6 @@
 				88C28CDA275289A5005366AD /* FieldContentTypeEnum.swift */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		88F60F2F277A2870005A7CAF /* Form */ = {
-			isa = PBXGroup;
-			children = (
-				88F60F27277A1C70005A7CAF /* FormLabel.swift */,
-				88F60F29277A1CE7005A7CAF /* FormField.swift */,
-				88F60F2B277A206C005A7CAF /* FormStackView.swift */,
-				88F60F2D277A2793005A7CAF /* FormButton.swift */,
-			);
-			path = Form;
 			sourceTree = "<group>";
 		};
 		AB756454E762A10907C35EA1 /* Pods */ = {
@@ -468,7 +460,7 @@
 				88228A3926ACC7C000C78456 /* Account.swift in Sources */,
 				8848BFE2270CE565001EBBCE /* Core.swift in Sources */,
 				88D38D772776744D003231EE /* TextFieldWithPadding+Extension.swift in Sources */,
-				88F60F2E277A2793005A7CAF /* FormButton.swift in Sources */,
+				88F60F2E277A2793005A7CAF /* UniversalButton.swift in Sources */,
 				8848BFE8270CFF15001EBBCE /* OnboardingSlide.swift in Sources */,
 				88228A3D26ACC80600C78456 /* MainTabBarController.swift in Sources */,
 				88EFD93326D5998500855F39 /* KeychainWrapper+Extension.swift in Sources */,
@@ -492,10 +484,10 @@
 				882814D1273DD7FD00D54B25 /* LanguageViewController.swift in Sources */,
 				882814C9273DC3D600D54B25 /* SettingSwitchOptions.swift in Sources */,
 				88879ECA273B04B500D6187D /* SettingsTableViewCell.swift in Sources */,
-				88F60F2A277A1CE7005A7CAF /* FormField.swift in Sources */,
+				88F60F2A277A1CE7005A7CAF /* UniversalField.swift in Sources */,
 				88D38D79277674B9003231EE /* UIStackView+Extension.swift in Sources */,
 				88879ECC273B181500D6187D /* SettingsSwitchTableViewCell.swift in Sources */,
-				88F60F28277A1C70005A7CAF /* FormLabel.swift in Sources */,
+				88F60F28277A1C70005A7CAF /* UniversalLabel.swift in Sources */,
 				882814D3273DD83900D54B25 /* ColorThemeViewController.swift in Sources */,
 				88C28CD927528960005366AD /* SettingOptionTypeEnum.swift in Sources */,
 				8852CDFD27164885008CE83E /* AuthorizationViewController.swift in Sources */,
@@ -674,7 +666,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KeyKeeper/KeyKeeper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = KeyKeeper/SupportFiles/KeyKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
@@ -684,6 +676,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.19.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -699,7 +692,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KeyKeeper/KeyKeeper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = KeyKeeper/SupportFiles/KeyKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
@@ -709,6 +702,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.19.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -787,7 +781,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KeyKeeper/KeyKeeper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = KeyKeeper/SupportFiles/KeyKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
@@ -797,6 +791,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.19.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -875,7 +870,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KeyKeeper/KeyKeeper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = KeyKeeper/SupportFiles/KeyKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
@@ -885,6 +880,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.19.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -957,7 +953,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KeyKeeper/KeyKeeper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = KeyKeeper/SupportFiles/KeyKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
@@ -967,6 +963,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.19.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1039,7 +1036,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = KeyKeeper/KeyKeeper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = KeyKeeper/SupportFiles/KeyKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQFSKH6VVL;
@@ -1049,6 +1046,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.19.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vssavosko.KeyKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

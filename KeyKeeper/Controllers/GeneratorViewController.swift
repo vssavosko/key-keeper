@@ -36,8 +36,8 @@ class GeneratorViewController: UIViewController {
         
         return field
     }()
-    private let refreshButton: FormButton = {
-        let button = FormButton(systemImageName: "arrow.clockwise")
+    private let refreshButton: UniversalButton = {
+        let button = UniversalButton(systemImageName: "arrow.clockwise")
         
         button.imageView?.layer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
         
@@ -45,24 +45,24 @@ class GeneratorViewController: UIViewController {
         
         return button
     }()
-    private let lengthLabel: FormLabel = {
-        let label = FormLabel(font: .systemFont(ofSize: 16, weight: .regular),
-                              textColor: .label,
-                              text: "")
+    private let lengthLabel: UniversalLabel = {
+        let label = UniversalLabel(font: .systemFont(ofSize: 16, weight: .regular),
+                                   textColor: .label,
+                                   text: "")
         
         return label
     }()
-    private let lettersLabel: FormLabel = {
-        let label = FormLabel(font: .systemFont(ofSize: 16, weight: .regular),
-                              textColor: .label,
-                              text: "A-Z a-z")
+    private let lettersLabel: UniversalLabel = {
+        let label = UniversalLabel(font: .systemFont(ofSize: 16, weight: .regular),
+                                   textColor: .label,
+                                   text: "A-Z a-z")
         
         return label
     }()
     private let symbolsLabel: UILabel = {
-        let label = FormLabel(font: .systemFont(ofSize: 16, weight: .regular),
-                              textColor: .label,
-                              text: "!@#$%^&*")
+        let label = UniversalLabel(font: .systemFont(ofSize: 16, weight: .regular),
+                                   textColor: .label,
+                                   text: "!@#$%^&*")
         
         return label
     }()

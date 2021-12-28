@@ -9,8 +9,8 @@ import UIKit
 
 class BaseSettingsTableViewCell: UITableViewCell {
     
-    internal let label: FormLabel = {
-        let label = FormLabel(textColor: .label)
+    internal let label: UniversalLabel = {
+        let label = UniversalLabel(textColor: .label)
         
         label.numberOfLines = 1
         

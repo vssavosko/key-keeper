@@ -1,5 +1,5 @@
 //
-//  FormButton.swift
+//  UniversalButton.swift
 //  KeyKeeper
 //
 //  Created by Владислав Савосько on 27.12.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FormButton: UIButton {
+class UniversalButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

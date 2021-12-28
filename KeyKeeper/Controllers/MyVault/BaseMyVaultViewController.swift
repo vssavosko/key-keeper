@@ -14,52 +14,52 @@ class BaseMyVaultViewController: UIViewController {
     internal var oneIconConstraint: NSLayoutConstraint?
     internal var twoIconConstraint: NSLayoutConstraint?
     
-    internal let titleLabel: FormLabel = {
-        let label = FormLabel(text: "Title")
+    internal let titleLabel: UniversalLabel = {
+        let label = UniversalLabel(text: "Title")
         
         return label
     }()
-    internal let titleField: FormField = {
-        let field = FormField(placeholder: "Pied Piper")
+    internal let titleField: UniversalField = {
+        let field = UniversalField(placeholder: "Pied Piper")
         
         return field
     }()
     
-    internal let loginLabel: FormLabel = {
-        let label = FormLabel(text: "Email or username")
+    internal let loginLabel: UniversalLabel = {
+        let label = UniversalLabel(text: "Email or username")
         
         return label
     }()
-    internal let loginField: FormField = {
-        let field = FormField(placeholder: "richardhendricks@piedpiper.com", fieldType: .login)
+    internal let loginField: UniversalField = {
+        let field = UniversalField(placeholder: "richardhendricks@piedpiper.com", fieldType: .login)
         
         return field
     }()
     
-    internal let passwordLabel: FormLabel = {
-        let label = FormLabel(text: "Password")
+    internal let passwordLabel: UniversalLabel = {
+        let label = UniversalLabel(text: "Password")
         
         return label
     }()
-    internal let passwordField: FormField = {
-        let field = FormField(placeholder: "QwEr123Ty456", fieldType: .password)
+    internal let passwordField: UniversalField = {
+        let field = UniversalField(placeholder: "QwEr123Ty456", fieldType: .password)
         
         return field
     }()
     
-    internal let websiteLabel: FormLabel = {
-        let label = FormLabel(text: "Website")
+    internal let websiteLabel: UniversalLabel = {
+        let label = UniversalLabel(text: "Website")
         
         return label
     }()
-    internal let websiteField: FormField = {
-        let field = FormField(placeholder: "piedpiper.com", fieldType: .website)
+    internal let websiteField: UniversalField = {
+        let field = UniversalField(placeholder: "piedpiper.com", fieldType: .website)
         
         return field
     }()
     
-    internal let notesLabel: FormLabel = {
-        let label = FormLabel(text: "Notes")
+    internal let notesLabel: UniversalLabel = {
+        let label = UniversalLabel(text: "Notes")
         
         return label
     }()
@@ -77,22 +77,22 @@ class BaseMyVaultViewController: UIViewController {
         return textView
     }()
     
-    internal let passwordButton: FormButton = {
-        let button = FormButton(systemImageName: "eye.fill")
+    internal let passwordButton: UniversalButton = {
+        let button = UniversalButton(systemImageName: "eye.fill")
         
         button.addTarget(self, action: #selector(tapOnPasswordButton), for: .touchUpInside)
         
         return button
     }()
-    internal let copyLoginButton: FormButton = {
-        let button = FormButton(systemImageName: "doc.on.doc.fill")
+    internal let copyLoginButton: UniversalButton = {
+        let button = UniversalButton(systemImageName: "doc.on.doc.fill")
         
         button.isHidden = true
         
         return button
     }()
-    internal let copyPasswordButton: UIButton = {
-        let button = FormButton(systemImageName: "doc.on.doc.fill")
+    internal let copyPasswordButton: UniversalButton = {
+        let button = UniversalButton(systemImageName: "doc.on.doc.fill")
         
         button.isHidden = true
         
