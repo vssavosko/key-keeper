@@ -6,9 +6,9 @@
 An iOS application for storing logins and passwords from accounts
 
 <div style="display: flex; justify-content: space-between;">
-  <img style="width: 275px;" src="myVault.gif" />
-  <img style="width: 275px;" src="generator.gif" />
-  <img style="width: 275px;" src="settings.gif" />
+  <img style="width: 270px;" src="myVault.gif" />
+  <img style="width: 270px;" src="generator.gif" />
+  <img style="width: 270px;" src="settings.gif" />
 </div>
 
 ## How to build
